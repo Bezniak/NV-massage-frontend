@@ -1,0 +1,37 @@
+.button {
+    min-width: 180px;
+    min-height: 60px;
+    background-color: transparent;
+    border: 1px solid var(--white);
+    padding: 10px 20px;
+    color: var(--white);
+    letter-spacing: 0.3rem;
+    font-size: 14px;
+    cursor: pointer;
+    position: relative;
+    /*overflow: hidden;*/
+    /*z-index: 1;*/
+    text-transform: uppercase;
+    font-weight: 100;
+}
+
+.button::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    background-color: var(--active);
+    transition: width 0.8s;
+    z-index: -1;
+}
+
+.button:hover::before {
+    width: 100%;
+}
+
+.scrolled {
+    background-color: transparent;
+    color: var(--black);
+}

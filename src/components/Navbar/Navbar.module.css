@@ -1,0 +1,33 @@
+.navbar {
+    position: absolute;
+    height: 80px;
+    top: 10%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 1200px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+    background-color: transparent;
+    z-index: 1000;
+}
+
+
+.navbar a {
+    color: var(--white);
+    letter-spacing: 0.2rem;
+    transition: 0.3s ease-in-out;
+    font-weight: 200;
+}
+
+.navbar a:active,
+.navbar a:hover {
+    color: var(--active);
+}
+
+.navbar a svg {
+    vertical-align: middle;
+    margin-left: 5px;
+    font-size: 1.2em;
+}
