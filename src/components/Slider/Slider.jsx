@@ -1,59 +1,54 @@
-import React, { useState } from 'react';
-import s from './Slider.module.css';
-import useFetch from "../../hooks/useFetch";
-import { Preloader } from "../../common/Preloader/Preloader";
-import { FaRegCircle } from "react-icons/fa";
+import React from 'react';
+import {Swiper, SwiperSlide} from 'swiper/react';
+import 'swiper/css';
+import 'swiper/css/pagination';
+import 'swiper/css/navigation';
+import styles from './Slider.module.css'; // Import CSS Module
+import {Autoplay, Navigation, Pagination} from 'swiper/modules';
+import useFetch from '../../hooks/useFetch';
+import {Preloader} from '../../common/Preloader/Preloader';
 
-const Slider = () => {
-    const { data, loading, error } = useFetch('/sliders?populate=*');
-    const [selectedImg, setSelectedImg] = useState(0);
-
-    console.log(data);
+export default function Slider() {
+    const {data, loading, error} = useFetch('/sliders?populate=*');
 
     return (
-        <div className={s.slider}>
+        <div className={styles['slider-container']}>
             {loading ? (
-                <Preloader />
+                <Preloader/>
             ) : (
                 <>
-                    <div className={s.container}>
-                        <h1>{data?.attributes?.title}</h1>
-                        <div className={s.images}>
-                            <div className={`${s.imageWrapper} ${s.overlay}`}>
-                                <img
-                                    src={process.env.REACT_APP_UPLOAD_URL + data?.attributes?.img?.data?.[selectedImg]?.attributes?.url}
-                                    alt="Image 1"
-                                />
-                            </div>
-                            <div className={`${s.imageWrapper} ${s.overlay}`}>
-                                <img
-                                    src={process.env.REACT_APP_UPLOAD_URL + data?.attributes?.img?.data?.[selectedImg]?.attributes?.url}
-                                    alt="Image 2"
-                                />
-                            </div>
-                            <div className={`${s.imageWrapper} ${s.overlay}`}>
-                                <img
-                                    src={process.env.REACT_APP_UPLOAD_URL + data?.attributes?.img?.data?.[selectedImg]?.attributes?.url}
-                                    alt="Image 3"
-                                />
-                            </div>
-                        </div>
-                    </div>
-                    <div className={s.icons}>
-                        <div className={s.icon} onClick={() => setSelectedImg(0)}>
-                            <FaRegCircle />
-                        </div>
-                        <div className={s.icon} onClick={() => setSelectedImg(1)}>
-                            <FaRegCircle />
-                        </div>
-                        <div className={s.icon} onClick={() => setSelectedImg(2)}>
-                            <FaRegCircle />
-                        </div>
-                    </div>
+                    <h1 className={styles['slider-title']}>{data?.attributes?.title}</h1>
+                    <Swiper
+                        spaceBetween={0}
+                        centeredSlides={true}
+                        loop={true}
+                        autoplay={{
+                            delay: 4000,
+                            disableOnInteraction: false,
+                        }}
+                        pagination={{
+                            clickable: true,
+                        }}
+                        navigation={false}
+                        modules={[Autoplay, Pagination, Navigation]}
+                        effect="slide"
+                        speed={3000}
+                        className={styles.mySwiper}
+                    >
+                        {data?.attributes?.img?.data.map((photo) => (
+                            <SwiperSlide key={photo.id}>
+                                <div className={styles['slide-image']}>
+                                    <img
+                                        src={process.env.REACT_APP_UPLOAD_URL + photo?.attributes?.url}
+                                        alt="photo"
+                                        className={styles['slide-image-content']}
+                                    />
+                                </div>
+                            </SwiperSlide>
+                        ))}
+                    </Swiper>
                 </>
             )}
         </div>
     );
-};
-
-export default Slider;
+}
