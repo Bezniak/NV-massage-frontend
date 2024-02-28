@@ -6,7 +6,6 @@ import {Preloader} from "../../common/Preloader/Preloader";
 import Card from "../../components/Cart/Cart";
 
 const Products = () => {
-    const id = useParams().id;
 
     const {data, loading, error} = useFetchAllData(`/products?populate=*`);
 

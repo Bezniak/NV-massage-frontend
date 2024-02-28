@@ -6,8 +6,6 @@ import useFetchAllData from "../../hooks/useFetchAllData";
 const Product = () => {
 
     const id = useParams().id
-
-
     const {data, loading, error} = useFetchAllData(`/products/${id}?populate=*`);
 
 
