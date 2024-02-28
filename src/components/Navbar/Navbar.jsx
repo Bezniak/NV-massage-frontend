@@ -40,9 +40,8 @@ const Navbar = () => {
                             Наш салон
                             <IoIosArrowDown />
                         </NavLink>
-                        <NavLink to="/services">
+                        <NavLink to="/products">
                             Услуги
-                            <IoIosArrowDown />
                         </NavLink>
                         <NavLink to="/specialties">
                             Специальные предложения
@@ -63,9 +62,8 @@ const Navbar = () => {
                             Наш салон
                             <IoIosArrowDown />
                         </NavLink>
-                        <NavLink to="/services">
+                        <NavLink to="/products">
                             Услуги
-                            <IoIosArrowDown />
                         </NavLink>
                         <NavLink to="/specialties">
                             Специальные предложения
