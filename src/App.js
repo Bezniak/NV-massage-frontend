@@ -1,8 +1,10 @@
 import React from 'react';
 import Navbar from "./components/Navbar/Navbar";
 import {createBrowserRouter, Outlet, RouterProvider} from "react-router-dom";
-import Footer from "./components/Footer/Footer";
 import Home from "./pages/Home/Home";
+import {Footer} from "./components/Footer/Footer";
+import Products from "./pages/Products/Products";
+import Product from "./pages/Product/Product";
 
 
 const Layout = () => {
@@ -24,14 +26,14 @@ const router = createBrowserRouter([
                 path: "/",
                 element: <Home/>
             },
-            // {
-            //     path: "/products/:id",
-            //     element: <Products/>
-            // },
-            // {
-            //     path: "/product/:id",
-            //     element: <Product/>
-            // },
+            {
+                path: "/products",
+                element: <Products/>
+            },
+            {
+                path: "/product/:id",
+                element: <Product/>
+            },
         ]
     },
 ]);

@@ -1,2 +1,134 @@
-.footer {
+.footerWrapper {
+    background-color: var(--footer);
+}
+
+.footerBlock {
+    width: 1200px;
+    margin: 0 auto;
+    padding: 20px 0 20px 0;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+}
+
+.footerLogoInfo {
+    padding-top: 10px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.logoWrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.logoBlock {
+    padding-bottom: 10px;
+    color: var(--white);
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-wrap: nowrap;
+    gap: 20px;
+}
+
+.logoBlock img {
+    width: 60px;
+    height:50px;
+}
+
+.logoBlock h2 {
+    font-size: 16px;
+    color: var(--white);
+    letter-spacing: 0.3rem;
+}
+
+
+
+
+.logoContacts {
+    width: 350px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: column;
+    text-align: left;
+    gap: 5px;
+}
+
+
+.logoContacts p {
+    color: var(--footer-links);
+    line-height: 1.7;
+    text-align: left;
+}
+
+.footerLink {
+    color: var(--footer-links);
+    transition: color 0.3s ease;
+}
+
+.footerLink:hover {
+    color: var(--white);
+}
+
+.linksBlock {
+    margin: 30px 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 40px;
+}
+
+.linkSVG {
+    width: 25px;
+    height: 25px;
+}
+
+
+/*footerInfoWrapper*/
+
+
+.footerInfoWrapper {
+    margin: 20px 10px 0 30px;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 90px;
+}
+
+.footerInfoBlock {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 5px;
+}
+
+.footerInfoBlock li a {
+    color: var(--footer-links);
+    transition: color 0.3s ease;
+    line-height: 1.7;
+
+}
+
+.footerInfoBlock li a:hover {
+    color: var(--footer-links);
+}
+
+.footerInfoTitle {
+    padding-bottom: 10px;
+    color: var(--white);
+    letter-spacing: 0.1rem;
+}
+
+.copyRight .copyRight a {
+    padding: 20px 0;
+    color: var(--main);
 }

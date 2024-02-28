@@ -34,4 +34,6 @@
 .scrolled {
     background-color: transparent;
     color: var(--black);
+    border: 1px solid lightgray;
 }
+

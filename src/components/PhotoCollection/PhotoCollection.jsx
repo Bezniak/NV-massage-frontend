@@ -17,8 +17,6 @@ import { Preloader } from '../../common/Preloader/Preloader';
 export default function PhotoCollection() {
     const { data, loading, error } = useFetch('/photo-collections?populate=*');
 
-    console.log(data);
-
     return (
         <>
             {loading ? (
