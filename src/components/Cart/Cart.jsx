@@ -3,7 +3,6 @@ import {NavLink} from "react-router-dom";
 
 const Card = ({item}) => {
 
-    console.log(item)
     return (
         <div className='card'>
             <div className="image">

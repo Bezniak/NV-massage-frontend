@@ -5,12 +5,26 @@ import {NavLink, useParams} from "react-router-dom";
 import {Preloader} from "../../common/Preloader/Preloader";
 import Card from "../../components/Cart/Cart";
 import {HiMiniArrowLongRight} from "react-icons/hi2";
+import useFetch from "../../hooks/useFetch";
+import {animateScroll as scroll} from "react-scroll";
 
 const Products = () => {
 
     const {data, loading, error} = useFetchAllData(`/products?populate=*`);
+    const {
+        data: massagesData,
+        loading: massagesLoading,
+        error: massagesError
+    } = useFetch(`/massages-types?populate=*`);
 
-    console.log(data)
+
+    const handleClick = () => {
+        // Плавный скролл вверх с использованием react-scroll
+        scroll.scrollToTop({
+            duration: 0, // Продолжительность анимации в миллисекундах
+            smooth: 'easeInOutQuad', // Тип анимации
+        });
+    };
 
 
     return (
@@ -18,9 +32,15 @@ const Products = () => {
             <Preloader/>
         ) : (
             <>
-                <div className={s.products}>
-                    <h1>Разнообразие эксклюзивных массажей в нашей студии</h1>
-                </div>
+                {massagesLoading
+                    ? <Preloader/>
+                    : (
+                        <div className={s.products}
+                             style={{backgroundImage: `url(${process.env.REACT_APP_UPLOAD_URL + massagesData?.attributes?.img?.data?.attributes?.url})`}}>
+                            <h1>{massagesData?.attributes?.title}</h1>
+                        </div>
+                    )
+                }
                 <div className={s.productsBlock}>
                     {error
                         ? "Что-то пошло не так!"
@@ -34,10 +54,10 @@ const Products = () => {
                                         alt=""/>
                                     <h1>{item?.attributes.title}</h1>
                                     <p className={s.productsDescription}>{item?.attributes?.description}</p>
-                                    <NavLink to={`/product/${item.id}`}>
+                                    <NavLink to={`/product/${item.id}`} onClick={handleClick}>
                                         <button className={s.productsBtn}>
                                             Узнать больше
-                                            <HiMiniArrowLongRight />
+                                            <HiMiniArrowLongRight/>
                                         </button>
                                     </NavLink>
                                     <p className={s.productsPrice}>Цена: {item?.attributes?.price} BYN</p>

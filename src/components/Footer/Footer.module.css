@@ -1,134 +1,97 @@
-.footerWrapper {
+.footer {
     background-color: var(--footer);
+    padding: 50px 0;
 }
 
-.footerBlock {
+.footerWrapper {
     width: 1200px;
     margin: 0 auto;
-    padding: 20px 0 20px 0;
     display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-}
-
-.footerLogoInfo {
-    padding-top: 10px;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    justify-content: flex-start;
-    align-items: flex-start;
-}
-
-.logoWrapper {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: flex-start;
+    justify-content: space-between;
 }
 
 .logoBlock {
-    padding-bottom: 10px;
-    color: var(--white);
     display: flex;
     align-items: center;
-    justify-content: flex-start;
-    flex-wrap: nowrap;
-    gap: 20px;
+    justify-content: center;
 }
 
-.logoBlock img {
-    width: 60px;
-    height:50px;
+.logoBlock a {
+    color: var(--soft-white);
+    font-size: 25px;
+    padding: 0 4px;
+    letter-spacing: 0.2rem;
 }
 
-.logoBlock h2 {
+.contactBlock {
+    padding-top: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    color: var(--footer-links);
+}
+
+.contactBlock a {
+    color: var(--footer-links);
     font-size: 16px;
-    color: var(--white);
-    letter-spacing: 0.3rem;
+    transition: color 0.4s ease;
 }
 
-
-
-
-.logoContacts {
-    width: 350px;
-    display: flex;
-    justify-content: flex-start;
-    align-items: flex-start;
-    flex-direction: column;
-    text-align: left;
-    gap: 5px;
+.contactBlock a:hover {
+    color: var(--soft-white);
 }
 
-
-.logoContacts p {
-    color: var(--footer-links);
-    line-height: 1.7;
-    text-align: left;
-}
-
-.footerLink {
-    color: var(--footer-links);
-    transition: color 0.3s ease;
-}
-
-.footerLink:hover {
-    color: var(--white);
-}
-
-.linksBlock {
-    margin: 30px 10px;
+.socialNetworkLinks {
+    margin: 25px 0;
     display: flex;
     flex-direction: row;
-    justify-content: center;
-    gap: 40px;
+    align-items: center;
+    gap: 20px;
+    justify-content: space-between;
 }
 
-.linkSVG {
-    width: 25px;
-    height: 25px;
+.socialNetworkLinks svg {
+    color: var(--footer-links);
+    font-size: 28px;
+    transition: color 0.4s ease;
 }
 
-
-/*footerInfoWrapper*/
-
-
-.footerInfoWrapper {
-    margin: 20px 10px 0 30px;
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    justify-content: center;
-    gap: 90px;
+.socialNetworkLinks svg:hover {
+    color: var(--soft-white);
 }
 
-.footerInfoBlock {
+.massagesTypeList {
+    padding-top: 20px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: flex-start;
-    gap: 5px;
+    flex-wrap: wrap;
+    gap: 10px;
 }
 
-.footerInfoBlock li a {
+.footerTitle {
+    font-size: 25px;
+    color: var(--soft-white);
+}
+
+.massagesTypeList a {
     color: var(--footer-links);
-    transition: color 0.3s ease;
-    line-height: 1.7;
-
+    transition: color 0.4s ease;
+    font-size: 16px;
 }
 
-.footerInfoBlock li a:hover {
-    color: var(--footer-links);
-}
-
-.footerInfoTitle {
-    padding-bottom: 10px;
+.massagesTypeList a:hover {
     color: var(--white);
-    letter-spacing: 0.1rem;
 }
 
-.copyRight .copyRight a {
-    padding: 20px 0;
-    color: var(--main);
+.copyRight, .copyRight a {
+    padding: 40px 0 0 0;
+    color: var(--footer-links);
+    transition: color 0.4s ease;
+    font-weight: 100;
+}
+
+.copyRight a:hover {
+    color: var(--soft-white);
+    font-weight: 100;
 }

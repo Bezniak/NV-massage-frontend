@@ -3,7 +3,6 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background-image: url("../../images/massagesMainBG.jpg");
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
@@ -40,6 +39,10 @@
     align-items: center;
     justify-content: space-around;
     gap: 40px;
+    background-image: url("../../images/twoUpList.png"), url("../../images/downList.png"), url("../../images/twoLists.png");
+    background-position: top left, top right, bottom center;
+    background-size: auto, auto, auto;
+    background-repeat: no-repeat, no-repeat, no-repeat;
 }
 
 
@@ -51,11 +54,10 @@
     gap: 10px;
     width: 400px;
     height: 650px;
-    border: 1px solid var(--footer-links);
-    border-radius: 20px;
-    background-color: var(--soft-white);
+    border: 3px solid var(--soft-white);
+    border-radius: 40px;
+    background-color: transparent;
     transition: box-shadow 0.6s ease;
-
 }
 
 .productItem:hover {
@@ -64,8 +66,8 @@
 
 .productItem img {
     margin: 10px;
-    width: 200px;
-    height: 200px;
+    width: 180px;
+    height: 180px;
     border-radius: 50%;
     border: 3px solid var(--white);
 }
@@ -84,12 +86,13 @@
 }
 
 .productsBtn {
+    margin: 10px 0;
     min-width: 260px;
     min-height: 40px;
     padding: 12px;
     border-radius: 10px;
     outline: none;
-    border: 1px solid var(--footer);
+    border: 2px solid var(--soft-white);
     cursor: pointer;
     color: var(--main);
     font-size: 15px;
