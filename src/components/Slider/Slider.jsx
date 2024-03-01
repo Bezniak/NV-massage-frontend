@@ -13,42 +13,44 @@ export default function Slider() {
 
     return (
         <div className={styles['slider-container']}>
-            {loading ? (
-                <Preloader/>
-            ) : (
-                <>
-                    <h1 className={styles['slider-title']}>{data?.attributes?.title}</h1>
-                    <Swiper
-                        spaceBetween={0}
-                        centeredSlides={true}
-                        loop={true}
-                        autoplay={{
-                            delay: 4000,
-                            disableOnInteraction: false,
-                        }}
-                        pagination={{
-                            clickable: true,
-                        }}
-                        navigation={false}
-                        modules={[Autoplay, Pagination, Navigation]}
-                        effect="slide"
-                        speed={3000}
-                        className={styles.mySwiper}
-                    >
-                        {data?.attributes?.img?.data.map((photo) => (
-                            <SwiperSlide key={photo.id}>
-                                <div className={styles['slide-image']}>
-                                    <img
-                                        src={process.env.REACT_APP_UPLOAD_URL + photo?.attributes?.url}
-                                        alt="photo"
-                                        className={styles['slide-image-content']}
-                                    />
-                                </div>
-                            </SwiperSlide>
-                        ))}
-                    </Swiper>
-                </>
-            )}
+            {error ? <p>Что-то пошло не так!{error.message}</p>
+                :
+                loading ? (
+                    <Preloader/>
+                ) : (
+                    <>
+                        <h1 className={styles['slider-title']}>{data?.attributes?.title}</h1>
+                        <Swiper
+                            spaceBetween={0}
+                            centeredSlides={true}
+                            loop={true}
+                            autoplay={{
+                                delay: 4000,
+                                disableOnInteraction: false,
+                            }}
+                            pagination={{
+                                clickable: true,
+                            }}
+                            navigation={false}
+                            modules={[Autoplay, Pagination, Navigation]}
+                            effect="slide"
+                            speed={3000}
+                            className={styles.mySwiper}
+                        >
+                            {data?.attributes?.img?.data.map((photo) => (
+                                <SwiperSlide key={photo.id}>
+                                    <div className={styles['slide-image']}>
+                                        <img
+                                            src={process.env.REACT_APP_UPLOAD_URL + photo?.attributes?.url}
+                                            alt="photo"
+                                            className={styles['slide-image-content']}
+                                        />
+                                    </div>
+                                </SwiperSlide>
+                            ))}
+                        </Swiper>
+                    </>
+                )}
         </div>
     );
 }

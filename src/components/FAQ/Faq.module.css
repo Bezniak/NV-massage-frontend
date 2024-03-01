@@ -1,0 +1,124 @@
+.faqWrapper {
+    height: 100vh;
+    width: 100%;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.faqWrapper::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    z-index: 1;
+}
+
+.faqWrapper h1 {
+    color: var(--soft-white);
+    text-align: center;
+    z-index: 2;
+    font-size: 70px;
+    font-weight: 200;
+}
+
+.faqBlock {
+    height: auto;
+    background-image: url("../../images/twoDown.png"), url("../../images/longListDown.png"), url("../../images/twoLists.png");
+    background-position: top left, center right, bottom center;
+    background-size: auto;
+    background-repeat: no-repeat;
+}
+
+.faqContent {
+    width: 1200px;
+    margin: 0 auto;
+    padding: 40px 10px;
+}
+
+.faqContent h2 {
+    font-size: 60px;
+    letter-spacing: 0.1rem;
+    line-height: 3;
+    font-weight: 200;
+}
+
+.faqContent p {
+    line-height: 2;
+    text-align: justify;
+    font-size: 15px;
+}
+
+.ask {
+    margin: 70px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.askItem {
+    width: 1200px;
+    min-height: 50px;
+    padding: 30px;
+    background-color: var(--soft-white);
+    position: relative;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.askItem:hover > h3 {
+    color: var(--active);
+}
+
+.askItem h3 {
+    font-size: 22px;
+    font-weight: 300;
+    transition: color 0.2s ease-in-out;
+    cursor: pointer;
+}
+
+.minusIcon,
+.plusIcon {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    cursor: pointer;
+    color: var(--active);
+    font-size: 25px;
+}
+
+.visible {
+    padding-top: 10px;
+    line-height: 1.8;
+    font-size: 16px;
+    font-weight: 400;
+    text-align: justify;
+    opacity: 1;
+    max-height: 1000px;
+    transition: opacity 0.5s ease-in-out, max-height 0.5s ease-in-out;
+}
+
+.hidden {
+    opacity: 0;
+    max-height: 0;
+    transition: opacity 0.5s ease-in-out, max-height 0.5s ease-in-out;
+    overflow: hidden;
+    display: none;
+}
+
+.expanded h3 {
+    color: var(--active);
+}
+
+.answer {
+    margin-top: 10px;
+}

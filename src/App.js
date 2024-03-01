@@ -6,6 +6,7 @@ import Products from "./pages/Products/Products";
 import Product from "./pages/Product/Product";
 import Footer from "./components/Footer/Footer";
 import NotFound from "./components/NotFound/NotFound";
+import {Faq} from "./components/FAQ/Faq";
 
 
 const Layout = () => {
@@ -35,6 +36,10 @@ const router = createBrowserRouter([
             {
                 path: "/product/:id",
                 element: <Product/>
+            },
+            {
+                path: "/faq",
+                element: <Faq/>
             },
             {
                 path: "*",
