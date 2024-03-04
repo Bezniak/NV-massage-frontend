@@ -20,10 +20,6 @@ export const Faq = () => {
         });
     }, []);
 
-    useEffect(() => {
-        // Fetch data here
-    }, []);
-
     if (error) {
         return <p>Что-то пошло не так! {error.message}</p>;
     }
