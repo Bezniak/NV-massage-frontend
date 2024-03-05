@@ -4,9 +4,17 @@ import useFetch from "../../hooks/useFetch";
 import {Preloader} from "../../common/Preloader/Preloader";
 import PhotoCollection from "../PhotoCollection/PhotoCollection";
 import Form from "../Form/Form";
+import {IoLocation} from "react-icons/io5";
+import {LuPhone} from "react-icons/lu";
+import {IoIosMail} from "react-icons/io";
+import {FaSquareInstagram} from "react-icons/fa6";
+import {FaTelegram, FaViber} from "react-icons/fa";
 
 export const AboutUs = () => {
     const {data, loading, error} = useFetch(`/abouts?populate=*`);
+    const {data: contactData, loading: contactLoading, error: contactError} = useFetch('/contacts?populate=*');
+
+    console.log(contactData)
 
     return (
         <React.Fragment>
@@ -47,9 +55,71 @@ export const AboutUs = () => {
                         <div className={s.achievement}>
                             <h2>{data?.attributes?.achievementTitle}</h2>
                             <p>{data?.attributes?.achievementDesc}</p>
-                            <PhotoCollection data={data?.attributes?.achievementImages} error={error} loading={loading}/>
+                            <PhotoCollection data={data?.attributes?.achievementImages} error={error}
+                                             loading={loading}/>
                         </div>
-                        <Form/>
+                        <div className={s.contactFormBlock}>
+                            <div className={s.contactFormIntro}>
+                                <h1>{data?.attributes?.contactFormTitle}</h1>
+                                <p>{data?.attributes?.contactFormDesc}</p>
+                                <div>
+                                    {contactError ? (
+                                        <p>Что-то пошло не так</p>
+                                    ) : contactLoading ? (
+                                        <Preloader/>
+                                    ) : (
+                                        <ul className={s.contactList}>
+                                            <li>
+                                                <IoLocation/>
+                                                {contactData?.attributes?.address}
+                                            </li>
+                                            <li>
+                                                <LuPhone/>
+                                                <a href={`tel:${contactData?.attributes?.phone}`}>{contactData?.attributes?.phone}</a>
+                                            </li>
+                                            <li>
+                                                <IoIosMail/>
+                                                <a href={`mailto:${contactData?.attributes?.email}`}>{contactData?.attributes?.email}</a>
+                                            </li>
+                                        </ul>
+                                    )}
+                                </div>
+                                <div>
+                                    <ul className={s.socialNetworkLinks}>
+                                        <li>
+                                            <a href={`${contactData?.attributes?.instagram}`}
+                                               rel="noreferrer"
+                                               target="_blank"
+                                            >
+                                                <FaSquareInstagram/>
+                                                Instagram
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a
+                                                href={`tg://resolve?domain=${contactData?.attributes?.telegram}`}
+                                                rel="noreferrer"
+                                                target="_blank"
+                                            >
+                                                <FaTelegram/>
+                                                Telegram
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href={`viber://chat?number=${contactData?.attributes?.viber}`}
+                                               rel="noreferrer"
+                                               target="_blank"
+                                            >
+                                                <FaViber/>
+                                                Viber
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <Form/>
+                        </div>
+
                     </div>
                 </React.Fragment>
             )}

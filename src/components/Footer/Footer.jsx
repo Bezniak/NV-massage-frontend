@@ -4,7 +4,7 @@ import useFetch from "../../hooks/useFetch";
 import {NavLink} from "react-router-dom";
 import {Preloader} from "../../common/Preloader/Preloader";
 import {FaFacebook, FaSquareInstagram} from "react-icons/fa6";
-import {FaLinkedin, FaTelegram, FaTiktok} from "react-icons/fa";
+import {FaLinkedin, FaTelegram, FaTiktok, FaViber} from "react-icons/fa";
 import useFetchAllData from "../../hooks/useFetchAllData";
 import {animateScroll as scroll} from "react-scroll";
 
@@ -99,6 +99,13 @@ const Footer = () => {
                                     >
                                         <FaTelegram/>
                                     </a>
+                                </li>
+                                <li>
+                                    <li>
+                                        <a href={`viber://chat?number=${data?.attributes?.viber}`}>
+                                            <FaViber/>
+                                        </a>
+                                    </li>
                                 </li>
                             </ul>
                         </div>
