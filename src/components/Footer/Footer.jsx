@@ -101,11 +101,9 @@ const Footer = () => {
                                     </a>
                                 </li>
                                 <li>
-                                    <li>
-                                        <a href={`viber://chat?number=${data?.attributes?.viber}`}>
-                                            <FaViber/>
-                                        </a>
-                                    </li>
+                                    <a href={`viber://chat?number=${data?.attributes?.viber}`}>
+                                        <FaViber/>
+                                    </a>
                                 </li>
                             </ul>
                         </div>
