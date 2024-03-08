@@ -3,6 +3,7 @@ import s from './Reviews.module.css';
 import useFetch from "../../hooks/useFetch";
 import axios from "axios";
 import useFetchAllData from "../../hooks/useFetchAllData";
+import ReviewForm from "./ReviewForm/ReviewForm";
 
 const Reviews = () => {
 
@@ -37,7 +38,11 @@ const Reviews = () => {
 
     // console.log(data)
 
-    const {data: c, loading: l, error: e} = useFetchAllData(`/comments?fields[0]=name&fields[1]=comment&fields[2]=createdAt&populate=*`);
+    const {
+        data: c,
+        loading: l,
+        error: e
+    } = useFetchAllData(`/comments?fields[0]=name&fields[1]=comment&fields[2]=createdAt&populate=*`);
 
 
     console.log(c)
@@ -98,6 +103,13 @@ const Reviews = () => {
                     </div>
                     <button type="submit">Submit</button>
                 </form>
+
+
+                <div>
+                    <h1>LLLLLLL</h1>
+
+                    <ReviewForm/>
+                </div>
 
             </div>
         </div>
