@@ -1,0 +1,40 @@
+.reviewsWrapper {
+    padding: 20px 100px;
+    width: 100%;
+    height: 100vh;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+}
+
+.reviewsWrapper::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+}
+
+.reviewsWrapper h1 {
+    margin-top: 20px;
+    color: var(--white);
+    z-index: 2;
+    font-size: 80px;
+    font-weight: 200;
+}
+
+.reviewsWrapper p {
+    color: var(--soft-white);
+    z-index: 2;
+    letter-spacing: 0.2rem;
+    font-size: 18px;
+    font-weight: 100;
+}

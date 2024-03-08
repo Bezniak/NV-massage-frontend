@@ -122,9 +122,6 @@ const Footer = () => {
                             <NavLink to='/aboutUs' onClick={handleClick}>
                                 О нас
                             </NavLink>
-                            <NavLink to='/experts' onClick={handleClick}>
-                                Эксперты
-                            </NavLink>
                             <NavLink to='/reviews' onClick={handleClick}>
                                 Отзывы
                             </NavLink>
