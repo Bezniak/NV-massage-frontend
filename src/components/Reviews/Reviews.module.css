@@ -38,3 +38,109 @@
     font-size: 18px;
     font-weight: 100;
 }
+
+
+.reviewsBlock {
+    width: 1200px;
+    margin: 50px auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.reviewTitle {
+    position: relative;
+    font-size: 40px;
+    margin-bottom: 10px;
+}
+
+.reviewTitle span {
+    font-size: 15px;
+    position: absolute;
+    top: 0;
+    padding: 5px;
+    right: -45px;
+    border: 1px solid var(--active-dark);
+    border-radius: 50%;
+    font-weight: 400;
+}
+
+.addReview {
+    width: 20%;
+    padding: 15px 25px;
+    margin: 20px 0;
+    font-size: 15px;
+    font-weight: 500;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    background-color: var(--footer);
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.addReview:hover {
+    background-color: var(--active);
+}
+
+.reviewItem {
+    margin: 40px 0 50px 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.reviewItem h3 {
+    font-size: 18px;
+    text-align: left;
+    margin: 5px 0 2px 0;
+    padding: 0;
+    font-weight: 600;
+    letter-spacing: 0.1rem;
+    text-transform: capitalize;
+}
+
+.reviewItem span {
+    font-size: 10px;
+    font-weight: 500;
+    padding: 0;
+    margin: 0;
+    color: gray;
+}
+
+.reviewItem p {
+    padding: 10px 0;
+    line-height: 1.5;
+    letter-spacing: 0.1rem;
+    text-align: justify;
+    font-size: 14px;
+}
+
+
+.grade {
+    cursor: auto;
+}
+
+
+.pagination {
+    margin-top: 20px;
+}
+
+.pagination button {
+    padding: 5px 10px;
+    margin-right: 5px;
+    background-color: #f0f0f0;
+    border: none;
+    cursor: pointer;
+}
+
+.pagination button:hover {
+    background-color: #ccc;
+}
+
+.pagination .active {
+    background-color: #007bff;
+    color: white;
+}
