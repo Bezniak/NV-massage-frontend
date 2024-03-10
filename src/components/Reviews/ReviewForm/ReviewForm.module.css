@@ -13,7 +13,6 @@
     padding: 30px 0;
     width: 100%;
     margin: 30px auto;
-    background-color: transparent;
     border-radius: 40px;
 }
 
@@ -50,7 +49,6 @@ label {
 }
 
 .textarea {
-    width: 100%;
     height: 200px;
     resize: none;
 }
@@ -111,7 +109,7 @@ label {
 
 .button {
     width: 100%;
-    padding: 20px 20px;
+    padding: 20px;
     background-color: var(--footer);
     color: var(--soft-white);
     border: none;
@@ -136,14 +134,12 @@ label {
     color: #ffc107;
 }
 
-
 .info {
     margin: 20px 0 5px 0;
     font-size: 10px;
     text-align: justify;
     line-height: 2;
     font-weight: 500;
-    letter-spacing: 0;
 }
 
 .info2 {
@@ -152,5 +148,4 @@ label {
     text-align: justify;
     line-height: 2;
     font-weight: 500;
-    letter-spacing: 0;
 }

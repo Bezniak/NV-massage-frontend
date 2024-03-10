@@ -1,6 +1,5 @@
 .reviewsWrapper {
     padding: 20px 100px;
-    width: 100%;
     height: 100vh;
     background-position: center;
     background-size: cover;
@@ -10,6 +9,7 @@
     align-items: center;
     justify-content: center;
     gap: 30px;
+    position: relative;
 }
 
 .reviewsWrapper::after {
@@ -26,19 +26,18 @@
 .reviewsWrapper h1 {
     margin-top: 20px;
     color: var(--white);
-    z-index: 2;
     font-size: 80px;
     font-weight: 200;
+    z-index: 2;
 }
 
 .reviewsWrapper p {
     color: var(--soft-white);
-    z-index: 2;
     letter-spacing: 0.2rem;
     font-size: 18px;
     font-weight: 100;
+    z-index: 2;
 }
-
 
 .reviewsBlock {
     width: 1200px;
@@ -49,17 +48,17 @@
 }
 
 .reviewTitle {
-    position: relative;
     font-size: 40px;
     margin-bottom: 10px;
+    position: relative;
 }
 
 .reviewTitle span {
     font-size: 15px;
     position: absolute;
     top: 0;
-    padding: 5px;
     right: -45px;
+    padding: 7px 12px;
     border: 1px solid var(--active-dark);
     border-radius: 50%;
     font-weight: 400;
@@ -89,14 +88,11 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    justify-content: flex-start;
 }
 
 .reviewItem h3 {
     font-size: 18px;
-    text-align: left;
     margin: 5px 0 2px 0;
-    padding: 0;
     font-weight: 600;
     letter-spacing: 0.1rem;
     text-transform: capitalize;
@@ -105,8 +101,6 @@
 .reviewItem span {
     font-size: 10px;
     font-weight: 500;
-    padding: 0;
-    margin: 0;
     color: gray;
 }
 
@@ -114,33 +108,32 @@
     padding: 10px 0;
     line-height: 1.5;
     letter-spacing: 0.1rem;
-    text-align: justify;
     font-size: 14px;
+    text-align: justify;
 }
 
-
-.grade {
-    cursor: auto;
+.reviewsRules {
+    width: 1200px;
+    margin: 40px auto;
 }
 
-
-.pagination {
-    margin-top: 20px;
+.reviewsRules h2 {
+    font-size: 13px;
+    font-weight: 400;
+    margin: 10px 0;
 }
 
-.pagination button {
-    padding: 5px 10px;
-    margin-right: 5px;
-    background-color: #f0f0f0;
-    border: none;
-    cursor: pointer;
+.reviewsRules ul li {
+    font-size: 10px;
+    line-height: 1.5;
+    font-weight: 400;
 }
 
-.pagination button:hover {
-    background-color: #ccc;
-}
-
-.pagination .active {
-    background-color: #007bff;
-    color: white;
+.reviewsRules p {
+    margin: 10px;
+    font-size: 10px;
+    line-height: 1.5;
+    text-align: justify;
+    font-weight: 400;
+    letter-spacing: 0;
 }
