@@ -22,28 +22,92 @@
     z-index: 1;
 }
 
-.bookWrapper h1 {
-    margin: 20px 200px;
+.bookWrapper h1,
+.bookWrapper p {
+    margin: 0 20px;
     color: #fff;
     text-align: center;
     z-index: 2;
+}
+
+.bookWrapper h1 {
+    margin-bottom: 20px;
     font-size: 2.5rem;
     font-weight: 200;
 }
 
 .bookWrapper p {
-    margin: 20px 200px;
-    color: #fff;
-    text-align: center;
-    z-index: 2;
+    margin-bottom: 40px;
     font-size: 1.2rem;
     font-weight: 100;
 }
 
 .formWrapper {
-    height: 100vh;
-    margin: 0 auto;
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.formWrapper form {
+    width: 100%;
+    max-width: 600px;
+    background-color: #f9f9f9;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.formWrapper h1 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.formWrapper label {
+    display: block;
+    font-size: 1.1rem;
+    margin-bottom: 5px;
+}
+
+.formWrapper input[type="text"],
+.formWrapper input[type="phone"],
+.formWrapper textarea,
+.formWrapper select {
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.formWrapper textarea {
+    height: 100px;
+}
+
+.formWrapper span {
+    color: red;
+    font-size: 0.9rem;
+}
+
+.formWrapper button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1rem;
+    cursor: pointer;
+    border-radius: 5px;
+    width: 100%;
+}
+
+.formWrapper button:hover {
+    background-color: #0056b3;
+}
+
+.formWrapper p {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-top: 20px;
+    text-align: center;
 }

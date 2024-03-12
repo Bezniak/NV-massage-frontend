@@ -1,14 +1,13 @@
 import React, {useState} from 'react';
-import styles from "./Book.module.css";
-import useFetch from "../../hooks/useFetch";
-import {Preloader} from "../../common/Preloader/Preloader";
-import {Controller, useForm} from "react-hook-form";
-import DatePicker, {registerLocale, setDefaultLocale} from 'react-datepicker'
+import styles from './Book.module.css';
+import useFetch from '../../hooks/useFetch';
+import {Preloader} from '../../common/Preloader/Preloader';
+import {Controller, useForm} from 'react-hook-form';
+import DatePicker, {registerLocale, setDefaultLocale} from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import ru from 'date-fns/locale/ru';
-import Select from "react-select";
-import useFetchAllData from "../../hooks/useFetchAllData";
-
+import Select from 'react-select';
+import useFetchAllData from '../../hooks/useFetchAllData';
 
 registerLocale('ru', ru);
 setDefaultLocale('ru');
@@ -17,20 +16,18 @@ const Book = () => {
     const {data: bookData, loading: bookLoading, error: bookError} = useFetch('/books?populate=*');
     const {data: contact, loading: contactLoading, error: contactError} = useFetch('/contacts?populate=*');
     const [totalPrice, setTotalPrice] = useState(0);
-
+    const today = new Date();
 
     const minTime = contact?.attributes?.minTime;
     const maxTime = contact?.attributes?.maxTime;
     const formattedMinTime = minTime ? new Date(`01/01/2000 ${minTime}`) : null;
     const formattedMaxTime = maxTime ? new Date(`01/01/2000 ${maxTime}`) : null;
 
-
     const {
         data: massageType,
         loading: massageTypeLoading,
         error: massageTypeError
     } = useFetchAllData('/products?populate=*');
-
 
     const {
         register,
@@ -40,27 +37,60 @@ const Book = () => {
         control,
     } = useForm();
 
+    const calculateTotalPrice = (selectedMassages) => {
+        let total = 0;
+        selectedMassages.forEach((massage) => {
+            total += massage.price;
+        });
+        setTotalPrice(total);
+    };
+
     const onSubmit = (data) => {
-        console.log(data)
+        data.massageType = data.massageType.map(item => item.label).join(', ');
+        data.startDate = data.startDate.toLocaleDateString('ru');
+        data.totalPrice = totalPrice.toFixed(2);
+        console.log(data);
+    };
+
+    function generateTimeOptions(minTime, maxTime) {
+        const options = [];
+        const currentTime = new Date(minTime);
+        const endTime = new Date(maxTime);
+
+        while (currentTime <= endTime) {
+            options.push(
+                <option key={formatTime(currentTime)} value={formatTime(currentTime)}>
+                    {formatTime(currentTime)}
+                </option>
+            );
+            currentTime.setMinutes(currentTime.getMinutes() + 30); // Увеличиваем время на 30 минут
+        }
+
+        return options;
+    }
+
+    function formatTime(date) {
+        return date.toLocaleTimeString('ru', { hour: '2-digit', minute: '2-digit' });
     }
 
     return (
         <div>
             <div>
-                {bookError ? <p>Что-то пошло не так!</p>
-                    : bookLoading ? <Preloader/>
-                        : (
-                            <div
-                                className={styles.bookWrapper}
-                                style={{
-                                    backgroundImage: `url(${process.env.REACT_APP_UPLOAD_URL + bookData?.attributes?.imgBG?.data?.attributes?.url})`,
-                                }}
-                            >
-                                <h1>{bookData?.attributes?.title}</h1>
-                                <p>{bookData?.attributes?.description}</p>
-                            </div>
-                        )
-                }
+                {bookError ? (
+                    <p>Что-то пошло не так!</p>
+                ) : bookLoading ? (
+                    <Preloader/>
+                ) : (
+                    <div
+                        className={styles.bookWrapper}
+                        style={{
+                            backgroundImage: `url(${process.env.REACT_APP_UPLOAD_URL + bookData?.attributes?.imgBG?.data?.attributes?.url})`,
+                        }}
+                    >
+                        <h1>{bookData?.attributes?.title}</h1>
+                        <p>{bookData?.attributes?.description}</p>
+                    </div>
+                )}
             </div>
 
             <div className={styles.formWrapper}>
@@ -69,13 +99,8 @@ const Book = () => {
 
                     <div>
                         <label htmlFor="name">Имя:</label>
-                        <input
-                            type="text"
-                            {...register('name', {
-                                required: 'Это поле обязательно для заполнения!',
-                            })}
-                            placeholder='Екатерина'
-                        />
+                        <input type="text" {...register('name', {required: 'Это поле обязательно для заполнения!'})}
+                               placeholder="Екатерина"/>
                         {errors.name && <span>{errors.name.message}</span>}
                     </div>
 
@@ -88,9 +113,9 @@ const Book = () => {
                                 pattern: {
                                     value: /^\+?\d{1,3}(\s?|\(\d{1,4}\))?([\s.-]?\d{1,4}){2,}$/,
                                     message: 'Некорректный формат номера телефона',
-                                }
+                                },
                             })}
-                            placeholder='+375 29 333 33 33'
+                            placeholder="+375 29 333 33 33"
                         />
                         {errors.phone && <span>{errors.phone.message}</span>}
                     </div>
@@ -105,13 +130,13 @@ const Book = () => {
                             }}
                             render={({field: {onChange, value}, fieldState: {error}}) => (
                                 <div>
-                                    <DatePicker
-                                        showIcon
-                                        selected={value}
-                                        onChange={onChange}
-                                        placeholderText='Выберите дату'
-                                        dateFormat="dd.MM.yyyy"
-                                        locale="ru"
+                                    <DatePicker showIcon
+                                                selected={value}
+                                                onChange={onChange}
+                                                placeholderText="Выберите дату"
+                                                dateFormat="dd.MM.yyyy"
+                                                locale="ru"
+                                                minDate={today} // Запрещаем выбор прошедших дат
                                     />
                                     {error && <span>{error.message}</span>}
                                 </div>
@@ -121,31 +146,16 @@ const Book = () => {
 
                     <div>
                         <label htmlFor="startTime">Время:</label>
-                        <Controller
-                            control={control}
-                            name="startTime"
-                            rules={{
-                                required: 'Это поле обязательно для заполнения!',
-                            }}
-                            render={({field: {onChange, value}, fieldState: {error}}) => (
-                                <div>
-                                    <DatePicker
-                                        selected={value}
-                                        onChange={onChange}
-                                        showTimeSelect
-                                        showTimeSelectOnly
-                                        timeIntervals={30}
-                                        minTime={formattedMinTime}
-                                        maxTime={formattedMaxTime}
-                                        placeholderText="Выберите время"
-                                        timeCaption="Время"
-                                        dateFormat="HH:mm"
-                                        locale="ru"
-                                    />
-                                    {error && <span>{error.message}</span>}
-                                </div>
+                        <select
+                            {...register('startTime', {required: 'Это поле обязательно для заполнения!'})}
+                        >
+                            <option value="">Выберите время</option>
+                            {/* Создайте опции для времени */}
+                            {formattedMinTime && formattedMaxTime && (
+                                generateTimeOptions(formattedMinTime, formattedMaxTime)
                             )}
-                        />
+                        </select>
+                        {errors.startTime && <span>{errors.startTime.message}</span>}
                     </div>
 
                     <div>
@@ -162,10 +172,13 @@ const Book = () => {
                                         options={massageType?.map((item) => ({
                                             value: item.id, // or any unique identifier for the option
                                             label: item.attributes.title,
-                                            price: item.attributes.price
+                                            price: item.attributes.price,
                                         }))}
                                         value={value}
-                                        onChange={onChange}
+                                        onChange={(selectedOptions) => {
+                                            onChange(selectedOptions);
+                                            calculateTotalPrice(selectedOptions);
+                                        }}
                                         isClearable
                                         isMulti
                                         isSearchable
@@ -179,17 +192,14 @@ const Book = () => {
 
                     <div>
                         <label htmlFor="comment">Комментарий:</label>
-                        <textarea
-                            {...register('comment', {})}
-                            placeholder='Коментарий...'
-                        />
+                        <textarea {...register('comment', {})} placeholder="Коментарий..."/>
                     </div>
 
                     <div>
-                        <p>Итого: {totalPrice} BYN</p>
+                        <p>Итого: {totalPrice.toFixed(2)} BYN</p>
                     </div>
 
-                    <button type='submit'>Забронировать!</button>
+                    <button type="submit">Забронировать!</button>
                 </form>
             </div>
         </div>
