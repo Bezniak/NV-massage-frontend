@@ -10,6 +10,7 @@ import {Faq} from "./components/FAQ/Faq";
 import {AboutUs} from "./components/AboutUs/AboutUs";
 import PrivacyPolicy from "./components/PrivacyPolicy/PrivacyPolicy";
 import Reviews from "./components/Reviews/Reviews";
+import Book from "./components/Book/Book";
 
 
 const Layout = () => {
@@ -55,6 +56,10 @@ const router = createBrowserRouter([
             {
                 path: "/reviews",
                 element: <Reviews/>
+            },
+            {
+                path: "/book",
+                element: <Book/>
             },
             {
                 path: "*",

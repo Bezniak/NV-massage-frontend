@@ -1,0 +1,49 @@
+.bookWrapper {
+    height: 100vh;
+    width: 100%;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.bookWrapper::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.3);
+    z-index: 1;
+}
+
+.bookWrapper h1 {
+    margin: 20px 200px;
+    color: #fff;
+    text-align: center;
+    z-index: 2;
+    font-size: 2.5rem;
+    font-weight: 200;
+}
+
+.bookWrapper p {
+    margin: 20px 200px;
+    color: #fff;
+    text-align: center;
+    z-index: 2;
+    font-size: 1.2rem;
+    font-weight: 100;
+}
+
+.formWrapper {
+    height: 100vh;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
