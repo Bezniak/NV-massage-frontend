@@ -73,19 +73,6 @@
 //                 console.log(data);
 //                 alert("Event created, check your Google Calendar!");
 //             });
-//
-//         await fetch("https://www.googleapis.com/calendar/v3/calendars/baranovichimassage@gmail.com/events", {
-//             method: "POST",
-//             headers: {
-//                 'Authorization': 'Bearer ' + session.provider_token
-//             },
-//             body: JSON.stringify(event)
-//         })
-//             .then((data) => data.json())
-//             .then((data) => {
-//                 console.log(data);
-//                 alert("Event created, check your Google Calendar!");
-//             });
 //     }
 //
 //

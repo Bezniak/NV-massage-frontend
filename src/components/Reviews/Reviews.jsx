@@ -34,9 +34,7 @@ const Reviews = () => {
 
     return (
         <div>
-            {errorMedia ? (
-                <p>Что-то пошло не так</p>
-            ) : loadingMedia ? (
+            {!dataMedia?.attributes?.imgBG ? (
                 <Preloader/>
             ) : (
                 <div

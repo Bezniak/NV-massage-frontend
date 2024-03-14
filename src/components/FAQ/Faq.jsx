@@ -1,4 +1,4 @@
-import React, {useCallback, useState, useEffect} from 'react';
+import React, {useCallback, useState} from 'react';
 import s from './Faq.module.css';
 import useFetch from '../../hooks/useFetch';
 import {Preloader} from '../../common/Preloader/Preloader';
@@ -30,14 +30,18 @@ export const Faq = () => {
 
     return (
         <>
-            <div
-                className={s.faqWrapper}
-                style={{
-                    backgroundImage: `url(${process.env.REACT_APP_UPLOAD_URL + data?.attributes?.mainImageBG?.data?.attributes?.url})`,
-                }}
-            >
-                <h1>{data?.attributes?.title}</h1>
-            </div>
+            {!data?.attributes?.mainImageBG ? (
+                <Preloader/>
+            ) : (
+                <div
+                    className={s.faqWrapper}
+                    style={{
+                        backgroundImage: `url(${process.env.REACT_APP_UPLOAD_URL + data?.attributes?.mainImageBG?.data?.attributes?.url})`,
+                    }}
+                >
+                    <h1>{data?.attributes?.title}</h1>
+                </div>
+            )}
             <div className={s.faqBlock}>
                 <div className={s.faqContent}>
                     <h2>{data?.attributes?.title2}</h2>

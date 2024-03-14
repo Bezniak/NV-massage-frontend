@@ -42,7 +42,7 @@ const Navbar = () => {
                         <NavLink to="/" onClick={handleClick}>
                             <img src="/whiteLogo.png" alt="logo" />
                         </NavLink>
-                        <BookButton title="Записаться!" />
+                        <BookButton title='Записаться!' color={'white'} />
                     </div>
                     <div className={s.headerBlock}>
                         <NavLink to="/" onClick={handleClick}>Главная</NavLink>
@@ -79,7 +79,7 @@ const Navbar = () => {
                             Специальные предложения
                             <IoIosArrowDown />
                         </NavLink>
-                        <BookButton title="Записаться!" scrolled={scrolled} />
+                        <BookButton title='Записаться на массаж!' color={'black'} />
                     </div>
                 </div>
             )}

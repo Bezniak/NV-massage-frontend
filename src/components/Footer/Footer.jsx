@@ -134,9 +134,6 @@ const Footer = () => {
                             <NavLink to='/location' onClick={handleClick}>
                                 Местоположение
                             </NavLink>
-                            <NavLink to='/book' onClick={handleClick}>
-                                Забронировать
-                            </NavLink>
                         </ul>
                     </div>
 

@@ -16,6 +16,7 @@ export const AboutUs = () => {
 
     console.log(contactData)
 
+
     return (
         <React.Fragment>
             {error ? (
@@ -24,16 +25,20 @@ export const AboutUs = () => {
                 <Preloader/>
             ) : (
                 <React.Fragment>
-                    <div
-                        className={s.aboutUsWrapper}
-                        style={{
-                            backgroundImage: `url(${process.env.REACT_APP_UPLOAD_URL + data?.attributes?.imgBG?.data?.attributes?.url})`,
-                        }}
-                    >
-                        <img src='/whiteLogo.png' alt="logo"/>
-                        <h1>{data?.attributes?.title}</h1>
-                        <p>{data?.attributes?.desc}</p>
-                    </div>
+                    {!data?.attributes?.imgBG ? (
+                        <Preloader/>
+                    ) : (
+                        <div
+                            className={s.aboutUsWrapper}
+                            style={{
+                                backgroundImage: `url(${process.env.REACT_APP_UPLOAD_URL + data?.attributes?.imgBG?.data?.attributes?.url})`,
+                            }}
+                        >
+                            <img src='/whiteLogo.png' alt="logo"/>
+                            <h1>{data?.attributes?.title}</h1>
+                            <p>{data?.attributes?.desc}</p>
+                        </div>
+                    )}
 
                     <div className={s.person}>
                         <div className={s.personWrapper}>

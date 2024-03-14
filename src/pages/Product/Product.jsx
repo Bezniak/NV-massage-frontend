@@ -1,4 +1,4 @@
-import React, {Fragment} from 'react';
+import React, {Fragment, useState, useEffect} from 'react';
 import s from './Product.module.css';
 import {useParams} from 'react-router-dom';
 import {Preloader} from '../../common/Preloader/Preloader';
@@ -10,7 +10,17 @@ import BookButton from "../../common/BookButton/BookButton";
 const Product = () => {
     const id = useParams().id;
     const {data, loading, error} = useFetchAllData(`/products/${id}?populate=*`);
+    const [imageLoaded, setImageLoaded] = useState(false);
 
+    useEffect(() => {
+        if (data && data.attributes && data.attributes.bgImg && data.attributes.bgImg.data.attributes.url) {
+            const image = new Image();
+            image.onload = () => {
+                setImageLoaded(true);
+            };
+            image.src = process.env.REACT_APP_UPLOAD_URL + data.attributes.bgImg.data.attributes.url;
+        }
+    }, [data]);
 
     return (
         <>
@@ -20,20 +30,22 @@ const Product = () => {
                 <Preloader/>
             ) : (
                 <>
-                    <div
-                        className={s.productWrapper}
-                        style={{
-                            backgroundImage: `url(${process.env.REACT_APP_UPLOAD_URL + data?.attributes?.bgImg?.data?.attributes?.url})`,
-                        }}
-                    >
-                        <h1>{data?.attributes?.title}</h1>
-                        <p>{data?.attributes?.description}</p>
-                    </div>
+                    {imageLoaded ? (
+                        <div
+                            className={s.productWrapper}
+                            style={{
+                                backgroundImage: `url(${process.env.REACT_APP_UPLOAD_URL + data?.attributes?.bgImg?.data?.attributes?.url})`,
+                            }}
+                        >
+                            <h1>{data?.attributes?.title}</h1>
+                            <p>{data?.attributes?.description}</p>
+                        </div>
+                    ) : (
+                        <Preloader/>
+                    )}
 
                     <h1 className={s.photoTitle}>{data?.attributes?.productPhotoTitle}</h1>
-                    <PhotoCollection data={data?.attributes?.productImages} loading={loading}
-                                     error={error}
-                    />
+                    <PhotoCollection data={data?.attributes?.productImages} loading={loading} error={error}/>
 
                     <div className={s.productBlock}>
                         <div className={s.productDescription}>
@@ -87,7 +99,7 @@ const Product = () => {
                                 <li>{data?.attributes?.bookTitle}</li>
 
                             </ul>
-                            <BookButton title='ЗАПИСАТЬСЯ НА МАССАЖ ПРЯМО СЕЙЧАС!' color={'black'} scrolled={true}/>
+                            <BookButton title='ЗАПИСАТЬСЯ НА МАССАЖ ПРЯМО СЕЙЧАС!' color={'black'}/>
                         </div>
                     </div>
                 </>
