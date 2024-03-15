@@ -18,10 +18,10 @@ const Book = () => {
     const {data: contact, loading: contactLoading, error: contactError} = useFetch('/contacts?populate=*');
     const [totalPrice, setTotalPrice] = useState(0);
     const today = new Date();
-    const minTime = contact?.attributes?.minTime;
-    const maxTime = contact?.attributes?.maxTime;
-    const formattedMinTime = minTime ? new Date(`01/01/2000 ${minTime}`) : null;
-    const formattedMaxTime = maxTime ? new Date(`01/01/2000 ${maxTime}`) : null;
+    const openTime = contact?.attributes?.openTime;
+    const closeTime = contact?.attributes?.closeTime;
+    const formattedMinTime = openTime ? new Date(`01/01/2000 ${openTime}`) : null;
+    const formattedMaxTime = closeTime ? new Date(`01/01/2000 ${closeTime}`) : null;
     const [isFormSend, setIsFormSend] = useState(false)
     const [formData, setFormData] = useState(null)
     const [isSubmitting, setIsSubmitting] = useState(false);
@@ -83,7 +83,6 @@ const Book = () => {
         }
 
 
-
         setIsSubmitting(false); // устанавливаем состояние отправки в false после завершения отправки
         reset();
         setValue('massageType', '');
@@ -102,10 +101,10 @@ const Book = () => {
     }
 
 
-    function generateTimeOptions(isTodaySelected, minTime, maxTime) {
+    function generateTimeOptions(isTodaySelected, openTime, closeTime) {
         const options = [];
-        const currentTime = new Date(minTime);
-        const endTime = new Date(maxTime);
+        const currentTime = new Date(openTime);
+        const endTime = new Date(closeTime);
 
         while (currentTime <= endTime) {
             options.push(formatTime(currentTime));
@@ -145,6 +144,11 @@ const Book = () => {
         return date.toLocaleTimeString('ru', {hour: '2-digit', minute: '2-digit'});
     }
 
+    const filterDate = (date) => {
+        // Проверяем, является ли день выходным
+        const day = date.getDay();
+        return day !== contact?.attributes?.weekend_1  && day !== contact?.attributes?.weekend_2; // Разрешаем выбор только для дней, кроме воскресенья и понедельника
+    };
 
     return (
         <div>
@@ -222,6 +226,7 @@ const Book = () => {
                                                         setValue('startTime', ''); // Сбрасываем выбранное время при изменении даты
                                                     }}
                                                     placeholderText="Выберите дату"
+                                                    filterDate={filterDate} // Применяем фильтр дат
                                                     dateFormat="dd.MM.yyyy"
                                                     locale="ru"
                                                     minDate={today}

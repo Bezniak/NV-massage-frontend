@@ -1,17 +1,17 @@
-import React, { useState } from 'react';
-import { useForm } from 'react-hook-form';
+import React, {useState} from 'react';
+import {useForm} from 'react-hook-form';
 import emailjs from 'emailjs-com';
 import styles from './Form.module.css';
-import { NavLink } from 'react-router-dom';
-import { animateScroll as scroll } from 'react-scroll';
+import {NavLink} from 'react-router-dom';
+import {animateScroll as scroll} from 'react-scroll';
 import useFetch from '../../hooks/useFetch';
 
 function Form() {
-    const { data: contactData, loading: contactLoading, error: contactError } = useFetch(
+    const {data: contactData, loading: contactLoading, error: contactError} = useFetch(
         '/contacts?populate=*'
     );
 
-    const { register, handleSubmit, formState: { errors }, setValue, reset } = useForm();
+    const {register, handleSubmit, formState: {errors}, setValue, reset} = useForm();
     const [isEmailSent, setIsEmailSent] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
 
@@ -59,7 +59,7 @@ function Form() {
         <>
             {isEmailSent ? (
                 <h2 className={styles.formSend}>
-                    Письмо отправлено! <br /> Мы свяжемся с Вами в ближайшее время!
+                    Письмо отправлено! <br/> Мы свяжемся с Вами в ближайшее время!
                 </h2>
             ) : (
                 <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
@@ -76,7 +76,7 @@ function Form() {
                         <input
                             type="text"
                             id="name"
-                            {...register('name', { required: true })}
+                            {...register('name', {required: true})}
                             placeholder="ЕКАТЕРИНА СЕРГЕЕВНА"
                             className={styles.input}
                         />
@@ -89,7 +89,7 @@ function Form() {
                         <input
                             type="email"
                             id="email"
-                            {...register('email', { required: true, pattern: /^[^\s@]+@[^\s@]+\.[^\s@]+$/ })}
+                            {...register('email', {required: true, pattern: /^[^\s@]+@[^\s@]+\.[^\s@]+$/})}
                             placeholder="GMAIL@GMAIL.COM"
                             className={styles.input}
                         />
@@ -129,7 +129,7 @@ function Form() {
                         <input
                             type="text"
                             id="topic"
-                            {...register('topic', { required: true })}
+                            {...register('topic', {required: true})}
                             placeholder="ЗАПИСЬ НА МАССАЖ"
                             className={styles.input}
                         />
@@ -142,7 +142,7 @@ function Form() {
                         </label>
                         <textarea
                             id="message"
-                            {...register('message', { required: true })}
+                            {...register('message', {required: true})}
                             className={styles.textarea}
                             placeholder="ВАШЕ СООБЩЕНИЕ..."
                         />

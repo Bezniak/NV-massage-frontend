@@ -2,10 +2,10 @@
     padding: 0 50px;
     width: 100%;
     overflow: hidden;
-    background-image: url("../../images/twoDown.png"), url("../../images/downList.png");
-    background-position: top left, top right;
-    background-size: auto, auto;
-    background-repeat: no-repeat, no-repeat;
+    background-image: url("../../images/twoDown.png");
+    background-position: top left;
+    background-size: auto;
+    background-repeat: no-repeat;
 }
 
 .photoCollection h1 {
@@ -13,8 +13,6 @@
     margin: 0 auto;
     padding: 30px 0;
 }
-
-
 
 .mySwiper2 {
     width: 100%;

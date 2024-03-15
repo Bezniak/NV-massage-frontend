@@ -11,6 +11,8 @@ import {AboutUs} from "./components/AboutUs/AboutUs";
 import PrivacyPolicy from "./components/PrivacyPolicy/PrivacyPolicy";
 import Reviews from "./components/Reviews/Reviews";
 import Book from "./components/Book/Book";
+import Location from "./components/Location/Location";
+import MemberShip from "./components/MemberShip/MemberShip";
 
 
 const Layout = () => {
@@ -60,6 +62,14 @@ const router = createBrowserRouter([
             {
                 path: "/book",
                 element: <Book/>
+            },
+            {
+                path: "/location",
+                element: <Location/>
+            },
+            {
+                path: "/memberShip",
+                element: <MemberShip/>
             },
             {
                 path: "*",

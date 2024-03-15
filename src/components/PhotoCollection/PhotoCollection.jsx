@@ -1,21 +1,19 @@
 import React from 'react';
-import { Swiper, SwiperSlide } from 'swiper/react';
+import {Swiper, SwiperSlide} from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/effect-coverflow';
-// import 'swiper/css/navigation';
-// import 'swiper/css/pagination';
 import './PhotoCollection.css';
-import { Preloader } from '../../common/Preloader/Preloader';
+import {Preloader} from '../../common/Preloader/Preloader';
 import {EffectCoverflow, Navigation, Pagination} from "swiper/modules";
 
-export default function PhotoCollection({ data, loading, error, title }) {
+export default function PhotoCollection({data, loading, error, title}) {
 
     return (
         <>
             {error ? (
                 <p>Что-то пошло не так!</p>
             ) : loading ? (
-                <Preloader />
+                <Preloader/>
             ) : (
                 <div className="photoCollection">
                     <h1>{title}</h1>

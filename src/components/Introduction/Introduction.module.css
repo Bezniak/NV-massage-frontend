@@ -2,10 +2,10 @@
     padding: 0;
     margin: 0;
     height: 100vh;
-    background-image: url("../../images/downList.png"), url("../../images/twoLists.png");
-    background-position: top right, bottom;
-    background-size: auto, auto;
-    background-repeat: no-repeat, no-repeat;
+    background-image: url("../../images/downList.png");
+    background-position: top right;
+    background-size: auto;
+    background-repeat: no-repeat;
 }
 
 .introductionBlock {
@@ -18,9 +18,5 @@
     justify-content: center;
     align-items: center;
     gap: 60px;
-}
-
-.introductionBlock h1 {
-
 }
 
