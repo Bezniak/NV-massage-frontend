@@ -1,0 +1,43 @@
+/* Добавляем стили для ссылки */
+.navLink {
+    display: flex;
+    align-items: center;
+}
+
+/* Стили для текста ссылки */
+.linkText {
+    color: var(--black);
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    transition: transform 0.3s;
+}
+
+.linkText:hover {
+    color: var(--active);
+    transform: translateX(30px); /* Adjust the value as needed */
+}
+
+.arrowIcon {
+    margin-right: 10px;
+    opacity: 0;
+    transition: opacity 0.1s;
+    color: var(--active);
+}
+
+.navLink:hover .arrowIcon {
+    opacity: 1;
+}
+
+/* Дополнительные стили, чтобы выровнять по центру по вертикали */
+.hoverList {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+
+}
+
+.listItem {
+    display: flex;
+    align-items: center;
+}

@@ -23,6 +23,11 @@
     letter-spacing: 0.2rem;
 }
 
+.logo {
+    width: 100px;
+    height: 100px;
+}
+
 .contactBlock {
     padding-top: 15px;
     display: flex;

@@ -1,10 +1,10 @@
 import React, {useState} from 'react';
 import {useForm} from 'react-hook-form';
-import emailjs from 'emailjs-com';
 import styles from './Form.module.css';
 import {NavLink} from 'react-router-dom';
 import {animateScroll as scroll} from 'react-scroll';
 import useFetch from '../../hooks/useFetch';
+import * as emailjs from "emailjs-com";
 
 function Form() {
     const {data: contactData, loading: contactLoading, error: contactError} = useFetch(
@@ -59,15 +59,15 @@ function Form() {
         <>
             {isEmailSent ? (
                 <h2 className={styles.formSend}>
-                    Письмо отправлено! <br/> Мы свяжемся с Вами в ближайшее время!
+                    Письмо отправлено! <br/> Я свяжусь с Вами в ближайшее время!
                 </h2>
             ) : (
                 <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
                     <h1>Обратная связь</h1>
                     <p>
-                        Если у Вас возникли вопросы, на которые Вы не нашли ответа — напишите нам. За этой формой
+                        Если у Вас возникли вопросы, на которые Вы не нашли ответа — напишите мне. За этой формой
                         скрывается не обычный консультант, а настоящая человеческая поддержка, так что задавайте любые
-                        вопросы — мы обязательно поможем.
+                        вопросы — я обязательно помогу.
                     </p>
                     <div className={styles.formGroup}>
                         <label htmlFor="name" className={styles.label}>
@@ -130,7 +130,7 @@ function Form() {
                             type="text"
                             id="topic"
                             {...register('topic', {required: true})}
-                            placeholder="ЗАПИСЬ НА МАССАЖ"
+                            placeholder="ТЕМА..."
                             className={styles.input}
                         />
                         {errors.topic && <span className={styles.error}>Это поле обязательно</span>}

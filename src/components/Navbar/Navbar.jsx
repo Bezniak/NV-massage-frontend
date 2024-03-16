@@ -5,13 +5,17 @@ import BookButton from '../../common/BookButton/BookButton';
 import { IoIosArrowDown } from 'react-icons/io';
 import { BsSearch } from 'react-icons/bs';
 import {animateScroll as scroll} from "react-scroll";
+import HoverNavbar from "./HoverNavbar/HoverNavbar";
 
 const Navbar = () => {
     const [scrolled, setScrolled] = useState(false);
+    const [isBlockVisible, setIsBlockVisible] = useState(false);
+    const [contentBlock, setContentBlock] = useState('');
 
     useEffect(() => {
         const handleScroll = () => {
             const isScrolled = window.scrollY > 0;
+            setIsBlockVisible(false)
             setScrolled(isScrolled);
         };
 
@@ -21,6 +25,20 @@ const Navbar = () => {
             window.removeEventListener('scroll', handleScroll);
         };
     }, []);
+
+    const onContentBlockClick = () => {
+        setIsBlockVisible(false)
+    }
+
+    const onMoseEnter = (blockInfo) => {
+        setIsBlockVisible(true)
+        setContentBlock(blockInfo)
+    }
+
+    const onMouseLeave = () => {
+        setIsBlockVisible(false)
+        setContentBlock('')
+    }
 
 
     const handleClick = () => {
@@ -40,23 +58,54 @@ const Navbar = () => {
                     <div className={s.logosBlock}>
                         <BsSearch />
                         <NavLink to="/" onClick={handleClick}>
-                            <img src="/whiteLogo.png" alt="logo" />
+                            <img src="/newLogoWhite.svg" alt="logo" className={s.logo}/>
                         </NavLink>
                         <BookButton title='Записаться!' color={'white'} />
                     </div>
                     <div className={s.headerBlock}>
                         <NavLink to="/" onClick={handleClick}>Главная</NavLink>
-                        <NavLink to="/about" onClick={handleClick}>
-                            Наш салон
+
+                        <a  onClick={handleClick} onMouseEnter={() => onMoseEnter('about')}>
+                            Мой кабинет
                             <IoIosArrowDown />
-                        </NavLink>
+                        </a>
+
+                        {isBlockVisible && contentBlock === 'about' && (
+                            <div className={`${s.hoverWrapper} ${isBlockVisible ? 'visible' : ''}`} onMouseLeave={onMouseLeave} onClick={onContentBlockClick}>
+                                <HoverNavbar
+                                    items={[
+                                        {title: 'Обо мне', path: '/aboutUs'},
+                                        {title: 'Отзывы', path: '/reviews'},
+                                        {title: 'Часто задаваемые вопросы', path: '/faq'},
+                                        {title: 'Местоположение', path: '/location'},
+                                    ]}
+                                />
+                            </div>
+                        )}
+
+
                         <NavLink to="/products" onClick={handleClick}>
                             Услуги
                         </NavLink>
-                        <NavLink to="/specialties" onClick={handleClick}>
+
+
+                        <a  onClick={handleClick} onMouseEnter={() => onMoseEnter('specialties')}>
                             Специальные предложения
                             <IoIosArrowDown />
-                        </NavLink>
+                        </a>
+
+                        {isBlockVisible && contentBlock === 'specialties' && (
+                            <div className={`${s.hoverWrapper} ${isBlockVisible ? 'visible' : ''}`} onMouseLeave={onMouseLeave} onClick={onContentBlockClick}>
+                                <HoverNavbar
+                                    items={[
+                                        {title: 'Сертификаты и абонементы', path: '/memberShip'},
+                                        {title: 'Рассрочка', path: '/installment'},
+                                    ]}
+                                />
+                            </div>
+                        )}
+
+
                     </div>
                 </div>
             )}
@@ -64,25 +113,54 @@ const Navbar = () => {
             {scrolled && (
                 <div className={navbarClass}>
                     <div className={s.headerBlock}>
-                        <NavLink to="/" onClick={handleClick}>
-                            <img src="/logo_brown_main.png" alt="logo" />
+                        <NavLink to="/" onClick={handleClick} className={s.logoLink}>
+                            <img src="/newLogoGray.svg" alt="logo" className={s.logoScroll}/>
                         </NavLink>
                         <NavLink to="/" onClick={handleClick}>Главная</NavLink>
-                        <NavLink to="/about" onClick={handleClick}>
+
+
+                        <a  onClick={handleClick} onMouseEnter={() => onMoseEnter('about')}>
                             Наш салон
                             <IoIosArrowDown />
-                        </NavLink>
+                        </a>
+
+                        {isBlockVisible && contentBlock === 'about' && (
+                            <div className={`${s.hoverWrapper} ${isBlockVisible ? 'visible' : ''}`} onMouseLeave={onMouseLeave} onClick={onContentBlockClick}>
+                                <HoverNavbar
+                                    items={[
+                                        {title: 'О нас', path: '/aboutUs'},
+                                        {title: 'Отзывы', path: '/reviews'},
+                                        {title: 'F.A.Q.', path: '/faq'},
+                                        {title: 'Местоположение', path: '/location'},
+                                    ]}
+                                />
+                            </div>
+                        )}
+
+
                         <NavLink to="/products" onClick={handleClick}>
                             Услуги
                         </NavLink>
-                        <NavLink to="/specialties" onClick={handleClick}>
+                        <a  onClick={handleClick} onMouseEnter={() => onMoseEnter('specialties')}>
                             Специальные предложения
                             <IoIosArrowDown />
-                        </NavLink>
+                        </a>
+
+                        {isBlockVisible && contentBlock === 'specialties' && (
+                            <div className={`${s.hoverWrapper} ${isBlockVisible ? 'visible' : ''}`} onMouseLeave={onMouseLeave} onClick={onContentBlockClick}>
+                                <HoverNavbar
+                                    items={[
+                                        {title: 'Сертификаты и абонементы', path: '/memberShip'},
+                                    ]}
+                                />
+                            </div>
+                        )}
                         <BookButton title='Записаться на массаж!' color={'black'} />
                     </div>
                 </div>
             )}
+
+
         </>
     );
 };

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import s from './Location.module.css';
 import useFetch from "../../hooks/useFetch";
 import {Preloader} from "../../common/Preloader/Preloader";
@@ -9,11 +9,22 @@ import {FaLinkedin, FaTelegram, FaTiktok, FaViber} from "react-icons/fa";
 
 const Location = () => {
     const {data, loading, error} = useFetch('/contacts?populate=*');
+    const [bgLoaded, setBgLoaded] = useState(false);
+
+    useEffect(() => {
+        if (data?.attributes?.locationBG?.data?.attributes?.url) {
+            const img = new Image();
+            img.src = process.env.REACT_APP_UPLOAD_URL + data.attributes.locationBG.data.attributes.url;
+            img.onload = () => {
+                setBgLoaded(true);
+            };
+        }
+    }, [data]);
 
     return (
         <div>
             {error ? <p>Что-то пошло не так</p>
-                : loading ? <Preloader/>
+                : loading || !bgLoaded ? <Preloader/>
                     : (
                         <>
                             <div

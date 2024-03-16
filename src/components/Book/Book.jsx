@@ -19,7 +19,7 @@ const Book = () => {
     const [totalPrice, setTotalPrice] = useState(0);
     const today = new Date();
     const openTime = contact?.attributes?.openTime;
-    const closeTime = contact?.attributes?.closeTime;
+    const closeTime = contact?.attributes?.lastTimeForBook;
     const formattedMinTime = openTime ? new Date(`01/01/2000 ${openTime}`) : null;
     const formattedMaxTime = closeTime ? new Date(`01/01/2000 ${closeTime}`) : null;
     const [isFormSend, setIsFormSend] = useState(false)
@@ -108,7 +108,7 @@ const Book = () => {
 
         while (currentTime <= endTime) {
             options.push(formatTime(currentTime));
-            currentTime.setMinutes(currentTime.getMinutes() + 30); // Увеличиваем время на 30 минут
+            currentTime.setMinutes(currentTime.getMinutes() + 60); // Увеличиваем время на 30 минут
         }
 
         // Если выбрана сегодняшняя дата, применяем фильтрацию времени

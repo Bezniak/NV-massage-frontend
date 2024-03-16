@@ -97,7 +97,6 @@ const Product = () => {
                             <ul className={s.descriptionList}>
                                 <li>{data?.attributes?.conclusion}</li>
                                 <li>{data?.attributes?.bookTitle}</li>
-
                             </ul>
                             <BookButton title='ЗАПИСАТЬСЯ НА МАССАЖ ПРЯМО СЕЙЧАС!' color={'black'}/>
                         </div>

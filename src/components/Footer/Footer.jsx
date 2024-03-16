@@ -39,7 +39,7 @@ const Footer = () => {
                             <div>
                                 <div className={s.logoBlock}>
                                     <NavLink to='/' onClick={handleClick}>
-                                        <img src='/whiteLogo.png' alt="logo"/>
+                                        <img src='/newLogoWhite.svg' alt="logo" className={s.logo}/>
                                     </NavLink>
                                     <NavLink to='/' onClick={handleClick}>
                                         {data?.attributes?.companyName}
@@ -121,7 +121,7 @@ const Footer = () => {
                             <ul className={s.massagesTypeList}>
                                 <li className={s.footerTitle}>Салон</li>
                                 <NavLink to='/aboutUs' onClick={handleClick}>
-                                    О нас
+                                    Обо мне
                                 </NavLink>
                                 <NavLink to='/reviews' onClick={handleClick}>
                                     Отзывы
@@ -131,6 +131,9 @@ const Footer = () => {
                                 </NavLink>
                                 <NavLink to='/memberShip' onClick={handleClick}>
                                     Сертификаты и абонементы
+                                </NavLink>
+                                <NavLink to='/installment' onClick={handleClick}>
+                                    Рассрочка
                                 </NavLink>
                                 <NavLink to='/location' onClick={handleClick}>
                                     Местоположение
