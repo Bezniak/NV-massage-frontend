@@ -26,7 +26,7 @@ body {
     background-color: var(--bg-color);
     font-weight: 100;
     color: var(--main);
-
+    overflow: auto;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -71,3 +71,6 @@ p {
     letter-spacing: 0.1rem;
     line-height: 2.5;
 }
+
+
+

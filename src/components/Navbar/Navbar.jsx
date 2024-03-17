@@ -1,16 +1,36 @@
-import React, { useEffect, useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import s from './Navbar.module.css';
-import { NavLink } from 'react-router-dom';
+import {NavLink} from 'react-router-dom';
 import BookButton from '../../common/BookButton/BookButton';
-import { IoIosArrowDown } from 'react-icons/io';
-import { BsSearch } from 'react-icons/bs';
+import {IoIosArrowDown} from 'react-icons/io';
 import {animateScroll as scroll} from "react-scroll";
 import HoverNavbar from "./HoverNavbar/HoverNavbar";
+import {CgMenuLeft} from "react-icons/cg";
+import {IoCloseOutline, IoLocationOutline} from "react-icons/io5";
+import useFetch from "../../hooks/useFetch";
+
 
 const Navbar = () => {
     const [scrolled, setScrolled] = useState(false);
     const [isBlockVisible, setIsBlockVisible] = useState(false);
     const [contentBlock, setContentBlock] = useState('');
+    const [isMenuClicked, setIsMenuClicked] = useState(false);
+    const {data, loading, error} = useFetch('/contacts?populate=*');
+
+    const handleAddressClick = () => {
+        const formattedAddress = encodeURIComponent(data?.attributes?.addressForMap);
+        const googleMapsUrl = `https://www.google.com/maps/search/?api=1&query=${formattedAddress}`;
+        window.open(googleMapsUrl, '_blank');
+    };
+
+    const handleMobileMenuClick = () => {
+        setIsMenuClicked(prev => !prev);
+        if (!isMenuClicked) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = 'auto';
+        }
+    };
 
     useEffect(() => {
         const handleScroll = () => {
@@ -56,22 +76,25 @@ const Navbar = () => {
             {!scrolled && (
                 <div className={navbarClass}>
                     <div className={s.logosBlock}>
-                        <BsSearch />
+                        <IoLocationOutline onClick={handleAddressClick}/>
                         <NavLink to="/" onClick={handleClick}>
                             <img src="/newLogoWhite.svg" alt="logo" className={s.logo}/>
                         </NavLink>
-                        <BookButton title='Записаться!' color={'white'} />
+                        <BookButton title='Записаться!' color={'white'}/>
                     </div>
+
+
                     <div className={s.headerBlock}>
                         <NavLink to="/" onClick={handleClick}>Главная</NavLink>
 
-                        <a  onClick={handleClick} onMouseEnter={() => onMoseEnter('about')}>
+                        <a onClick={handleClick} onMouseEnter={() => onMoseEnter('about')}>
                             Мой кабинет
-                            <IoIosArrowDown />
+                            <IoIosArrowDown/>
                         </a>
 
                         {isBlockVisible && contentBlock === 'about' && (
-                            <div className={`${s.hoverWrapper} ${isBlockVisible ? 'visible' : ''}`} onMouseLeave={onMouseLeave} onClick={onContentBlockClick}>
+                            <div className={`${s.hoverWrapper} ${isBlockVisible ? 'visible' : ''}`}
+                                 onMouseLeave={onMouseLeave} onClick={onContentBlockClick}>
                                 <HoverNavbar
                                     items={[
                                         {title: 'Обо мне', path: '/aboutUs'},
@@ -89,13 +112,14 @@ const Navbar = () => {
                         </NavLink>
 
 
-                        <a  onClick={handleClick} onMouseEnter={() => onMoseEnter('specialties')}>
+                        <a onClick={handleClick} onMouseEnter={() => onMoseEnter('specialties')}>
                             Специальные предложения
-                            <IoIosArrowDown />
+                            <IoIosArrowDown/>
                         </a>
 
                         {isBlockVisible && contentBlock === 'specialties' && (
-                            <div className={`${s.hoverWrapper} ${isBlockVisible ? 'visible' : ''}`} onMouseLeave={onMouseLeave} onClick={onContentBlockClick}>
+                            <div className={`${s.hoverWrapper} ${isBlockVisible ? 'visible' : ''}`}
+                                 onMouseLeave={onMouseLeave} onClick={onContentBlockClick}>
                                 <HoverNavbar
                                     items={[
                                         {title: 'Сертификаты и абонементы', path: '/memberShip'},
@@ -119,13 +143,14 @@ const Navbar = () => {
                         <NavLink to="/" onClick={handleClick}>Главная</NavLink>
 
 
-                        <a  onClick={handleClick} onMouseEnter={() => onMoseEnter('about')}>
+                        <a onClick={handleClick} onMouseEnter={() => onMoseEnter('about')}>
                             Наш салон
-                            <IoIosArrowDown />
+                            <IoIosArrowDown/>
                         </a>
 
                         {isBlockVisible && contentBlock === 'about' && (
-                            <div className={`${s.hoverWrapper} ${isBlockVisible ? 'visible' : ''}`} onMouseLeave={onMouseLeave} onClick={onContentBlockClick}>
+                            <div className={`${s.hoverWrapper} ${isBlockVisible ? 'visible' : ''}`}
+                                 onMouseLeave={onMouseLeave} onClick={onContentBlockClick}>
                                 <HoverNavbar
                                     items={[
                                         {title: 'О нас', path: '/aboutUs'},
@@ -141,25 +166,96 @@ const Navbar = () => {
                         <NavLink to="/products" onClick={handleClick}>
                             Услуги
                         </NavLink>
-                        <a  onClick={handleClick} onMouseEnter={() => onMoseEnter('specialties')}>
+                        <a onClick={handleClick} onMouseEnter={() => onMoseEnter('specialties')}>
                             Специальные предложения
-                            <IoIosArrowDown />
+                            <IoIosArrowDown/>
                         </a>
 
                         {isBlockVisible && contentBlock === 'specialties' && (
-                            <div className={`${s.hoverWrapper} ${isBlockVisible ? 'visible' : ''}`} onMouseLeave={onMouseLeave} onClick={onContentBlockClick}>
+                            <div className={`${s.hoverWrapper} ${isBlockVisible ? 'visible' : ''}`}
+                                 onMouseLeave={onMouseLeave} onClick={onContentBlockClick}>
                                 <HoverNavbar
                                     items={[
                                         {title: 'Сертификаты и абонементы', path: '/memberShip'},
+                                        {title: 'Рассрочка', path: '/installment'},
                                     ]}
                                 />
                             </div>
                         )}
-                        <BookButton title='Записаться на массаж!' color={'black'} />
                     </div>
                 </div>
             )}
 
+
+            <div className={s.mobileMenu}>
+                <div className={s.hamburgerMenu}>
+                    <CgMenuLeft onClick={handleMobileMenuClick}/>
+                    <NavLink to="/" onClick={handleClick}>
+                        <img src="/newLogoWhite.svg" alt="logo" className={s.logo}/>
+                    </NavLink>
+                    <IoLocationOutline onClick={handleAddressClick}/>
+                </div>
+
+                <div className={`${s.hamburgerMenuList} ${isMenuClicked ? s.open : ""}`}>
+                    <div className={s.menuBlock}>
+                        <h1>Меню</h1>
+                        <IoCloseOutline onClick={handleMobileMenuClick}/>
+                    </div>
+                    <hr/>
+                    <NavLink to="/" onClick={() => {
+                        handleClick();
+                        handleMobileMenuClick();
+                    }}>
+                        Главная
+                    </NavLink>
+                    <NavLink to='/aboutUs' onClick={() => {
+                        handleClick();
+                        handleMobileMenuClick();
+                    }}>
+                        Обо мне
+                    </NavLink>
+                    <NavLink to='/reviews' onClick={() => {
+                        handleClick();
+                        handleMobileMenuClick();
+                    }}>
+                        Отзывы
+                    </NavLink>
+                    <NavLink to='/faq' onClick={() => {
+                        handleClick();
+                        handleMobileMenuClick();
+                    }}>
+                        Часто задаваемые вопросы
+                    </NavLink>
+                    <NavLink to='/location' onClick={() => {
+                        handleClick();
+                        handleMobileMenuClick();
+                    }}>
+                        Местоположение
+                    </NavLink>
+                    <NavLink to="/products" onClick={() => {
+                        handleClick();
+                        handleMobileMenuClick();
+                    }}>
+                        Услуги
+                    </NavLink>
+                    <NavLink to='/memberShip' onClick={() => {
+                        handleClick();
+                        handleMobileMenuClick();
+                    }}>
+                        Сертификаты и абонементы
+                    </NavLink>
+                    <NavLink to='/installment' onClick={() => {
+                        handleClick();
+                        handleMobileMenuClick();
+                    }}
+                    >
+                        Рассрочка
+                    </NavLink>
+                    <div className={s.centeredContainer}>
+                        <BookButton title='Записаться!' onClick={handleMobileMenuClick} color='black' size='1rem'/>
+                    </div>
+                </div>
+            </div>
 
         </>
     );

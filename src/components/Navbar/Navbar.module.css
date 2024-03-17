@@ -1,26 +1,19 @@
 .logosBlock {
+    margin: 0 auto;
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 10px 60px;
 }
 
 .logosBlock svg {
-    font-size: 25px;
+    font-size: 2.3rem;
     color: var(--white);
-}
-
-.logoLink {
-    padding: 0;
-    margin: 0;
 }
 
 .logo {
     width: 100px;
     height: 100px;
-    padding: 0;
-    margin: 0;
-    color: red;
 }
 
 .logoScroll {
@@ -32,9 +25,13 @@
     position: fixed;
     top: 0;
     left: 0;
+    right: 0;
+    margin: 0 auto;
     width: 100%;
+    display: flex;
+    flex-direction: column;
     z-index: 100000;
-    padding: 20px 20px;
+    padding: 20px 80px;
     background-color: transparent;
 }
 
@@ -63,8 +60,12 @@
     justify-content: center;
     gap: 70px;
     margin: 0 auto;
-    padding: 20px 10px;
+    padding: 0 10px;
     text-transform: uppercase;
+}
+
+.headerBlock a {
+    margin: 30px;
 }
 
 .scrolled {
@@ -74,15 +75,27 @@
     top: 0;
     left: 0;
     width: 100%;
+    height: auto;
     z-index: 100000;
-    padding: 10px 0;
+    padding: 0;
 }
 
 .scrolled a {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     color: var(--black);
     letter-spacing: 0.2rem;
     transition: 0.3s ease;
     font-weight: 400;
+    margin: 0;
+    padding: 0;
+}
+
+.scrolled img {
+    width: 100px;
+    height: 100px;
+    vertical-align: middle;
 }
 
 .scrolled a:active,
@@ -96,17 +109,231 @@
     font-size: 1.2em;
 }
 
-
 .hoverWrapper {
     display: flex;
     justify-content: center;
     align-items: center;
     position: absolute;
     top: 90%;
-    /*background-color: rgba(0, 0, 0, 0.9); !* Задаем прозрачный цвет с затемнением *!*/
-    /*background-color: rgba(168, 126, 114, 0.93);*/
     background-color: rgba(255, 255, 255, 0.9);
     width: 50%;
     min-height: 180px;
     border-radius: 20px;
+}
+
+
+/*  start hamburgerMenu  */
+
+.mobileMenu {
+    display: none;
+    min-width: 768px
+}
+
+.hamburgerMenu {
+    position: absolute;
+    padding: 10px 30px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 768px;
+    z-index: 1000000;
+}
+
+.hamburgerMenu svg {
+    font-size: 35px;
+    color: var(--white);
+}
+
+.hamburgerMenuList {
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: 20px 0;
+    width: 80vw;
+    height: 100%;
+    background-color: var(--bg-color);
+    z-index: 13000000;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease-in-out;
+}
+
+.hamburgerMenuList.open {
+    transform: translateX(0%);
+}
+
+.menuBlock {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 30px; /* Добавьте отступы слева и справа */
+}
+
+.menuBlock h1 {
+    font-size: 1rem;
+    font-weight: 400;
+    margin: 0;
+}
+
+.menuBlock svg {
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+.hamburgerMenuList hr {
+    width: 100%;
+    color: lightgray;
+    height: 1px;
+    border: none;
+    background-color: lightgray;
+    margin: 10px 0;
+}
+
+.hamburgerMenuList a {
+    margin: 7px 30px;
+    font-weight: 400;
+    color: var(--main);
+    font-size: 1rem;
+}
+
+.centeredContainer {
+    margin: 20px 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+/*  end hamburgerMenu  */
+
+
+@media screen and (max-width: 480px) {
+    /* Ваши стили для маленьких мобильных устройств */
+    .scrolled, .navbar {
+        display: none;
+    }
+
+    .mobileMenu {
+        display: block;
+        max-width: 100%;
+    }
+
+    .hamburgerMenu {
+        margin: 10px;
+        max-width: 90%;
+    }
+
+    .hamburgerMenu svg {
+        font-size: 1.4rem;
+    }
+
+    .hamburgerMenu img {
+        width: 2rem;
+        height: 2rem;
+    }
+
+    .menuBlock h1 {
+        font-size: 1.2rem;
+    }
+
+    .menuBlock svg {
+        font-size: 1.5rem;
+    }
+
+    .hamburgerMenuList a {
+        font-size: 1rem;
+    }
+}
+
+@media screen and (min-width: 481px) and (max-width: 768px) {
+    /* Ваши стили для средних мобильных устройств */
+    .scrolled, .navbar {
+        display: none;
+    }
+
+    .mobileMenu {
+        margin: 0 auto;
+        display: block;
+        max-width: 100%;
+    }
+
+    .mobileMenu svg {
+        font-size: 2.5rem;
+    }
+
+    .mobileMenu img {
+        width: 6rem;
+        height: 6rem;
+    }
+
+    .hamburgerMenu {
+        margin: 20px;
+        max-width: 90%;
+    }
+
+}
+
+@media screen and (min-width: 769px) and (max-width: 1023px) {
+    /* Ваши стили для больших мобильных устройств и планшетов */
+    .mobileMenu {
+        display: none;
+    }
+
+    .headerBlock {
+        align-items: unset;
+    }
+
+    .navbar {
+        max-width: 100%;
+        right: 0;
+        left: 0;
+        margin: 15px auto;
+    }
+
+    .navbar a {
+        line-height: normal;
+    }
+
+    .navbar a svg {
+        padding: 0;
+        margin-left: 5px;
+        font-size: 1.3rem;
+        vertical-align: middle;
+    }
+
+    .logosBlock {
+        max-width: 90%;
+        margin: 0 auto;
+        padding: 0;
+    }
+
+    .logosBlock svg {
+        font-size: 3rem;
+    }
+
+    .logosBlock a {
+        font-size: 1rem;
+    }
+
+    .logosBlock img {
+        width: 6rem;
+        height: 6rem;
+    }
+
+    .headerBlock {
+        gap: 0;
+    }
+
+    .headerBlock a {
+        font-size: 1rem;
+        line-height: 1;
+        letter-spacing: 0.1rem;
+        padding: 1rem;
+    }
+
+    .scrolled {
+        display: none;
+    }
 }
