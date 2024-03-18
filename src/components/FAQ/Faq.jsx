@@ -36,7 +36,7 @@ export const Faq = () => {
                     : (
                         <div>
                             <div
-                                className={s.faqWrapper}
+                                className='welcomeBlock'
                                 style={{
                                     backgroundImage: `url(${process.env.REACT_APP_UPLOAD_URL + data?.attributes?.mainImageBG?.data?.attributes?.url})`,
                                 }}

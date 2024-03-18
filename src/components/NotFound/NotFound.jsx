@@ -4,7 +4,7 @@ import s from './NotFound.module.css'
 const NotFound = () => {
     return (
         <div className={s.notFoundWrapper}>
-            <div className={s.notFoundBlock}>
+            <div className='welcomeBlock'>
                 <h1>404</h1>
                 <p>Страница не найдена</p>
             </div>

@@ -73,4 +73,122 @@ p {
 }
 
 
+.getDataError {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: red;
+    font-weight: 300;
+    font-size: 1.3rem;
+    height: 100vh;
+}
 
+.welcomeBlock {
+    height: 100vh;
+    width: 100%;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.welcomeBlock::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    z-index: 1;
+}
+
+.welcomeBlock img {
+    width: 15%;
+    height: 15%;
+    z-index: 2;
+}
+
+.welcomeBlock h1 {
+    width: 80%;
+    color: var(--soft-white);
+    text-align: center;
+    z-index: 2;
+    font-size: 3rem;
+    font-weight: 100;
+    margin: 20px 0;
+}
+
+.welcomeBlock p {
+    width: 80%;
+    color: var(--soft-white);
+    z-index: 2;
+    letter-spacing: 0.2rem;
+    font-size: 1.2rem;
+    font-weight: 100;
+}
+
+
+/* Медиа-запросы для разных устройств */
+
+@media screen and (max-width: 1200px) {
+    .welcomeBlock img {
+        width: 9rem;
+        height: 9rem;
+    }
+
+    .welcomeBlock h1 {
+        font-size: 2rem;
+        line-height: 1.2;
+        letter-spacing: 0.1rem;
+    }
+
+    .welcomeBlock p {
+        font-size: 1rem;
+        line-height: 1.4;
+        letter-spacing: 0.1rem;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .welcomeBlock img {
+        width: 8rem;
+        height: 8rem;
+    }
+
+    .welcomeBlock h1 {
+        font-size: 2rem;
+        line-height: 1.8;
+        letter-spacing: 0.1rem;
+    }
+
+    .welcomeBlock p {
+        font-size: 1rem;
+        line-height: 1.3;
+        letter-spacing: 0.1rem;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .welcomeBlock img {
+        width: 6rem;
+        height: 6rem;
+    }
+
+    .welcomeBlock h1 {
+        font-size: 1.6rem;
+        font-weight: 200;
+        line-height: 1.4;
+        letter-spacing: 0.2rem;
+    }
+
+    .welcomeBlock p {
+        font-size: 1rem;
+        letter-spacing: 0.1rem;
+        line-height: 1.3;
+    }
+}

@@ -28,7 +28,7 @@ const Location = () => {
                     : (
                         <>
                             <div
-                                className={s.locationBlock}
+                                className='welcomeBlock'
                                 style={{
                                     backgroundImage: `url(${process.env.REACT_APP_UPLOAD_URL + data?.attributes?.locationBG?.data?.attributes?.url})`,
                                 }}
@@ -36,7 +36,7 @@ const Location = () => {
                                 <h1>{data?.attributes?.locationTitle}</h1>
                             </div>
                             <div className={s.contact}>
-                                <div>
+                                <div className={s.contactWrapper}>
                                     <h2>Местоположение</h2>
                                     <ul className={s.contactBlock}>
                                         <li>{data?.attributes?.address}</li>

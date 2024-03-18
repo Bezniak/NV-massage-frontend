@@ -38,7 +38,7 @@ const Reviews = () => {
                 <Preloader/>
             ) : (
                 <div
-                    className={s.reviewsWrapper}
+                    className='welcomeBlock'
                     style={{
                         backgroundImage: `url(${process.env.REACT_APP_UPLOAD_URL + dataMedia?.attributes?.imgBG?.data?.attributes?.url})`,
                     }}

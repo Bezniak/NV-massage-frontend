@@ -85,7 +85,6 @@
     align-items: center;
     justify-content: space-between;
     color: var(--black);
-    letter-spacing: 0.2rem;
     transition: 0.3s ease;
     font-weight: 400;
     margin: 0;

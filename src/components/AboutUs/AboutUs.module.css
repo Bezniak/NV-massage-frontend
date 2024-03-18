@@ -1,197 +1,262 @@
-.aboutUsWrapper {
-    height: 100vh;
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 30px;
-
-}
-
-.aboutUsWrapper::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
+.personBlock {
+    margin: 0 auto;
     width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    z-index: 1;
-}
-
-.aboutUsWrapper h1 {
-    margin: 0 200px;
-    z-index: 2;
-    color: var(--soft-white);
-    font-size: 40px;
-}
-
-.aboutUsWrapper img {
-    z-index: 2;
-}
-
-.person {
-    height: auto;
-    background-image: url("../../images/twoUpList.png"), url("../../images/twoListDownFromRight.png"), url("../../images/twoDown2.png");
-    background-position: top left, center right, bottom center;
+    background-image: url("../../images/longListDown.png"), url("../../images/twoUpList.png");
+    background-position: top right, bottom left;
     background-size: auto;
     background-repeat: no-repeat;
 }
 
-.personWrapper {
-    width: 1200px;
-    margin: 0 auto;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: row;
-    flex-wrap: wrap;
+.person {
+    width: 80%;
+    margin: 50px auto;
 }
 
-.personWrapper h1 {
-    padding: 50px 10px 20px 10px;
+.person h2 {
+    margin: 20px auto;
+    font-size: 2.3rem;
+}
+
+.person p {
+    font-size: 1rem;
+    line-height: 2;
+}
+
+.personWrapper {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
 }
 
 .personInfo {
-    margin: 30px 50px 30px 0;
     width: 100%;
-    max-width: 400px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
+    gap: 10px;
     flex: 1;
 }
 
 .personInfo img {
-    width: 100%;
+    width: 70%;
     height: auto;
     object-fit: cover;
-    border-radius: 40px 40px 0 0;
-    border: 6px solid var(--soft-white);
+    border-radius: 20px 20px 0 0;
+    border: 3px solid var(--soft-white);
 }
 
-.personDesc {
-    background-color: var(--soft-white);
-    width: 100%;
-    padding: 0;
-    margin: 0;
-    height: 100%;
-    border-radius: 0 0 40px 40px;
-}
-
-.personDesc h2 {
-    font-size: 30px;
+.personDesc h3 {
+    font-size: 1.5rem;
     font-weight: 300;
 }
 
 .personDesc p {
-    color: var(--footer);
-    padding: 0;
+    font-size: 1rem;
     font-weight: 500;
-    font-size: 18px;
+    color: var(--active-dark);
 }
 
-.textDesc {
+.textDesc, .textDesc > p {
     flex: 2;
-}
-
-.textDesc p {
     text-align: justify;
-    text-indent: 3rem;
-    color: var(--main);
-    font-weight: 300;
     line-height: 3;
 }
 
-
-.achievement {
-    width: 1200px;
-    margin: 50px auto;
-}
-
-.achievement p {
-    padding: 20px 0;
-    color: var(--main);
+.aboutFormBlock {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 30px;
 }
 
 .contactFormBlock {
-    width: 1300px;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-}
-
-.contactFormIntro {
-    width: 600px;
-    padding: 50px 50px 200px 0;
-}
-
-.contactFormIntro h1 {
-    font-size: 30px;
-    font-weight: 200;
-}
-
-.contactFormIntro p {
-    font-size: 12px;
-    padding: 15px 0 30px 0;
-    line-height: 1.7;
-}
-
-.contactList {
-    padding: 20px 0;
+    width: 100%;
     display: flex;
     flex-direction: column;
-    gap: 15px;
-    font-weight: 300;
+    gap: 20px;
+    flex: 1;
 }
 
-.contactList a {
+.contactFormBlock h2 {
+    font-size: 1.5rem;
+}
+
+.contactFormBlock p {
+    font-size: 1rem;
+    letter-spacing: 0;
+    line-height: 1.3;
+}
+
+.contactAddress {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.contactAddress a {
+    font-size: 1rem;
     color: var(--main);
-    font-weight: 300;
-    font-size: 16px;
     transition: color 0.3s ease;
 }
 
-.contactList a:hover {
+.contactAddress svg {
+    font-size: 1.2rem;
+    vertical-align: middle;
+    margin-right: 10px;
+    color: var(--active-dark);
+}
+
+.contactAddress a:hover {
     color: var(--active);
 }
 
-.contactList svg {
-    vertical-align: middle;
-    font-size: 20px;
-    color: var(--footer);
-    margin-right: 10px;
+
+.contactLink {
+    margin: 40px 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 40px
 }
 
-.socialNetworkLinks {
-    padding: 50px 0 ;
+.contactLink a {
     display: flex;
     align-items: center;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 40px;
-}
-
-.socialNetworkLinks a {
-    margin: 20px 0;
-    color: var(--main);
-    font-weight: 300;
-    font-size: 16px;
+    font-size: 1.5rem;
+    color: var(--active-dark);
     transition: color 0.3s ease;
 }
 
-.socialNetworkLinks a:hover {
+.contactLink svg {
+    margin-right: 10px;
+    font-size: 1.2rem;
+    vertical-align: middle;
+    color: var(--active-dark);
+    transition: color 0.3s ease;
+}
+
+.contactLink a:hover, .contactLink a:hover svg {
     color: var(--active);
 }
 
-.socialNetworkLinks svg {
-    color: var(--footer);
-    font-size: 20px;
-    margin-right: 10px;
-    vertical-align: middle;
+
+/* Медиа-запросы для разных устройств */
+
+@media screen and (max-width: 1200px) {
+
+    .person {
+        width: 90%;
+    }
+
+    .contactFormBlock {
+        margin: 0 20px;
+    }
+
+    .personInfo img {
+        width: 100%;
+    }
+
+    .contactLink {
+        gap: 20px;
+    }
+
 }
+
+@media screen and (max-width: 768px) {
+
+    .person {
+        width: 90%;
+    }
+
+    .person h2 {
+        font-size: 1.8rem;
+    }
+
+    .personInfo img {
+        width: 100%;
+    }
+
+    .personDesc h3, .personDesc p {
+        font-size: 1.1rem;
+        font-weight: 400;
+    }
+
+    .person p {
+        font-size: 1rem;
+        text-align: justify;
+        text-indent: 1rem;
+        line-height: 1.5;
+    }
+
+    .aboutFormBlock {
+        flex-direction: column;
+    }
+
+    .contactFormBlock {
+        gap: 15px
+    }
+
+    .contactLink {
+        margin: 20px 0;
+    }
+
+
+}
+
+@media screen and (max-width: 576px) {
+
+    .personBlock {
+        background-position: top, bottom;
+        background-size: contain;
+    }
+
+    .person {
+        width: 85%;
+    }
+
+    .person h2 {
+        margin: 15px 0;
+        font-size: 1.3rem;
+        font-weight: 300;
+    }
+
+    .person p {
+        line-height: 1.5;
+        letter-spacing: 0;
+        text-align: justify;
+        text-indent: 1rem;
+    }
+
+    .personWrapper {
+        flex-direction: column;
+    }
+
+    .personDesc h3 {
+        font-size: 1rem;
+        font-weight: 400;
+    }
+
+    .contactFormBlock {
+        width: 100%;
+        gap: 10px;
+    }
+
+    .contactLink {
+        margin: 15px;
+        gap: 20px;
+    }
+
+    .contactLink a {
+        font-size: 1rem;
+
+    }
+
+
+}
+

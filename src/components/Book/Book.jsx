@@ -159,7 +159,7 @@ const Book = () => {
                     <Preloader/>
                 ) : (
                     <div
-                        className={styles.bookWrapper}
+                        className='welcomeBlock'
                         style={{
                             backgroundImage: `url(${process.env.REACT_APP_UPLOAD_URL + bookData?.attributes?.imgBG?.data?.attributes?.url})`,
                         }}

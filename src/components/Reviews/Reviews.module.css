@@ -1,49 +1,10 @@
-.reviewsWrapper {
-    padding: 20px 100px;
-    height: 100vh;
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 30px;
-    position: relative;
-}
-
-.reviewsWrapper::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.3);
-    z-index: 1;
-}
-
-.reviewsWrapper h1 {
-    margin-top: 20px;
-    color: var(--white);
-    font-size: 80px;
-    font-weight: 200;
-    z-index: 2;
-}
-
-.reviewsWrapper p {
-    color: var(--soft-white);
-    letter-spacing: 0.2rem;
-    font-size: 18px;
-    font-weight: 100;
-    z-index: 2;
-}
-
 .reviewsBlock {
-    width: 1200px;
-    margin: 50px auto;
+    width: 100%;
+    padding: 50px 200px;
+    margin: 0 auto;
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
 }
 
@@ -83,7 +44,7 @@
 }
 
 .reviewItem {
-    margin: 40px 0 50px 0;
+    margin: 20px 0;
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -113,14 +74,23 @@
 }
 
 .reviewsRules {
-    width: 1200px;
-    margin: 40px auto;
+    width: 100%;
+    padding: 0 200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
 }
 
 .reviewsRules h2 {
     font-size: 13px;
     font-weight: 400;
     margin: 10px 0;
+}
+
+.reviewsRules ul {
+    width: 100%;
 }
 
 .reviewsRules ul li {
@@ -130,10 +100,252 @@
 }
 
 .reviewsRules p {
-    margin: 10px;
+    margin: 10px 0;
     font-size: 10px;
     line-height: 1.5;
-    text-align: justify;
     font-weight: 400;
     letter-spacing: 0;
+}
+
+
+/* Медиа-запросы для разных устройств */
+
+@media screen and (max-width: 1200px) {
+    .reviewsBlock {
+        margin: 40px auto;
+        padding: 0;
+        width: 90%;
+    }
+
+    .reviewsBlock h1 {
+        margin: 10px 0;
+        padding: 0;
+    }
+
+    .reviewsRules {
+        padding: 0;
+        margin: 0 auto;
+        width: 90%;
+    }
+
+}
+
+@media screen and (max-width: 768px) {
+
+    .reviewsBlock {
+        margin: 10px 0;
+        padding: 0 20px;
+    }
+
+    .reviewsBlock h1 {
+        font-size: 1.4rem;
+        margin: 0;
+        padding: 10px 0;
+        font-weight: 300;
+        letter-spacing: 0.1rem;
+    }
+
+    .reviewsBlock h1 span {
+        font-size: 0.9rem;
+        padding: 5px 10px;
+        margin: 0;
+        top: 0;
+        right: -40px;
+    }
+
+    .addReview {
+        width: 50%;
+        margin: 10px 5px 20px 5px;
+        padding: 10px 0;
+        font-size: 1rem;
+        border-radius: 5px;
+    }
+
+    .reviewItem {
+        margin: 10px 0;
+    }
+
+    .grade {
+        width: 1.4rem;
+        height: 1.4rem;
+    }
+
+    .reviewItem h3 {
+        font-size: 1.2rem;
+    }
+
+    .reviewItem p {
+        font-size: 0.9rem;
+        line-height: 1.5;
+        letter-spacing: 0;
+        text-indent: 1rem;
+
+    }
+
+    .reviewsRules {
+        margin: 0;
+        padding: 0 20px;
+    }
+
+    .reviewsRules h2 {
+        font-size: 0.9rem;
+    }
+
+    .reviewsRules ul li {
+        font-size: 0.7rem;
+        text-align: justify;
+    }
+
+    .reviewsRules p {
+        font-size: 0.7rem;
+        text-align: justify;
+        text-indent: 1rem;
+        padding: 0;
+        margin: 8px 0;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .reviewsBlock {
+        margin: 10px 0;
+        padding: 0 20px;
+    }
+
+    .reviewsBlock h1 {
+        font-size: 1rem;
+        margin: 0;
+        padding: 10px 0;
+        font-weight: 300;
+        letter-spacing: 0.1rem;
+    }
+
+    .reviewsBlock h1 span {
+        font-size: 0.6rem;
+        padding: 2px 6px;
+        margin: 0;
+        right: -20px;
+    }
+
+    .addReview {
+        width: 50%;
+        margin: 10px 5px 20px 5px;
+        padding: 10px 0;
+        font-size: 0.7rem;
+        border-radius: 5px;
+    }
+
+    .reviewItem {
+        margin: 10px 0;
+    }
+
+    .grade {
+        width: 1rem;
+        height: 1rem;
+    }
+
+    .reviewItem h3 {
+        font-size: 1rem;
+    }
+
+    .reviewItem p {
+        font-size: 0.7rem;
+        line-height: 1.4;
+        letter-spacing: 0;
+        text-indent: 1rem;
+
+    }
+
+    .reviewsRules {
+        margin: 0;
+        padding: 0 20px;
+    }
+
+    .reviewsRules h2 {
+        font-size: 0.7rem;
+    }
+
+    .reviewsRules ul li {
+        font-size: 0.6rem;
+        text-align: justify;
+    }
+
+    .reviewsRules p {
+        text-align: justify;
+        text-indent: 1rem;
+        padding: 0;
+        font-size: 0.6rem;
+        margin: 5px 0;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .reviewsBlock {
+        margin: 10px 0;
+        padding: 0 20px;
+    }
+
+    .reviewsBlock h1 {
+        font-size: 1rem;
+        margin: 0;
+        padding: 10px 0;
+        font-weight: 300;
+        letter-spacing: 0.1rem;
+    }
+
+    .reviewsBlock h1 span {
+        font-size: 0.6rem;
+        padding: 2px 6px;
+        margin: 0;
+        right: -5px;
+    }
+
+    .addReview {
+        width: 50%;
+        margin: 10px 5px 20px 5px;
+        padding: 10px 0;
+        font-size: 0.7rem;
+        border-radius: 5px;
+    }
+
+    .reviewItem {
+        margin: 10px 0;
+    }
+
+    .grade {
+        width: 1rem;
+        height: 1rem;
+    }
+
+    .reviewItem h3 {
+        font-size: 1rem;
+    }
+
+    .reviewItem p {
+        font-size: 0.7rem;
+        line-height: 1.4;
+        letter-spacing: 0;
+        text-indent: 1rem;
+    }
+
+    .reviewsRules {
+        margin: 0;
+        padding: 0 20px;
+    }
+
+    .reviewsRules h2 {
+        font-size: 0.7rem;
+    }
+
+    .reviewsRules ul li {
+        font-size: 0.6rem;
+        text-align: justify;
+    }
+
+    .reviewsRules p {
+        text-align: justify;
+        text-indent: 1rem;
+        padding: 0;
+        margin: 5px 0;
+        font-size: 0.6rem;
+    }
 }

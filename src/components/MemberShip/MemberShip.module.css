@@ -1,46 +1,5 @@
-.memberShitBlock {
-    padding: 20px 100px;
-    width: 100%;
-    height: 100vh;
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 30px;
-}
-
-.memberShitBlock::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.3);
-    z-index: 1;
-}
-
-.memberShitBlock h1 {
-    width: 1200px;
-    margin-top: 20px;
-    color: var(--white);
-    z-index: 2;
-    font-size: 50px;
-    font-weight: 100;
-}
-
-.memberShitBlock p {
-    color: var(--soft-white);
-    z-index: 2;
-    letter-spacing: 0.2rem;
-    font-size: 18px;
-    font-weight: 100;
-}
-
 .mainContentWrapper {
+    width: 100%;
     background-image: url("../../images/twoLongDown.png"), url("../../images/twoUpList.png");
     background-position: top right, bottom left;
     background-size: auto;
@@ -48,12 +7,13 @@
 }
 
 .mainContent {
-    margin: 100px 250px;
-
+    width: 80%;
+    margin: 0 auto;
 }
 
 .certificateBlock {
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     margin: 100px 0;
 }
@@ -103,4 +63,273 @@
     line-height: 2.5;
     font-weight: 400;
     font-size: 16px;
+}
+
+.conclusionBlock a {
+    margin: 30px 0 50px 0;
+}
+
+
+/* Медиа-запросы для разных устройств */
+
+@media screen and (max-width: 1200px) {
+    .mainContentWrapper {
+        background-size: contain;
+    }
+
+    .mainContent {
+        width: 100%;
+        padding: 50px;
+    }
+
+    .certificateBlock {
+        margin: 0 auto;
+        gap: 50px;
+    }
+
+    .certificateDesc h2 {
+        line-height: 1.4;
+        font-size: 1.3rem;
+    }
+
+    .certificateDesc p {
+        margin: 10px 0;
+        font-size: 1rem;
+        line-height: 1.4;
+        letter-spacing: 0;
+        text-indent: 1rem;
+        font-weight: 300;
+    }
+
+    .conclusionBlock {
+        margin: 15px 0;
+    }
+
+    .conclusionBlock p {
+        margin: 20px 0;
+        font-size: 1rem;
+        line-height: 1.4;
+        letter-spacing: 0;
+        text-indent: 1rem;
+        font-weight: 300;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .mainContentWrapper {
+        background-size: contain;
+    }
+
+    .mainContent {
+        width: 100%;
+        margin: 0;
+        padding: 40px;
+    }
+
+    .certificateBlock {
+        margin: 0 auto;
+        padding: 0;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .certificateImg {
+        width: 50%;
+        margin: 0 auto;
+        padding: 0;
+    }
+
+    .certificateImg img {
+        border: 3px solid var(--active-dark);
+        border-radius: 25px 0 25px 0;
+    }
+
+    .certificateDesc h2 {
+        margin: 1rem 0;
+        line-height: 1.4;
+        font-size: 1.3rem;
+        font-weight: 300;
+    }
+
+    .certificateDesc p {
+        margin: 10px 0;
+        padding: 0;
+        font-size: 1rem;
+        line-height: 1.4;
+        letter-spacing: 0;
+        text-indent: 1rem;
+        font-weight: 300;
+    }
+
+    .conclusionBlock {
+        margin: 15px 0;
+        gap: 15px;
+    }
+
+    .conclusionBlock p {
+        margin: 10px 0;
+        padding: 0;
+        font-size: 1rem;
+        line-height: 1.4;
+        letter-spacing: 0;
+        text-indent: 1rem;
+        font-weight: 300;
+    }
+
+    .conclusionBlock a {
+        font-size: 1rem;
+        padding: 0.8rem 0;
+        min-width: 60%;
+        text-align: center;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .mainContent {
+        width: 100%;
+        margin: 0;
+        padding: 20px;
+    }
+
+    .certificateBlock {
+        margin: 0 auto;
+        padding: 0;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .certificateImg {
+        width: 80%;
+        margin: 0 auto;
+        padding: 0;
+    }
+
+    .certificateImg img {
+        border: 3px solid var(--active-dark);
+        border-radius: 20px 0 20px 0;
+    }
+
+    .certificateDesc h2 {
+        margin: 0.5rem 0;
+        padding: 0;
+        line-height: 1.3;
+        font-size: 1rem;
+        font-weight: 400;
+    }
+
+    .certificateDesc p {
+        margin: 10px 0;
+        padding: 0;
+        font-size: 0.8rem;
+        line-height: 1.4;
+        letter-spacing: 0;
+        text-indent: 1rem;
+        font-weight: 300;
+    }
+
+    .conclusionBlock {
+        margin: 10px 0;
+        gap: 10px;
+    }
+
+    .conclusionBlock p {
+        margin: 10px 0;
+        padding: 0;
+        font-size: 0.8rem;
+        line-height: 1.3;
+        letter-spacing: 0;
+        text-indent: 1rem;
+        font-weight: 300;
+    }
+
+    .conclusionBlock a {
+        font-size: 0.7rem;
+        padding: 0;
+        margin: 0;
+        min-width: 60%;
+        min-height: 2rem;
+        text-align: center;
+        letter-spacing: 0.1rem;
+        font-weight: 400;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .mainContentWrapper {
+        background-size: contain;
+    }
+
+    .mainContent {
+        width: 100%;
+        margin: 0;
+        padding: 20px;
+    }
+
+    .certificateBlock {
+        margin: 0 auto;
+        padding: 0;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .certificateImg {
+        width: 80%;
+        margin: 0 auto;
+        padding: 0;
+    }
+
+    .certificateImg img {
+        border: 3px solid var(--active-dark);
+        border-radius: 20px 0 20px 0;
+    }
+
+    .certificateDesc h2 {
+        margin: 0;
+        padding: 0;
+        line-height: 1;
+        font-size: 1rem;
+        font-weight: 400;
+    }
+
+    .certificateDesc p {
+        margin: 10px 0;
+        padding: 0;
+        font-size: 0.8rem;
+        line-height: 1.3;
+        letter-spacing: 0;
+        text-indent: 1rem;
+        font-weight: 300;
+    }
+
+    .conclusionBlock {
+        margin: 10px 0;
+        gap: 10px;
+    }
+
+    .conclusionBlock p {
+        margin: 10px 0;
+        padding: 0;
+        font-size: 0.8rem;
+        line-height: 1.3;
+        letter-spacing: 0;
+        text-indent: 1rem;
+        font-weight: 300;
+    }
+
+    .conclusionBlock a {
+        font-size: 0.7rem;
+        padding: 0;
+        margin: 0;
+        min-width: 60%;
+        min-height: 2rem;
+        text-align: center;
+        letter-spacing: 0.1rem;
+        font-weight: 400;
+    }
 }

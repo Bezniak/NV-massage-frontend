@@ -29,7 +29,7 @@ const Product = () => {
                 <>
                     {imageLoaded ? (
                         <div
-                            className={s.installmentWrapper}
+                            className='welcomeBlock'
                             style={{
                                 backgroundImage: `url(${process.env.REACT_APP_UPLOAD_URL + data?.attributes?.imgBG?.data?.attributes?.url})`,
                             }}

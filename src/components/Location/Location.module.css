@@ -1,39 +1,7 @@
-.locationBlock {
-    padding: 20px 100px;
-    width: 100%;
-    height: 100vh;
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 30px;
-}
-
-.locationBlock::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.2);
-    z-index: 1;
-}
-
-.locationBlock h1 {
-    margin: 50px 200px;
-    color: var(--white);
-    z-index: 2;
-    font-size: 80px;
-    font-weight: 200;
-}
-
 .contact {
-    height: 50vh;
-    margin: 60px auto;
+    margin: 0 auto;
+    width: 80%;
+    height: 60vh;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -66,7 +34,6 @@
 
 .contactBlock a:hover {
     color: var(--active);
-    : 16px;
 }
 
 .socialNetwork {
@@ -104,4 +71,208 @@
     float: right;
     padding-left: 90px;
 }
+
+
+/* Медиа-запросы для разных устройств */
+
+@media screen and (max-width: 1200px) {
+    .contact {
+        margin: 40px auto;
+        gap: 30px;
+        height: auto;
+    }
+
+    .contactWrapper ul li, .contactWrapper a {
+        margin: 8px 0;
+        font-size: 1rem;
+    }
+
+    .contactBlock li {
+        padding: 5px 0;
+    }
+
+    .socialNetwork {
+        margin: 0;
+        gap: 30px;
+    }
+
+    .socialNetwork svg {
+        font-size: 2rem;
+    }
+
+    .hours {
+        width: 40%;
+        margin: 0;
+        padding: 0;
+    }
+
+    .contact h2 {
+        margin: 30px auto;
+        font-size: 2rem;
+        letter-spacing: 0.1rem;
+    }
+
+    .workingHours li {
+        display: flex;
+        justify-content: space-between;
+        font-size: 1rem;
+        margin: 12px 0;
+        padding: 0;
+    }
+
+    .timeSpan {
+        display: block;
+        font-size: 1rem;
+        padding-left: 20px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .contact {
+        margin: 30px auto;
+        gap: 30px;
+        height: auto;
+    }
+
+    .contactWrapper ul li, .contactWrapper a {
+        margin: 5px 0;
+        font-size: 0.9rem;
+    }
+
+    .contactBlock li {
+        padding: 5px 0;
+    }
+
+    .socialNetwork {
+        margin: 0;
+        gap: 30px;
+    }
+
+    .socialNetwork svg {
+        font-size: 1.7rem;
+    }
+
+    .hours {
+        width: 50%;
+        margin: 0;
+        padding: 0;
+    }
+
+    .contact h2 {
+        margin: 20px auto;
+        font-size: 1.5rem;
+        letter-spacing: 0.1rem;
+    }
+
+    .workingHours li {
+        display: flex;
+        justify-content: space-between;
+        font-size: 0.9rem;
+        margin: 12px 0;
+        padding: 0;
+    }
+
+    .timeSpan {
+        display: block;
+        font-size: 0.9rem;
+        padding-left: 20px;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .contact {
+        margin: 20px auto;
+        gap: 10px;
+        height: auto;
+    }
+
+    .contactWrapper ul li, .contactWrapper a {
+        margin: 5px 0;
+        font-size: 0.9rem;
+    }
+
+    .socialNetwork {
+        margin: 0;
+        gap: 30px;
+    }
+
+    .socialNetwork svg {
+        font-size: 1.2rem;
+    }
+
+    .hours {
+        width: 100%;
+        margin: 0;
+        padding: 0;
+    }
+
+    .contact h2 {
+        margin: 15px auto;
+        font-size: 1.3rem;
+        letter-spacing: 0.1rem;
+    }
+
+    .workingHours li {
+        display: flex;
+        justify-content: space-between;
+        font-size: 0.9rem;
+        margin: 5px 0;
+        padding: 0;
+    }
+
+    .timeSpan {
+        display: block;
+        font-size: 0.9rem;
+        padding-left: 20px;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .contact {
+        margin: 20px auto;
+        gap: 10px;
+        height: auto;
+    }
+
+    .contactWrapper ul li, .contactWrapper a {
+        margin: 5px 0;
+        font-size: 0.8rem;
+    }
+
+    .socialNetwork {
+        margin: 0;
+        gap: 15px;
+    }
+
+    .socialNetwork svg {
+        font-size: 1.2rem;
+    }
+
+    .hours {
+        width: 100%;
+        margin: 0;
+        padding: 0;
+    }
+
+    .contact h2 {
+        margin: 10px auto;
+        font-size: 1rem;
+        letter-spacing: 0.1rem;
+    }
+
+    .workingHours li {
+        display: flex;
+        justify-content: space-between;
+        font-size: 0.8rem;
+        margin: 5px 0;
+        padding: 0;
+    }
+
+    .timeSpan {
+        display: block;
+        font-size: 0.8rem;
+        padding-left: 20px;
+    }
+}
+
 

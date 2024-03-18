@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, {useState, useEffect} from 'react';
 import s from './MemberShip.module.css';
 import useFetch from "../../hooks/useFetch";
-import { Preloader } from "../../common/Preloader/Preloader";
+import {Preloader} from "../../common/Preloader/Preloader";
 import BookButton from "../../common/BookButton/BookButton";
 
 const MemberShip = () => {
-    const { data, loading, error } = useFetch('/member-ships?populate=*');
+    const {data, loading, error} = useFetch('/member-ships?populate=*');
     const [backgroundLoaded, setBackgroundLoaded] = useState(false);
 
     useEffect(() => {
@@ -21,13 +21,13 @@ const MemberShip = () => {
     return (
         <>
             {error ? <p>Ошибка при получении данных</p>
-                : loading ? <Preloader />
+                : loading ? <Preloader/>
                     : (
                         <div>
                             {!backgroundLoaded ? (
-                                <Preloader /> // Show preloader until background image is loaded
+                                <Preloader/>
                             ) : (
-                                <div className={s.memberShitBlock}
+                                <div className='welcomeBlock'
                                      style={{
                                          backgroundImage: `url(${process.env.REACT_APP_UPLOAD_URL + data?.attributes?.imgBG?.data?.attributes?.url})`,
                                      }}>
@@ -42,7 +42,7 @@ const MemberShip = () => {
                                         <div className={s.certificateImg}>
                                             <img
                                                 src={process.env.REACT_APP_UPLOAD_URL + data?.attributes?.certificateImg?.data?.attributes?.url}
-                                                alt="" />
+                                                alt=""/>
                                         </div>
                                         <div className={s.certificateDesc}>
                                             <h2>{data?.attributes?.certificateTitle}</h2>
@@ -57,12 +57,12 @@ const MemberShip = () => {
                                         <div className={s.certificateImg}>
                                             <img
                                                 src={process.env.REACT_APP_UPLOAD_URL + data?.attributes?.subscriptionImg?.data?.attributes?.url}
-                                                alt="" />
+                                                alt=""/>
                                         </div>
                                     </div>
                                     <div className={s.conclusionBlock}>
                                         <p className={s.conclusion}>{data?.attributes?.conclusionTitle}</p>
-                                        <BookButton title={'Забронировать'} color={'black'} scrolled={true} />
+                                        <BookButton title={'Забронировать'} color={'black'} scrolled={true}/>
                                     </div>
                                 </div>
                             </div>

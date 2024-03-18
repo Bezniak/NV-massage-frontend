@@ -25,14 +25,14 @@ const Product = () => {
     return (
         <>
             {error ? (
-                <p>Что-то пошло не так!</p>
+                <p className='getDataError'>Что-то пошло не так!</p>
             ) : loading ? (
                 <Preloader/>
             ) : (
                 <>
                     {imageLoaded ? (
                         <div
-                            className={s.productWrapper}
+                            className='welcomeBlock'
                             style={{
                                 backgroundImage: `url(${process.env.REACT_APP_UPLOAD_URL + data?.attributes?.bgImg?.data?.attributes?.url})`,
                             }}
@@ -44,13 +44,12 @@ const Product = () => {
                         <Preloader/>
                     )}
 
-                    <h1 className={s.photoTitle}>{data?.attributes?.productPhotoTitle}</h1>
-                    <PhotoCollection data={data?.attributes?.productImages} loading={loading} error={error}/>
-
-                    <div className={s.productBlock}>
-                        <div className={s.productDescription}>
+                    <div className={s.productWrapper}>
+                        <div className={s.productBlock}>
+                            <h2>{data?.attributes?.productPhotoTitle}</h2>
+                            <PhotoCollection data={data?.attributes?.productImages} loading={loading} error={error}/>
                             <h2>{data?.attributes?.productTitle1}</h2>
-                            <ul className={s.descriptionList}>
+                            <ul>
                                 {data?.attributes?.productDesc1.map((item, index) => (
                                     <React.Fragment key={index}>
                                         {item?.children.map((i, index) => (
@@ -62,10 +61,8 @@ const Product = () => {
                                     </React.Fragment>
                                 ))}
                             </ul>
-                        </div>
-                        <div className={s.productDescription}>
                             <h2>{data?.attributes?.productTitle2}</h2>
-                            <ul className={s.descriptionList}>
+                            <ul>
                                 {data?.attributes?.productDesc2.map((item, index) => (
                                     <React.Fragment key={index}>
                                         {item?.children.map((i, index) => (
@@ -77,10 +74,8 @@ const Product = () => {
                                     </React.Fragment>
                                 ))}
                             </ul>
-                        </div>
-                        <div className={s.productDescription}>
                             <h2>{data?.attributes?.productTitle3}</h2>
-                            <ul className={s.descriptionList}>
+                            <ul>
                                 {data?.attributes?.productDesc3.map((item, index) => (
                                     <React.Fragment key={index}>
                                         {item?.children.map((i, index) => (
@@ -92,13 +87,11 @@ const Product = () => {
                                     </React.Fragment>
                                 ))}
                             </ul>
-                        </div>
-                        <div className={`${s.productDescription} ${s.conclusion}`}>
-                            <ul className={s.descriptionList}>
+                            <ul>
                                 <li>{data?.attributes?.conclusion}</li>
                                 <li>{data?.attributes?.bookTitle}</li>
                             </ul>
-                            <BookButton title='ЗАПИСАТЬСЯ НА МАССАЖ ПРЯМО СЕЙЧАС!' color={'black'}/>
+                            <BookButton title='ЗАПИСАТЬСЯ!' color={'black'}/>
                         </div>
                     </div>
                 </>
