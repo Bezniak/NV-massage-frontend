@@ -21,6 +21,13 @@ const Location = () => {
         }
     }, [data]);
 
+    const handleAddressClick = (event) => {
+        event.preventDefault();
+        const formattedAddress = encodeURIComponent(data?.attributes?.addressForMap);
+        const googleMapsUrl = `https://www.google.com/maps/search/?api=1&query=${formattedAddress}`;
+        window.open(googleMapsUrl, '_blank');
+    };
+
     return (
         <div>
             {error ? <p>Что-то пошло не так</p>
@@ -39,7 +46,9 @@ const Location = () => {
                                 <div className={s.contactWrapper}>
                                     <h2>Местоположение</h2>
                                     <ul className={s.contactBlock}>
-                                        <li>{data?.attributes?.address}</li>
+                                        <li onClick={handleAddressClick}>
+                                            <a href="">{data?.attributes?.address}</a>
+                                        </li>
                                         <li>
                                             Телефон: <a
                                             href={`tel:${data?.attributes?.phone}`}>{data?.attributes?.phone}</a>

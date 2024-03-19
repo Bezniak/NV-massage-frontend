@@ -33,7 +33,7 @@ const Reviews = () => {
     }, [comments, reviewCount]);
 
     return (
-        <div>
+        <>
             {!dataMedia?.attributes?.imgBG ? (
                 <Preloader/>
             ) : (
@@ -48,70 +48,66 @@ const Reviews = () => {
                 </div>
             )}
 
-            <div ref={reviewsContainerRef} className={s.reviewsBlock}>
-                <h1 className={s.reviewTitle}>
-                    Отзывы - путь к лучшему опыту <span>{comments?.length}</span>
-                </h1>
-                {!isFormVisible && (
-                    <button onClick={() => setIsFormVisible(true)} className={s.addReview}>
-                        Добавить отзыв
-                    </button>
-                )}
-                {isFormVisible && <ReviewForm/>}
+            <div className={s.reviewWrapper}>
+                <div ref={reviewsContainerRef} className={s.reviewsBlock}>
+                    <h1 className={s.reviewTitle}>
+                        Отзывы - путь к лучшему опыту <span>{comments?.length}</span>
+                    </h1>
+                    {!isFormVisible && (
+                        <button onClick={() => setIsFormVisible(true)} className={s.addReview}>
+                            Добавить отзыв
+                        </button>
+                    )}
+                    {isFormVisible && <ReviewForm/>}
 
-                {commentsError ? (
-                    <p>Что-то пошло не так</p>
-                ) : commentsLoading ? (
-                    <Preloader/>
-                ) : (
-                    comments
-                        .slice(-reviewCount)
-                        .reverse()
-                        .map(com => (
-                            <div key={com.id} className={s.reviewItem}>
-                                <div>
-                                    {Array.from({length: 5}, (_, index) => (
-                                        <FaRegStar
-                                            className={s.grade}
-                                            key={index}
-                                            color={index < com?.attributes?.grade ? '#ffc107' : 'gray'}
-                                            size={20}
-                                        />
-                                    ))}
-                                </div>
-                                <h3>{com?.attributes?.name}</h3>
-                                <span>
-                                    {com?.attributes?.createdAt &&
-                                        new Date(com.attributes.createdAt).toLocaleDateString('ru-RU', {
-                                            day: 'numeric',
-                                            month: 'long',
-                                            year: 'numeric',
-                                        })}
-                                </span>
-                                <p>{com?.attributes?.comment}</p>
-                            </div>
-                        ))
-                )}
-                {!allLoaded && loadingMore && <Preloader/>}
-            </div>
-
-            {errorMedia ? (
-                <p>Что-то пошло не так</p>
-            ) : loadingMedia ? (
-                <Preloader/>
-            ) : (
-                <div className={s.reviewsRules}>
-                    <h2>{dataMedia?.attributes?.reviewRuleTitle}</h2>
-                    <ul>
-                        {dataMedia?.attributes?.reviewRuleDesc.map((item, index) => (
-                            item?.children.map((i, idx) => <li key={idx}>{i?.text}</li>)
-                        ))}
-                    </ul>
-                    <p>{dataMedia?.attributes?.reviewRuleConclusion_1}</p>
-                    <p>{dataMedia?.attributes?.reviewRuleConclusion_2}</p>
+                    {commentsError ? (
+                        <p>Что-то пошло не так</p>
+                    ) : commentsLoading ? (
+                            <Preloader/>
+                        ) :
+                        (comments
+                                .slice(-reviewCount)
+                                .reverse()
+                                .map(com => (
+                                    <div key={com.id} className={s.reviewItem}>
+                                        <div>
+                                            {Array.from({length: 5}, (_, index) => (
+                                                <FaRegStar
+                                                    className={s.grade}
+                                                    key={index}
+                                                    color={index < com?.attributes?.grade ? '#ffc107' : 'gray'}
+                                                    size={20}
+                                                />
+                                            ))}
+                                        </div>
+                                        <h3>{com?.attributes?.name}</h3>
+                                        <span>
+                                            {com?.attributes?.createdAt &&
+                                                new Date(com.attributes.createdAt).toLocaleDateString('ru-RU', {
+                                                    day: 'numeric',
+                                                    month: 'long',
+                                                    year: 'numeric',
+                                                })}
+                                        </span>
+                                        <p>{com?.attributes?.comment}</p>
+                                    </div>
+                                ))
+                        )
+                    }
+                    <div className={s.reviewsRules}>
+                        <h2>{dataMedia?.attributes?.reviewRuleTitle}</h2>
+                        <ul>
+                            {dataMedia?.attributes?.reviewRuleDesc.map((item, index) => (
+                                item?.children.map((i, idx) => <li key={idx}>{i?.text}</li>)
+                            ))}
+                        </ul>
+                        <p>{dataMedia?.attributes?.reviewRuleConclusion_1}</p>
+                        <p>{dataMedia?.attributes?.reviewRuleConclusion_2}</p>
+                    </div>
+                    {!allLoaded && loadingMore && <Preloader/>}
                 </div>
-            )}
-        </div>
+            </div>
+        </>
     );
 };
 

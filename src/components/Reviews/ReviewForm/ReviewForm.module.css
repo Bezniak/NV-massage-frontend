@@ -1,5 +1,8 @@
+.reviewWrapper {
+    width: 50%;
+}
+
 .reviewTitle {
-    width: 100%;
     margin: 40px auto;
     display: flex;
     align-items: center;
@@ -10,32 +13,29 @@
 }
 
 .form {
-    padding: 30px 0;
-    width: 100%;
-    margin: 30px auto;
-    border-radius: 40px;
+    margin: 20px auto;
 }
 
 .field {
-    margin-bottom: 30px;
+    margin-bottom: 10px;
 }
 
 .field svg {
-    margin: 10px 0;
+    margin: 5px 0;
 }
 
 label {
     display: block;
     margin-bottom: 10px;
     font-weight: bold;
-    font-size: 15px;
+    font-size: 0.9rem;
     text-align: justify;
 }
 
 .input, .textarea {
     width: 100%;
-    padding: 15px;
-    font-size: 16px;
+    padding: 0.9rem;
+    font-size: 1rem;
     font-weight: 500;
     color: var(--main);
     outline: none;
@@ -49,31 +49,31 @@ label {
 }
 
 .textarea {
-    height: 200px;
+    height: 15rem;
     resize: none;
 }
 
 .protection {
-    margin: 20px 0;
-    font-size: 10px;
+    margin: 25px 0;
+    font-size: 0.7rem;
     font-weight: 500;
 }
 
 .error {
     color: red;
-    font-size: 14px;
+    font-size: 1rem;
     font-weight: 500;
 }
 
 .checkbox {
     appearance: none;
-    width: 25px;
-    height: 25px;
+    width: 1.5rem;
+    height: 1.5rem;
     border: 2px solid var(--active-dark);
     border-radius: 4px;
     outline: none;
     cursor: pointer;
-    margin-right: 5px;
+    margin-right: 10px;
     position: relative;
     vertical-align: middle;
 }
@@ -99,7 +99,7 @@ label {
     color: var(--main);
     font-style: italic;
     text-decoration: underline;
-    font-size: 15px;
+    font-size: 0.9rem;
     transition: color 0.4s ease;
 }
 
@@ -109,6 +109,7 @@ label {
 
 .button {
     width: 100%;
+    margin: 15px auto;
     padding: 20px;
     background-color: var(--footer);
     color: var(--soft-white);
@@ -126,7 +127,7 @@ label {
 
 .grade {
     cursor: pointer;
-    transition: color 0.2s;
+    transition: color 0.3s;
 }
 
 .grade:hover,
@@ -135,7 +136,7 @@ label {
 }
 
 .info {
-    margin: 20px 0 5px 0;
+    margin: 10px 0 5px 0;
     font-size: 10px;
     text-align: justify;
     line-height: 2;
@@ -148,4 +149,26 @@ label {
     text-align: justify;
     line-height: 2;
     font-weight: 500;
+}
+
+
+
+/* Медиа-запросы для разных устройств */
+
+@media screen and (max-width: 1200px) {
+    .reviewWrapper {
+        width: 80%;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .reviewWrapper {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .reviewWrapper {
+        width: 100%;
+    }
 }

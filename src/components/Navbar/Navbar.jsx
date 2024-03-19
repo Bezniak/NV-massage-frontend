@@ -78,7 +78,7 @@ const Navbar = () => {
                     <div className={s.logosBlock}>
                         <IoLocationOutline onClick={handleAddressClick}/>
                         <NavLink to="/" onClick={handleClick}>
-                            <img src="/newLogoWhite.svg" alt="logo" className={s.logo}/>
+                            <img src="/logoWhite.svg" alt="logo" className={s.logo}/>
                         </NavLink>
                         <BookButton title='Записаться!' color={'white'}/>
                     </div>
@@ -138,7 +138,7 @@ const Navbar = () => {
                 <div className={navbarClass}>
                     <div className={s.headerBlock}>
                         <NavLink to="/" onClick={handleClick} className={s.logoLink}>
-                            <img src="/newLogoGray.svg" alt="logo" className={s.logoScroll}/>
+                            <img src="/logoBlack.png" alt="logo" className={s.logoScroll}/>
                         </NavLink>
                         <NavLink to="/" onClick={handleClick}>Главная</NavLink>
 

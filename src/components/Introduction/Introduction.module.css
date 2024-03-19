@@ -1,7 +1,4 @@
 .introduction {
-    padding: 0;
-    margin: 0;
-    height: 100vh;
     background-image: url("../../images/downList.png");
     background-position: top right;
     background-size: auto;
@@ -9,14 +6,68 @@
 }
 
 .introductionBlock {
-    padding: 0;
-    width: 1200px;
+    width: 80%;
     height: 100vh;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 60px;
+    gap: 30px;
+}
+
+.introductionBlock img {
+    width: 10rem;
+    height: 10rem;
+}
+
+
+/* Медиа-запросы для разных устройств */
+
+@media screen and (max-width: 1200px) {
+
+}
+
+@media screen and (max-width: 768px) {
+    .introductionBlock {
+        width: 90%;
+    }
+
+    .introductionBlock h1 {
+        line-height: 1.3;
+        font-size: 1.8rem;
+        font-weight: 250;
+    }
+
+    .introductionBlock p {
+        font-size: 1rem;
+    }
+
+}
+
+@media screen and (max-width: 576px) {
+    .introductionBlock {
+        padding: 50px 0;
+        width: 90%;
+        height: auto;
+        gap: 30px;
+    }
+
+    .introductionBlock img {
+        width: 6rem;
+        height: 6rem;
+    }
+
+    .introductionBlock h1 {
+        font-size: 1.3rem;
+        font-weight: 250;
+    }
+
+    .introductionBlock p {
+        line-height: 1.5;
+        text-align: justify;
+        text-indent: 1rem;
+    }
+
 }
 

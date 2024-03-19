@@ -23,7 +23,7 @@ const MemberShip = () => {
             {error ? <p>Ошибка при получении данных</p>
                 : loading ? <Preloader/>
                     : (
-                        <div>
+                        <>
                             {!backgroundLoaded ? (
                                 <Preloader/>
                             ) : (
@@ -60,13 +60,11 @@ const MemberShip = () => {
                                                 alt=""/>
                                         </div>
                                     </div>
-                                    <div className={s.conclusionBlock}>
-                                        <p className={s.conclusion}>{data?.attributes?.conclusionTitle}</p>
+                                        <p>{data?.attributes?.conclusionTitle}</p>
                                         <BookButton title={'Забронировать'} color={'black'} scrolled={true}/>
-                                    </div>
                                 </div>
                             </div>
-                        </div>
+                        </>
                     )
             }
         </>

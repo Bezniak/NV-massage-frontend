@@ -15,7 +15,7 @@ const Introduction = ({type}) => {
                 ) : (
                     <div className={s.introduction}>
                         <div className={s.introductionBlock}>
-                            <img src='/brownLogo.png' alt="logo"/>
+                            <img src='/logoBlack.png' alt="logo"/>
                             <h1>{data?.attributes?.title}</h1>
                             <p>{data?.attributes?.desc}</p>
                             <BookButton title='Записаться на массаж!' color={'black'}/>

@@ -89,6 +89,7 @@
 
     .contactBlock li {
         padding: 5px 0;
+        text-align: center;
     }
 
     .socialNetwork {
@@ -141,6 +142,7 @@
 
     .contactBlock li {
         padding: 5px 0;
+        text-align: center;
     }
 
     .socialNetwork {
@@ -223,54 +225,6 @@
     .timeSpan {
         display: block;
         font-size: 0.9rem;
-        padding-left: 20px;
-    }
-}
-
-@media screen and (max-width: 320px) {
-    .contact {
-        margin: 20px auto;
-        gap: 10px;
-        height: auto;
-    }
-
-    .contactWrapper ul li, .contactWrapper a {
-        margin: 5px 0;
-        font-size: 0.8rem;
-    }
-
-    .socialNetwork {
-        margin: 0;
-        gap: 15px;
-    }
-
-    .socialNetwork svg {
-        font-size: 1.2rem;
-    }
-
-    .hours {
-        width: 100%;
-        margin: 0;
-        padding: 0;
-    }
-
-    .contact h2 {
-        margin: 10px auto;
-        font-size: 1rem;
-        letter-spacing: 0.1rem;
-    }
-
-    .workingHours li {
-        display: flex;
-        justify-content: space-between;
-        font-size: 0.8rem;
-        margin: 5px 0;
-        padding: 0;
-    }
-
-    .timeSpan {
-        display: block;
-        font-size: 0.8rem;
         padding-left: 20px;
     }
 }

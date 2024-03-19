@@ -75,7 +75,7 @@ function ReviewForm() {
 
 
     return (
-        <>
+        <div className={styles.reviewWrapper}>
             {isFormSend ? (
                 <h1 className={styles.reviewTitle}>
                     Спасибо за Ваш отзыв! <br/>
@@ -206,7 +206,7 @@ function ReviewForm() {
                 </form>
             )
             }
-        </>
+        </div>
     );
 }
 

@@ -1,35 +1,43 @@
-.reviewsBlock {
+.reviewWrapper {
     width: 100%;
-    padding: 50px 200px;
-    margin: 0 auto;
+    background-image: url("../../images/longListDown.png"), url("../../images/twoLists.png");
+    background-position: top right, bottom center;
+    background-size: auto;
+    background-repeat: no-repeat;
+}
+
+.reviewsBlock {
+    width: 80%;
+    margin: 30px auto;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
 }
 
 .reviewTitle {
-    font-size: 40px;
-    margin-bottom: 10px;
+    font-size: 2rem;
+    margin: 20px auto;
     position: relative;
 }
 
 .reviewTitle span {
-    font-size: 15px;
+    font-size: 0.9rem;
     position: absolute;
-    top: 0;
-    right: -45px;
-    padding: 7px 12px;
+    top: -30%;
+    right: -10%;
+    padding: 0.5rem 0.8rem;
+    text-align: center;
     border: 1px solid var(--active-dark);
     border-radius: 50%;
     font-weight: 400;
 }
 
 .addReview {
-    width: 20%;
+    width: fit-content;
     padding: 15px 25px;
-    margin: 20px 0;
-    font-size: 15px;
+    margin: 20px auto;
+    font-size: 1rem;
     font-weight: 500;
     border-radius: 10px;
     border: none;
@@ -45,14 +53,14 @@
 
 .reviewItem {
     margin: 20px 0;
-    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    justify-content: flex-start;
 }
 
 .reviewItem h3 {
-    font-size: 18px;
+    font-size: 1.1rem;
     margin: 5px 0 2px 0;
     font-weight: 600;
     letter-spacing: 0.1rem;
@@ -60,23 +68,20 @@
 }
 
 .reviewItem span {
-    font-size: 10px;
+    font-size: 0.7rem;
     font-weight: 500;
-    color: gray;
 }
 
 .reviewItem p {
     padding: 10px 0;
     line-height: 1.5;
-    letter-spacing: 0.1rem;
-    font-size: 14px;
+    font-size: 1rem;
     text-align: justify;
 }
 
 .reviewsRules {
     width: 100%;
-    padding: 0 200px;
-    margin: 0 auto;
+    margin: 0;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -84,7 +89,7 @@
 }
 
 .reviewsRules h2 {
-    font-size: 13px;
+    font-size: 0.8rem;
     font-weight: 400;
     margin: 10px 0;
 }
@@ -94,7 +99,7 @@
 }
 
 .reviewsRules ul li {
-    font-size: 10px;
+    font-size: 0.75rem;
     line-height: 1.5;
     font-weight: 400;
 }
@@ -111,241 +116,38 @@
 /* Медиа-запросы для разных устройств */
 
 @media screen and (max-width: 1200px) {
-    .reviewsBlock {
-        margin: 40px auto;
-        padding: 0;
-        width: 90%;
-    }
 
-    .reviewsBlock h1 {
-        margin: 10px 0;
-        padding: 0;
-    }
-
-    .reviewsRules {
-        padding: 0;
-        margin: 0 auto;
-        width: 90%;
-    }
 
 }
 
 @media screen and (max-width: 768px) {
-
     .reviewsBlock {
-        margin: 10px 0;
-        padding: 0 20px;
-    }
-
-    .reviewsBlock h1 {
-        font-size: 1.4rem;
-        margin: 0;
-        padding: 10px 0;
-        font-weight: 300;
-        letter-spacing: 0.1rem;
-    }
-
-    .reviewsBlock h1 span {
-        font-size: 0.9rem;
-        padding: 5px 10px;
-        margin: 0;
-        top: 0;
-        right: -40px;
-    }
-
-    .addReview {
-        width: 50%;
-        margin: 10px 5px 20px 5px;
-        padding: 10px 0;
-        font-size: 1rem;
-        border-radius: 5px;
-    }
-
-    .reviewItem {
-        margin: 10px 0;
-    }
-
-    .grade {
-        width: 1.4rem;
-        height: 1.4rem;
-    }
-
-    .reviewItem h3 {
-        font-size: 1.2rem;
-    }
-
-    .reviewItem p {
-        font-size: 0.9rem;
-        line-height: 1.5;
-        letter-spacing: 0;
-        text-indent: 1rem;
-
-    }
-
-    .reviewsRules {
-        margin: 0;
-        padding: 0 20px;
-    }
-
-    .reviewsRules h2 {
-        font-size: 0.9rem;
-    }
-
-    .reviewsRules ul li {
-        font-size: 0.7rem;
-        text-align: justify;
-    }
-
-    .reviewsRules p {
-        font-size: 0.7rem;
-        text-align: justify;
-        text-indent: 1rem;
-        padding: 0;
-        margin: 8px 0;
+        width: 90%;
     }
 }
 
 @media screen and (max-width: 576px) {
     .reviewsBlock {
-        margin: 10px 0;
-        padding: 0 20px;
+        width: 90%;
     }
 
-    .reviewsBlock h1 {
-        font-size: 1rem;
-        margin: 0;
-        padding: 10px 0;
-        font-weight: 300;
-        letter-spacing: 0.1rem;
+    .reviewTitle {
+        font-size: 1.4rem;
+        font-weight: 250;
     }
 
-    .reviewsBlock h1 span {
-        font-size: 0.6rem;
-        padding: 2px 6px;
-        margin: 0;
-        right: -20px;
+    .reviewTitle span {
+        right: -4%;
     }
 
     .addReview {
-        width: 50%;
-        margin: 10px 5px 20px 5px;
-        padding: 10px 0;
-        font-size: 0.7rem;
+        margin: 0 auto;
         border-radius: 5px;
     }
 
-    .reviewItem {
-        margin: 10px 0;
-    }
-
-    .grade {
-        width: 1rem;
-        height: 1rem;
-    }
-
-    .reviewItem h3 {
-        font-size: 1rem;
-    }
-
-    .reviewItem p {
-        font-size: 0.7rem;
-        line-height: 1.4;
-        letter-spacing: 0;
-        text-indent: 1rem;
-
-    }
-
     .reviewsRules {
-        margin: 0;
-        padding: 0 20px;
-    }
-
-    .reviewsRules h2 {
-        font-size: 0.7rem;
-    }
-
-    .reviewsRules ul li {
-        font-size: 0.6rem;
         text-align: justify;
     }
 
-    .reviewsRules p {
-        text-align: justify;
-        text-indent: 1rem;
-        padding: 0;
-        font-size: 0.6rem;
-        margin: 5px 0;
-    }
-}
 
-@media screen and (max-width: 320px) {
-    .reviewsBlock {
-        margin: 10px 0;
-        padding: 0 20px;
-    }
-
-    .reviewsBlock h1 {
-        font-size: 1rem;
-        margin: 0;
-        padding: 10px 0;
-        font-weight: 300;
-        letter-spacing: 0.1rem;
-    }
-
-    .reviewsBlock h1 span {
-        font-size: 0.6rem;
-        padding: 2px 6px;
-        margin: 0;
-        right: -5px;
-    }
-
-    .addReview {
-        width: 50%;
-        margin: 10px 5px 20px 5px;
-        padding: 10px 0;
-        font-size: 0.7rem;
-        border-radius: 5px;
-    }
-
-    .reviewItem {
-        margin: 10px 0;
-    }
-
-    .grade {
-        width: 1rem;
-        height: 1rem;
-    }
-
-    .reviewItem h3 {
-        font-size: 1rem;
-    }
-
-    .reviewItem p {
-        font-size: 0.7rem;
-        line-height: 1.4;
-        letter-spacing: 0;
-        text-indent: 1rem;
-    }
-
-    .reviewsRules {
-        margin: 0;
-        padding: 0 20px;
-    }
-
-    .reviewsRules h2 {
-        font-size: 0.7rem;
-    }
-
-    .reviewsRules ul li {
-        font-size: 0.6rem;
-        text-align: justify;
-    }
-
-    .reviewsRules p {
-        text-align: justify;
-        text-indent: 1rem;
-        padding: 0;
-        margin: 5px 0;
-        font-size: 0.6rem;
-    }
 }

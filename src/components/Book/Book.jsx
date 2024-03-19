@@ -59,8 +59,11 @@ const Book = () => {
         data.massageType = data.massageType.map(item => item.label).join(', ');
         data.comment = data.comment.trim();
         data.startDate = data.startDate.toLocaleDateString('ru');
+        data.startTime = data.startTime.value.props.value;
         data.totalPrice = totalPrice.toFixed(2);
         setFormData(data)
+
+        console.log(data)
 
         // Send form data to Telegram bot
         try {
@@ -206,41 +209,54 @@ const Book = () => {
                                             <Controller
                                                 control={control}
                                                 name="startDate"
-                                                rules={{
-                                                    required: 'Это поле обязательно для заполнения!',
-                                                }}
-                                                render={({field: {onChange, value}, fieldState: {error}}) => (
+                                                rules={{ required: 'Это поле обязательно для заполнения!' }}
+                                                render={({ field }) => (
                                                     <>
                                                         <DatePicker
-                                                            selected={value}
-                                                            onChange={(date) => {
-                                                                onChange(date);
+                                                            selected={field.value}
+                                                            onChange={value => {
+                                                                field.onChange(value);
                                                                 setValue('startTime', ''); // Сбрасываем выбранное время при изменении даты
                                                             }}
                                                             placeholderText="Выберите дату"
-                                                            filterDate={filterDate} // Применяем фильтр дат
+                                                            filterDate={filterDate}
                                                             dateFormat="dd.MM.yyyy"
                                                             locale="ru"
                                                             minDate={today}
                                                             wrapperClassName={styles.datePicker}
                                                         />
+                                                        {errors.startDate && <span>{errors.startDate.message}</span>}
+                                                    </>
+                                                )}
+                                            />
 
-                                                        {error && <span>{error.message}</span>}
-                                                        <select
-                                                            {...register('startTime', {
-                                                                required: 'Это поле обязательно для заполнения!'
-                                                            })}
-                                                            value={watch('startTime')}
-                                                        >
-                                                            <option value="" disabled>Выберите время</option>
-                                                            {formattedMinTime && formattedMaxTime && (
-                                                                generateTimeOptions(isToday(watch('startDate')), formattedMinTime, formattedMaxTime)
-                                                            )}
-                                                        </select>
+                                            <Controller
+                                                control={control}
+                                                name="startTime"
+                                                rules={{ required: 'Это поле обязательно для заполнения!' }}
+                                                render={({ field }) => (
+                                                    <>
+                                                        <Select
+                                                            options={[
+                                                                { value: '', label: 'Выберите время', disabled: true, isPlaceholder: true },
+                                                                ...(formattedMinTime && formattedMaxTime
+                                                                    ? generateTimeOptions(
+                                                                        isToday(watch('startDate')),
+                                                                        formattedMinTime,
+                                                                        formattedMaxTime
+                                                                    ).map((time) => ({ value: time, label: time }))
+                                                                    : [])
+                                                            ]}
+                                                            value={field.value}
+                                                            onChange={(value) => field.onChange(value)}
+                                                            placeholder="Выберите время"
+                                                            isClearable
+                                                        />
                                                         {errors.startTime && <span>{errors.startTime.message}</span>}
                                                     </>
                                                 )}
                                             />
+
 
                                             <label htmlFor="massageType">Вид массажа:</label>
                                             <Controller

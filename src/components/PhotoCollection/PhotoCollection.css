@@ -1,7 +1,7 @@
 .photoCollection {
-    padding: 0 50px;
-    width: 100%;
-    overflow: hidden;
+    margin: 10px auto;
+    height: fit-content;
+    width: 80%;
     background-image: url("../../images/twoDown.png");
     background-position: top left;
     background-size: auto;
@@ -9,22 +9,15 @@
 }
 
 .photoCollection h1 {
-    width: 1200px;
-    margin: 0 auto;
-    padding: 30px 0;
-}
-
-.mySwiper2 {
-    width: 100%;
-    margin: 0 auto;
-    overflow: hidden;
+    margin: 50px auto;
 }
 
 .swiper-slide {
     background-position: center;
     background-size: contain;
     width: 300px;
-    height: 400px;
+    height: auto;
+    object-fit: contain;
     margin-bottom: 100px;
 }
 
@@ -36,36 +29,54 @@
 }
 
 .swiper-pagination-bullet {
-    width: 25px;
-    height: 25px;
+    width: 1.6rem;
+    height: 1.6rem;
     display: inline-block;
     border-radius: 50%;
     background: #000;
-    opacity: 0.2;
+    opacity: 0.3;
 }
 
 
 .swiper-pagination-bullet-active {
-    opacity: var(--swiper-pagination-bullet-opacity, 1);
-    background: var(--soft-white, var(--soft-white));
+    opacity: 1;
+    background: var(--soft-white);
 }
-
-.swiper-horizontal > .swiper-pagination-bullets .swiper-pagination-bullet, .swiper-pagination-horizontal.swiper-pagination-bullets .swiper-pagination-bullet {
-    margin: 20px 10px;
-}
-
 
 .swiper-button-prev, .swiper-button-next {
-    position: absolute;
-    top: var(--swiper-navigation-top-offset, 50%);
-    width: calc(var(--swiper-navigation-size) / 44 * 27);
-    height: var(--swiper-navigation-size);
-    margin-top: calc(0px - (var(--swiper-navigation-size) / 2));
-    z-index: 10;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--footer, var(--footer));
+    color: var(--footer);
+}
+
+
+/* Медиа-запросы для разных устройств */
+
+@media screen and (max-width: 1200px) {
+
+}
+
+@media screen and (max-width: 768px) {
+    .photoCollection {
+        width: 90%;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .photoCollection {
+        background-position: top right;
+        background-size: auto;
+        width: 100%;
+    }
+
+    .photoCollection h1 {
+        font-size: 1.3rem;
+        font-weight: 250;
+        margin: 20px auto;
+    }
+
+
+    .swiper-pagination-bullet {
+        width: 1rem;
+        height: 1rem;
+    }
 }
 

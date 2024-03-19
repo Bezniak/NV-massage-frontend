@@ -24,29 +24,35 @@ const Footer = () => {
         });
     };
 
+    const handleAddressClick = (event) => {
+        event.preventDefault();
+        const formattedAddress = encodeURIComponent(data?.attributes?.addressForMap);
+        const googleMapsUrl = `https://www.google.com/maps/search/?api=1&query=${formattedAddress}`;
+        window.open(googleMapsUrl, '_blank');
+    };
+
     const currentYear = new Date().getFullYear()
 
 
     return (
-        <div>
+        <>
             {error ? <p className='getDataError'>Произошла ошибка при загрузке данных.</p>
                 : loading ? (
                     <Preloader/>
                 ) : (
                     <div className={s.footer}>
+
                         <div className={s.footerWrapper}>
 
-                            <div>
-                                <div className={s.logoBlock}>
-                                    <NavLink to='/' onClick={handleClick}>
-                                        <img src='/newLogoWhite.svg' alt="logo" className={s.logo}/>
-                                    </NavLink>
-                                    <NavLink to='/' onClick={handleClick}>
-                                        {data?.attributes?.companyName}
-                                    </NavLink>
-                                </div>
+                            <div className={s.logoBlock}>
+                                <NavLink to='' onClick={handleClick}>
+                                    <img src='/logoWhite.svg' alt="logo" className={s.logo}/>
+                                </NavLink>
+
                                 <ul className={s.contactBlock}>
-                                    <li>{data?.attributes?.address}</li>
+                                    <li onClick={handleAddressClick}>
+                                        <a href="">{data?.attributes?.address}</a>
+                                    </li>
                                     <li>
                                         Телефон: <a
                                         href={`tel:${data?.attributes?.phone}`}>{data?.attributes?.phone}</a>
@@ -56,6 +62,8 @@ const Footer = () => {
                                         href={`mailto:${data?.attributes?.email}`}>{data?.attributes?.email}</a>
                                     </li>
                                 </ul>
+
+
                                 <ul className={s.socialNetworkLinks}>
                                     <li>
                                         <a
@@ -118,6 +126,8 @@ const Footer = () => {
                                     </NavLink>
                                 ))}
                             </ul>
+
+
                             <ul className={s.massagesTypeList}>
                                 <li className={s.footerTitle}>Салон</li>
                                 <NavLink to='/aboutUs' onClick={handleClick}>
@@ -141,6 +151,7 @@ const Footer = () => {
                             </ul>
                         </div>
 
+
                         <p className={s.copyRight}>
                             © {currentYear} {data?.attributes?.companyName}. Все права защищены. Developed by
                             <a href="https://www.linkedin.com/in/ivan-bezniak-2634a11a0/"
@@ -148,9 +159,11 @@ const Footer = () => {
                                target="_blank"
                             > Ivan Bezniak</a>
                         </p>
+
+
                     </div>
                 )}
-        </div>
+        </>
     );
 };
 

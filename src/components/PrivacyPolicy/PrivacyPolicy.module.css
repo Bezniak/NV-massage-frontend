@@ -6,15 +6,15 @@
 }
 
 .privacyContent {
-    width: 1200px;
+    width: 80%;
     margin: 0 auto;
-    padding: 50px 0 170px 0;
+    padding: 50px 0;
 }
 
 .privacyContent h2 {
-    font-size: 16px;
-    font-weight: 500;
-    padding: 20px 0;
+    font-size: 1.1rem;
+    font-weight: 400;
+    padding: 10px 0;
     text-align: left;
 }
 
@@ -22,10 +22,26 @@
     text-align: justify;
     text-indent: 2.5em;
     font-weight: 300;
-
 }
 
 .privacyContent ul li {
-    padding: 7px 0;
     line-height: 1.5;
+}
+
+/* Медиа-запросы для разных устройств */
+
+@media screen and (max-width: 1200px) {
+
+}
+
+@media screen and (max-width: 768px) {
+    .privacyContent {
+        width: 90%;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .privacyContent {
+        width: 90%;
+    }
 }

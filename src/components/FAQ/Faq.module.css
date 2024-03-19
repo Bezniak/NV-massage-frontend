@@ -7,45 +7,41 @@
 }
 
 .faqContent {
-    width: 100%;
+    width: 80%;
     margin: 0 auto;
     padding: 40px 10px;
 }
 
 .faqContent h2 {
-    width: 80%;
-    font-size: 60px;
+    font-size: 2rem;
     letter-spacing: 0.1rem;
-    line-height: 1.8;
     font-weight: 200;
 }
 
 .faqContent p {
-    width: 80%;
-    margin: 0 auto;
-    line-height: 2;
+    margin: 30px auto;
+    line-height: 1.5;
     text-align: center;
-    font-size: 15px;
+    font-size: 1rem;
 }
 
 .ask {
+    column-count: 2;
+    column-gap: 50px; /* Добавьте промежуток между колонками */
     width: 80%;
     margin: 50px auto;
-    display: flex;
-    flex-direction: column;
-    gap: 40px;
-    justify-content: center;
-    align-items: center;
 }
 
 .askItem {
+    margin-bottom: 50px;
     width: 100%;
-    min-height: 50px;
+    min-height: 60px;
     padding: 30px;
     background-color: var(--soft-white);
     position: relative;
     border-radius: 20px;
     cursor: pointer;
+    break-inside: avoid-column; /* Добавьте это свойство для предотвращения разделения элементов между колонками */
 }
 
 .askItem:hover > h3 {
@@ -53,7 +49,7 @@
 }
 
 .askItem h3 {
-    font-size: 22px;
+    font-size: 1.3rem;
     font-weight: 300;
     transition: color 0.2s ease-in-out;
     cursor: pointer;
@@ -71,20 +67,12 @@
 
 .visible {
     padding-top: 10px;
-    line-height: 1.8;
+    line-height: 1.5;
     font-size: 16px;
-    font-weight: 400;
     text-align: justify;
-    opacity: 1;
-    max-height: 1000px;
-    transition: opacity 0.5s ease-in-out, max-height 0.5s ease-in-out;
 }
 
 .hidden {
-    opacity: 0;
-    max-height: 0;
-    transition: opacity 0.5s ease-in-out, max-height 0.5s ease-in-out;
-    overflow: hidden;
     display: none;
 }
 
@@ -100,268 +88,72 @@
 /* Медиа-запросы для разных устройств */
 
 @media screen and (max-width: 1200px) {
-    .faqContent {
-        margin: 0;
-        padding: 50px;
-    }
-
-    .faqContent h2 {
-        width: 100%;
-        font-size: 1.5rem;
-        line-height: 1.2;
-        margin: 15px 0;
-        padding: 0;
-        font-weight: 200;
-    }
-
-    .faqContent p {
-        width: 100%;
-        padding: 0;
-        margin: 0;
-        font-size: 0.8rem;
-        line-height: 1.5;
-        letter-spacing: 0;
-        font-weight: 300;
-        text-align: justify;
-        text-indent: 1rem;
-    }
-
     .ask {
-        margin: 20px 0;
-        padding: 0;
+        column-count: 1;
         width: 100%;
-        gap: 20px
-    }
-
-    .askItem {
-        padding: 15px;
-        margin: 0;
-        border-radius: 20px;
-    }
-
-    .askItem h3 {
-        font-size: 1.2rem;
-        line-height: 1.4;
-        letter-spacing: 0.1rem;
-        width: 80%;
-        padding: 0;
-        margin: 0 auto;
-        font-weight: 300;
-    }
-
-    .askItem svg {
-        font-size: 1rem;
-    }
-
-    .visible {
-        padding: 5px;
-        margin: 5px 0;
-        font-size: 0.9rem;
-        line-height: 1.4;
-        letter-spacing: 0;
-        text-indent: 1.5rem;
-        font-weight: 300;
     }
 }
 
 @media screen and (max-width: 768px) {
+
     .faqContent {
-        margin: 0;
-        padding: 25px;
-    }
-
-    .faqContent h2 {
-        width: 100%;
-        font-size: 1.5rem;
-        line-height: 1.2;
-        margin: 15px 0;
-        padding: 0;
-        font-weight: 200;
-    }
-
-    .faqContent p {
-        width: 100%;
-        padding: 0;
-        margin: 0;
-        font-size: 0.8rem;
-        line-height: 1.5;
-        letter-spacing: 0;
-        font-weight: 300;
-        text-align: justify;
-        text-indent: 1rem;
+        width: 90%;
     }
 
     .ask {
-        margin: 20px 0;
-        padding: 0;
+        column-count: 1;
         width: 100%;
-        gap: 20px
     }
 
-    .askItem {
-        padding: 15px;
-        margin: 0;
-        border-radius: 20px;
-    }
 
-    .askItem h3 {
-        font-size: 1.2rem;
-        line-height: 1.4;
-        letter-spacing: 0.1rem;
-        width: 80%;
-        padding: 0;
-        margin: 0 auto;
-        font-weight: 300;
-    }
-
-    .askItem svg {
-        font-size: 1rem;
-    }
-
-    .visible {
-        padding: 5px;
-        margin: 5px 0;
-        font-size: 0.9rem;
-        line-height: 1.4;
-        letter-spacing: 0;
-        text-indent: 1.5rem;
-        font-weight: 300;
-    }
 }
 
 @media screen and (max-width: 576px) {
     .faqContent {
-        margin: 0;
-        padding: 18px;
+        width: 90%;
+        margin: 20px auto;
+        padding: 10px;
     }
 
     .faqContent h2 {
-        width: 100%;
-        font-size: 1.2rem;
-        line-height: 1.2;
-        margin: 10px 0;
-        padding: 0;
+        font-size: 1.5rem;
         font-weight: 300;
+        letter-spacing: 0;
     }
 
     .faqContent p {
-        width: 100%;
-        padding: 0;
-        margin: 0;
-        font-size: 0.8rem;
-        line-height: 1.3;
-        letter-spacing: 0;
-        font-weight: 300;
-        text-align: justify;
-        text-indent: 1rem;
-    }
-
-    .ask {
-        margin: 20px 0;
-        padding: 0;
-        width: 100%;
-        gap: 18px
-    }
-
-    .askItem {
-        padding: 10px;
-        margin: 0;
-        border-radius: 10px;
-    }
-
-    .askItem h3 {
-        font-size: 0.8rem;
-        line-height: 1.2;
-        letter-spacing: 0;
-        width: 80%;
-        padding: 0;
-        margin: 0 auto;
-        font-weight: 300;
-    }
-
-    .askItem svg {
-        font-size: 0.8rem;
-    }
-
-    .answer {
-        font-size: 0.8rem;
-    }
-
-    .visible {
-        padding: 5px;
-        margin: 5px 0;
-        font-size: 0.7rem;
-        line-height: 1.3;
-        letter-spacing: 0;
-        text-indent: 1rem;
-        font-weight: 300;
-    }
-}
-
-@media screen and (max-width: 320px) {
-    .faqContent {
-        margin: 0;
-        padding: 20px;
-    }
-
-    .faqContent h2 {
-        width: 100%;
         font-size: 1rem;
-        line-height: 1.2;
-        margin: 10px 0;
-        padding: 0;
-        font-weight: 400;
-    }
-
-    .faqContent p {
-        width: 100%;
-        padding: 0;
-        margin: 0;
-        font-size: 0.8rem;
-        line-height: 1.2;
         letter-spacing: 0;
-        font-weight: 300;
         text-align: justify;
         text-indent: 1rem;
+        margin: 10px auto;
     }
 
     .ask {
-        margin: 20px 0;
-        padding: 0;
+        margin: 0 auto;
         width: 100%;
-        gap: 15px
+        column-count: 1;
+        column-gap: 0;
+    }
+
+    .ask h3 {
+        padding: 10px 35px 10px 10px;
+        font-size: 1.3rem;
     }
 
     .askItem {
-        padding: 10px;
-        margin: 0;
+        margin-bottom: 25px;
+        padding: 0 15px 15px 15px;
         border-radius: 10px;
     }
 
-    .askItem h3 {
-        font-size: 0.8rem;
-        line-height: 1.2;
-        letter-spacing: 0;
-        width: 80%;
-        padding: 0;
-        margin: 0 auto;
-        font-weight: 300;
-    }
 
-    .askItem svg {
-        font-size: 0.8rem;
+    .visible {
+        padding-top: 0;
     }
 
     .answer {
-        font-size: 0.7rem;
-    }
-
-    .visible {
-        padding: 5px;
-        margin: 5px 0;
-        font-size: 0.7rem;
-        line-height: 1.2;
-        letter-spacing: 0;
+        margin-top: 0;
         text-indent: 1rem;
         font-weight: 300;
     }

@@ -14,7 +14,7 @@ const PrivacyPolicy = () => {
         error ? <p>Что-то пошло не так</p>
             : loading ? <Preloader/>
                 : (
-                    <React.Fragment>
+                    <>
                         <div className='welcomeBlock'
                              style={{
                                  backgroundImage: `url(${process.env.REACT_APP_UPLOAD_URL + data?.attributes?.imgBG?.data?.attributes?.url})`,
@@ -36,7 +36,7 @@ const PrivacyPolicy = () => {
                                ))}
                            </div>
                         </div>
-                    </React.Fragment>
+                    </>
                 )
     );
 };
