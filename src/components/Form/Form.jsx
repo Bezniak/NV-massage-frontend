@@ -59,7 +59,7 @@ function Form() {
         <>
             {isEmailSent ? (
                 <h2 className={styles.formSend}>
-                    Письмо отправлено! <br/> Я свяжусь с Вами в ближайшее время!
+                    Письмо отправлено! <br/> Мы свзяжемся с Вами в ближайшее время!
                 </h2>
             ) : (
                 <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>

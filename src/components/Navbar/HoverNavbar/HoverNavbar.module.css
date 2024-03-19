@@ -31,6 +31,7 @@
 
 /* Дополнительные стили, чтобы выровнять по центру по вертикали */
 .hoverList {
+
     display: flex;
     flex-direction: column;
     gap: 15px;

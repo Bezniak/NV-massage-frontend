@@ -42,7 +42,7 @@
 }
 
 .personInfo img {
-    margin: 30px 10px 0 10px;
+    margin: 10px;
     width: 50%;
     height: auto;
     object-fit: cover;
@@ -224,7 +224,7 @@
     }
 
     .person h2 {
-        margin: 0 auto;
+        margin: 20px auto;
         font-size: 1.3rem;
         font-weight: 300;
     }

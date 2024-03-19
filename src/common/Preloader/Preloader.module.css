@@ -5,6 +5,24 @@
     height: 100vh;
 }
 
-.preloaderBlock img {
+
+@media screen and (max-width: 1200px) {
+
+}
+
+@media screen and (max-width: 768px) {
+    .preloaderBlock img {
+        width: 10rem;
+        height: 10rem;
+    }
+
+}
+
+@media screen and (max-width: 576px) {
+
+    .preloaderBlock img {
+        width: 7rem;
+        height: 7rem;
+    }
 
 }

@@ -131,6 +131,10 @@
         width: 90%;
     }
 
+    .reviewItem p {
+        letter-spacing: 0;
+    }
+
     .reviewTitle {
         font-size: 1.4rem;
         font-weight: 250;

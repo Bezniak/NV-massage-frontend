@@ -37,7 +37,7 @@ export default function Slider() {
                     <Preloader />
                 ) : (
                     <>
-                        <h1 className={styles['slider-title']}>{data?.attributes?.title}</h1>
+                        <h1 className={styles.sliderTitle}>{data?.attributes?.title}</h1>
                         <Swiper
                             spaceBetween={0}
                             centeredSlides={true}

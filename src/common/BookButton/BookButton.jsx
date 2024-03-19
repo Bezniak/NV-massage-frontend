@@ -3,7 +3,7 @@ import {NavLink} from 'react-router-dom'; // Импортируем NavLink из
 import s from './BookButton.module.css';
 import {animateScroll as scroll} from "react-scroll";
 
-const BookButton = ({title, color, backgroundColor, scrolled, onClick, size}) => {
+const BookButton = ({title, color, backgroundColor, scrolled, size}) => {
     const buttonClassName = `${s.button} ${scrolled ? s.scrolled : ''}`;
 
     const buttonStyle = {
@@ -19,10 +19,7 @@ const BookButton = ({title, color, backgroundColor, scrolled, onClick, size}) =>
     };
 
     return (
-        <NavLink to="/book" className={buttonClassName} style={{...buttonStyle, fontSize: size}} onClick={() => {
-            handleClick()
-            onClick()
-        }}>
+        <NavLink to="/book" className={buttonClassName} style={{...buttonStyle, fontSize: size}} onClick={handleClick}>
             {title}
         </NavLink>
     );

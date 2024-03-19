@@ -150,8 +150,6 @@ const Footer = () => {
                                 </NavLink>
                             </ul>
                         </div>
-
-
                         <p className={s.copyRight}>
                             © {currentYear} {data?.attributes?.companyName}. Все права защищены. Developed by
                             <a href="https://www.linkedin.com/in/ivan-bezniak-2634a11a0/"

@@ -46,7 +46,6 @@ export const AboutUs = () => {
                                     backgroundImage: `url(${process.env.REACT_APP_UPLOAD_URL + data?.attributes?.imgBG?.data?.attributes?.url})`,
                                 }}
                             >
-                                <img src='/newLogoWhite.svg' alt="logo"/>
                                 <h1>{data?.attributes?.title}</h1>
                             </div>
 

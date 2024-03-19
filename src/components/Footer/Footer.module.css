@@ -93,6 +93,7 @@
 }
 
 .copyRight, .copyRight a {
+    margin: 0 auto;
     padding: 30px 0 0 0;
     color: var(--footer-links);
     transition: color 0.4s ease;
@@ -120,6 +121,13 @@
 }
 
 @media screen and (max-width: 576px) {
+    .massagesTypeList {
+        display: none;
+    }
+
+    .footer {
+        padding: 30px 0;
+    }
 
     .footerWrapper {
         width: 90%;
@@ -128,15 +136,8 @@
         justify-content: center;
     }
 
-    .massagesTypeList {
-        width: 100%;
-        align-items: center;
-        gap: 5px;
-    }
-
-    .footerTitle {
-        font-size: 1.2rem;
-        padding: 10px;
+    .copyRight {
+        width: 90%;
     }
 
 }

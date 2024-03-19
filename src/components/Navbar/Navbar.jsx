@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import s from './Navbar.module.css';
 import {NavLink} from 'react-router-dom';
 import BookButton from '../../common/BookButton/BookButton';
@@ -16,6 +16,8 @@ const Navbar = () => {
     const [contentBlock, setContentBlock] = useState('');
     const [isMenuClicked, setIsMenuClicked] = useState(false);
     const {data, loading, error} = useFetch('/contacts?populate=*');
+    const touchStartXRef = useRef(0);
+    const touchMoveXRef = useRef(0);
 
     const handleAddressClick = () => {
         const formattedAddress = encodeURIComponent(data?.attributes?.addressForMap);
@@ -29,6 +31,19 @@ const Navbar = () => {
             document.body.style.overflow = 'hidden';
         } else {
             document.body.style.overflow = 'auto';
+        }
+    };
+
+    const handleTouchStart = (event) => {
+        touchStartXRef.current = event.touches[0].clientX;
+    };
+
+    const handleTouchMove = (event) => {
+        touchMoveXRef.current = event.touches[0].clientX;
+        const touchDistance = touchStartXRef.current - touchMoveXRef.current;
+
+        if (touchDistance > 100) {
+            setIsMenuClicked(false);
         }
     };
 
@@ -76,11 +91,12 @@ const Navbar = () => {
             {!scrolled && (
                 <div className={navbarClass}>
                     <div className={s.logosBlock}>
-                        <IoLocationOutline onClick={handleAddressClick}/>
-                        <NavLink to="/" onClick={handleClick}>
-                            <img src="/logoWhite.svg" alt="logo" className={s.logo}/>
-                        </NavLink>
-                        <BookButton title='Записаться!' color={'white'}/>
+                        <div><IoLocationOutline onClick={handleAddressClick}/></div>
+                        <div>
+                            <NavLink to="/" onClick={handleClick}>
+                                <img src="/logoWhite.svg" alt="logo" className={s.logo}/>
+                            </NavLink></div>
+                        <div><BookButton title='Записаться!' color={'white'}/></div>
                     </div>
 
 
@@ -128,11 +144,10 @@ const Navbar = () => {
                                 />
                             </div>
                         )}
-
-
                     </div>
                 </div>
             )}
+
 
             {scrolled && (
                 <div className={navbarClass}>
@@ -155,7 +170,7 @@ const Navbar = () => {
                                     items={[
                                         {title: 'О нас', path: '/aboutUs'},
                                         {title: 'Отзывы', path: '/reviews'},
-                                        {title: 'F.A.Q.', path: '/faq'},
+                                        {title: 'Часто задаваемые вопросы', path: '/faq'},
                                         {title: 'Местоположение', path: '/location'},
                                     ]}
                                 />
@@ -191,12 +206,13 @@ const Navbar = () => {
                 <div className={s.hamburgerMenu}>
                     <CgMenuLeft onClick={handleMobileMenuClick}/>
                     <NavLink to="/" onClick={handleClick}>
-                        <img src="/newLogoWhite.svg" alt="logo" className={s.logo}/>
+                        <img src="/logoWhite.svg" alt="logo" className={s.logo}/>
                     </NavLink>
                     <IoLocationOutline onClick={handleAddressClick}/>
                 </div>
 
-                <div className={`${s.hamburgerMenuList} ${isMenuClicked ? s.open : ""}`}>
+                <div className={`${s.hamburgerMenuList} ${isMenuClicked ? s.open : ""}`} onTouchStart={handleTouchStart}
+                     onTouchMove={handleTouchMove}>
                     <div className={s.menuBlock}>
                         <h1>Меню</h1>
                         <IoCloseOutline onClick={handleMobileMenuClick}/>
