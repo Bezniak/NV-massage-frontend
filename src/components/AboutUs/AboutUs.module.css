@@ -23,6 +23,7 @@
 }
 
 .personWrapper {
+    margin: 30px auto;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
@@ -41,7 +42,8 @@
 }
 
 .personInfo img {
-    width: 70%;
+    margin: 30px 10px 0 10px;
+    width: 50%;
     height: auto;
     object-fit: cover;
     border-radius: 20px 20px 0 0;
@@ -199,7 +201,8 @@
     }
 
     .contactFormBlock {
-        gap: 15px
+        gap: 15px;
+        margin: 0 auto;
     }
 
     .contactLink {
@@ -217,11 +220,11 @@
     }
 
     .person {
-        width: 85%;
+        width: 90%;
     }
 
     .person h2 {
-        margin: 15px 0;
+        margin: 0 auto;
         font-size: 1.3rem;
         font-weight: 300;
     }
@@ -234,7 +237,18 @@
     }
 
     .personWrapper {
+        margin: 0 auto;
         flex-direction: column;
+        gap: 10px;
+    }
+
+    .aboutFormBlock {
+        gap: 10px;
+
+    }
+
+    .personInfo {
+        width: 60%;
     }
 
     .personDesc h3 {
@@ -245,6 +259,7 @@
     .contactFormBlock {
         width: 100%;
         gap: 10px;
+        margin: 0 auto;
     }
 
     .contactLink {
@@ -256,7 +271,5 @@
         font-size: 1rem;
 
     }
-
-
 }
 

@@ -147,161 +147,146 @@ const Book = () => {
     const filterDate = (date) => {
         // Проверяем, является ли день выходным
         const day = date.getDay();
-        return day !== contact?.attributes?.weekend_1  && day !== contact?.attributes?.weekend_2; // Разрешаем выбор только для дней, кроме воскресенья и понедельника
+        return day !== contact?.attributes?.weekend_1 && day !== contact?.attributes?.weekend_2; // Разрешаем выбор только для дней, кроме воскресенья и понедельника
     };
 
     return (
-        <div>
-            <div>
-                {bookError ? (
-                    <p>Что-то пошло не так!</p>
-                ) : bookLoading ? (
-                    <Preloader/>
-                ) : (
-                    <div
-                        className='welcomeBlock'
-                        style={{
-                            backgroundImage: `url(${process.env.REACT_APP_UPLOAD_URL + bookData?.attributes?.imgBG?.data?.attributes?.url})`,
-                        }}
-                    >
-                        <h1>{bookData?.attributes?.title}</h1>
-                        <p>{bookData?.attributes?.description}</p>
-                    </div>
-                )}
-            </div>
+        <>
+            {
+                bookError ? <p>Ошибка полуния данных</p>
+                    : bookLoading ? <Preloader/>
+                        :
+                        <>
+                            <div
+                                className='welcomeBlock'
+                                style={{
+                                    backgroundImage: `url(${process.env.REACT_APP_UPLOAD_URL + bookData?.attributes?.imgBG?.data?.attributes?.url})`,
+                                }}
+                            >
+                                <h1>{bookData?.attributes?.title}</h1>
+                                <p>{bookData?.attributes?.description}</p>
+                            </div>
 
-            <div className={styles.formWrapper}>
-                {
-                    isFormSend ?
-                        <h2 className={styles.titleAfterBook}>{formData.name}, брагодарим Вас за бронирование
-                            на {formData.massageType}.
-                            <br/>
-                            Вы записаны на {formData.startDate} в {formData.startTime} по
-                            адресу: {contact?.attributes?.address}
-                            <br/>
-                            Сумма к оплате: {formData.totalPrice} BYN
-                        </h2>
-                        : (
-                            <form onSubmit={handleSubmit(onSubmit)}>
-                                <h1>Забронировать массаж!</h1>
+                            <div className={styles.formWrapper}>
+                                {isFormSend ?
+                                    <div className={styles.titleAfterBook}>{formData.name}, брагодарим Вас за
+                                        бронирование
+                                        на {formData.massageType}.
+                                        <br/>
+                                        Вы записаны на <span className={styles.mainInfo}>{formData.startDate}</span> в <span
+                                            className={styles.mainInfo}>{formData.startTime}</span> по
+                                        адресу: <span className={styles.mainInfo}>{contact?.attributes?.address}</span>
+                                        <br/>
+                                        <span className={styles.mainInfo}>Сумма к оплате: {formData.totalPrice} BYN</span>
+                                    </div>
+                                    : (
+                                        <form onSubmit={handleSubmit(onSubmit)}>
+                                            <h2>Забронировать массаж!</h2>
+                                            <label htmlFor="name">Имя:</label>
+                                            <input
+                                                type="text" {...register('name', {required: 'Это поле обязательно для заполнения!'})}
+                                                placeholder="Екатерина"/>
+                                            {errors.name && <span>{errors.name.message}</span>}
 
-                                <div>
-                                    <label htmlFor="name">Имя:</label>
-                                    <input
-                                        type="text" {...register('name', {required: 'Это поле обязательно для заполнения!'})}
-                                        placeholder="Екатерина"/>
-                                    {errors.name && <span>{errors.name.message}</span>}
-                                </div>
+                                            <label htmlFor="phone">Телефон:</label>
+                                            <input
+                                                type="phone"
+                                                {...register('phone', {
+                                                    required: 'Это поле обязательно для заполнения!',
+                                                    pattern: {
+                                                        value: /^\+?\d{1,3}(\s?|\(\d{1,4}\))?([\s.-]?\d{1,4}){2,}$/,
+                                                        message: 'Некорректный формат номера телефона',
+                                                    },
+                                                })}
+                                                placeholder="+375 29 333 33 33"
+                                            />
+                                            {errors.phone && <span>{errors.phone.message}</span>}
 
-                                <div>
-                                    <label htmlFor="phone">Телефон:</label>
-                                    <input
-                                        type="phone"
-                                        {...register('phone', {
-                                            required: 'Это поле обязательно для заполнения!',
-                                            pattern: {
-                                                value: /^\+?\d{1,3}(\s?|\(\d{1,4}\))?([\s.-]?\d{1,4}){2,}$/,
-                                                message: 'Некорректный формат номера телефона',
-                                            },
-                                        })}
-                                        placeholder="+375 29 333 33 33"
-                                    />
-                                    {errors.phone && <span>{errors.phone.message}</span>}
-                                </div>
+                                            <label htmlFor="startDate">Дата и время:</label>
+                                            <Controller
+                                                control={control}
+                                                name="startDate"
+                                                rules={{
+                                                    required: 'Это поле обязательно для заполнения!',
+                                                }}
+                                                render={({field: {onChange, value}, fieldState: {error}}) => (
+                                                    <>
+                                                        <DatePicker
+                                                            selected={value}
+                                                            onChange={(date) => {
+                                                                onChange(date);
+                                                                setValue('startTime', ''); // Сбрасываем выбранное время при изменении даты
+                                                            }}
+                                                            placeholderText="Выберите дату"
+                                                            filterDate={filterDate} // Применяем фильтр дат
+                                                            dateFormat="dd.MM.yyyy"
+                                                            locale="ru"
+                                                            minDate={today}
+                                                            wrapperClassName={styles.datePicker}
+                                                        />
 
-                                <div>
-                                    <label htmlFor="startDate">Дата и время:</label>
-                                    <Controller
-                                        control={control}
-                                        name="startDate"
-                                        rules={{
-                                            required: 'Это поле обязательно для заполнения!',
-                                        }}
-                                        render={({field: {onChange, value}, fieldState: {error}}) => (
-                                            <>
-                                                <DatePicker
-                                                    selected={value}
-                                                    onChange={(date) => {
-                                                        onChange(date);
-                                                        setValue('startTime', ''); // Сбрасываем выбранное время при изменении даты
-                                                    }}
-                                                    placeholderText="Выберите дату"
-                                                    filterDate={filterDate} // Применяем фильтр дат
-                                                    dateFormat="dd.MM.yyyy"
-                                                    locale="ru"
-                                                    minDate={today}
-                                                    wrapperClassName={styles.datePicker}
-                                                />
+                                                        {error && <span>{error.message}</span>}
+                                                        <select
+                                                            {...register('startTime', {
+                                                                required: 'Это поле обязательно для заполнения!'
+                                                            })}
+                                                            value={watch('startTime')}
+                                                        >
+                                                            <option value="" disabled>Выберите время</option>
+                                                            {formattedMinTime && formattedMaxTime && (
+                                                                generateTimeOptions(isToday(watch('startDate')), formattedMinTime, formattedMaxTime)
+                                                            )}
+                                                        </select>
+                                                        {errors.startTime && <span>{errors.startTime.message}</span>}
+                                                    </>
+                                                )}
+                                            />
 
-                                                {error && <span>{error.message}</span>}
-                                                <select
-                                                    {...register('startTime', {
-                                                        required: 'Это поле обязательно для заполнения!'
-                                                    })}
-                                                    value={watch('startTime')}
-                                                >
-                                                    <option value="" disabled>Выберите время</option>
-                                                    {formattedMinTime && formattedMaxTime && (
-                                                        generateTimeOptions(isToday(watch('startDate')), formattedMinTime, formattedMaxTime)
-                                                    )}
-                                                </select>
-                                                {errors.startTime && <span>{errors.startTime.message}</span>}
+                                            <label htmlFor="massageType">Вид массажа:</label>
+                                            <Controller
+                                                control={control}
+                                                name="massageType"
+                                                rules={{
+                                                    required: 'Это поле обязательно для заполнения!',
+                                                }}
+                                                render={({field: {onChange, value}, fieldState: {error}}) => (
+                                                    <div>
+                                                        <Select
+                                                            options={massageType?.map((item) => ({
+                                                                value: item.id, // or any unique identifier for the option
+                                                                label: item.attributes.title,
+                                                                price: item.attributes.price,
+                                                            }))}
+                                                            value={value}
+                                                            onChange={(selectedOptions) => {
+                                                                onChange(selectedOptions);
+                                                                calculateTotalPrice(selectedOptions);
+                                                            }}
+                                                            isClearable
+                                                            isMulti
+                                                            isSearchable
+                                                            placeholder="Выберите вид массажа"
+                                                        />
+                                                        {error && <span>{error.message}</span>}
+                                                    </div>
+                                                )}
+                                            />
 
-                                            </>
-                                        )}
-                                    />
+                                            <label htmlFor="comment">Комментарий:</label>
+                                            <textarea {...register('comment', {})} placeholder="Коментарий..."/>
 
-                                </div>
+                                            <p>Итого: {totalPrice.toFixed(2)} BYN</p>
 
-                                <div>
-                                    <label htmlFor="massageType">Вид массажа:</label>
-                                    <Controller
-                                        control={control}
-                                        name="massageType"
-                                        rules={{
-                                            required: 'Это поле обязательно для заполнения!',
-                                        }}
-                                        render={({field: {onChange, value}, fieldState: {error}}) => (
-                                            <div>
-                                                <Select
-                                                    options={massageType?.map((item) => ({
-                                                        value: item.id, // or any unique identifier for the option
-                                                        label: item.attributes.title,
-                                                        price: item.attributes.price,
-                                                    }))}
-                                                    value={value}
-                                                    onChange={(selectedOptions) => {
-                                                        onChange(selectedOptions);
-                                                        calculateTotalPrice(selectedOptions);
-                                                    }}
-                                                    isClearable
-                                                    isMulti
-                                                    isSearchable
-                                                    placeholder="Выберите вид массажа"
-                                                />
-                                                {error && <span>{error.message}</span>}
-                                            </div>
-                                        )}
-                                    />
-                                </div>
-
-                                <div>
-                                    <label htmlFor="comment">Комментарий:</label>
-                                    <textarea {...register('comment', {})} placeholder="Коментарий..."/>
-                                </div>
-
-                                <div>
-                                    <p>Итого: {totalPrice.toFixed(2)} BYN</p>
-                                </div>
-
-                                <button className={styles.btn} type="submit" disabled={isSubmitting}>
-                                    {isSubmitting ? 'Отправка...' : 'Забронировать!'}
-                                </button>
-                            </form>
-                        )
-                }
-            </div>
-        </div>
+                                            <button className={styles.btn} type="submit" disabled={isSubmitting}>
+                                                {isSubmitting ? 'Отправка...' : 'Забронировать!'}
+                                            </button>
+                                        </form>
+                                    )
+                                }
+                            </div>
+                        </>
+            }
+        </>
     );
 };
 
