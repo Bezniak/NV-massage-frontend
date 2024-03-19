@@ -41,7 +41,6 @@ const Products = () => {
                              style={{backgroundImage: `url(${process.env.REACT_APP_UPLOAD_URL + massagesData?.attributes?.img?.data?.attributes?.url})`}}>
                             <h1>{massagesData?.attributes?.title}</h1>
                         </div>
-
                         <div className={s.productsBlock}>
                             <div className={s.productsWrapper}>
                                 {

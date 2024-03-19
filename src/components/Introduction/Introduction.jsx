@@ -9,7 +9,7 @@ const Introduction = ({type}) => {
 
     return (
         <>
-            {error ? <p>Произошла ошибка при загрузке данных.</p>
+            {error ? <p className='getDataError'>Произошла ошибка при загрузке данных</p>
                 : loading ? (
                     <Preloader/>
                 ) : (

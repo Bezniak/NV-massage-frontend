@@ -96,8 +96,6 @@ const router = createBrowserRouter([
 ]);
 
 const App = () => {
-
-
     return (
         <div>
             <RouterProvider router={router}/>

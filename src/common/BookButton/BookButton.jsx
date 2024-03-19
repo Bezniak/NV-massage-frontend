@@ -1,5 +1,5 @@
 import React from 'react';
-import {NavLink} from 'react-router-dom'; // Импортируем NavLink из React Router
+import {NavLink} from 'react-router-dom';
 import s from './BookButton.module.css';
 import {animateScroll as scroll} from "react-scroll";
 

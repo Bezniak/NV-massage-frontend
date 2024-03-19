@@ -1,13 +1,10 @@
 import React, {Fragment, useEffect, useState} from 'react';
-import s from './Installment.module.css';
 import {Preloader} from '../../common/Preloader/Preloader';
 import useFetch from "../../hooks/useFetch";
 
 const Product = () => {
     const {data, loading, error} = useFetch(`/installments?populate=*`);
     const [imageLoaded, setImageLoaded] = useState(false);
-
-    console.log(data)
 
     useEffect(() => {
         if (data && data.attributes && data.attributes.imgBG && data.attributes.imgBG.data.attributes.url) {
@@ -22,7 +19,7 @@ const Product = () => {
     return (
         <>
             {error ? (
-                <p>Что-то пошло не так!</p>
+                <p className='getDataError'>Произошла ошибка при загрузке данных</p>
             ) : loading ? (
                 <Preloader/>
             ) : (

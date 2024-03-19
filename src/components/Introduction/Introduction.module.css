@@ -25,7 +25,6 @@
 /* Медиа-запросы для разных устройств */
 
 @media screen and (max-width: 1200px) {
-
 }
 
 @media screen and (max-width: 768px) {
@@ -42,7 +41,6 @@
     .introductionBlock p {
         font-size: 1rem;
     }
-
 }
 
 @media screen and (max-width: 576px) {
@@ -68,6 +66,5 @@
         text-align: justify;
         text-indent: 1rem;
     }
-
 }
 

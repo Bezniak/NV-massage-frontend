@@ -179,7 +179,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 15px 30px; /* Добавьте отступы слева и справа */
+    padding: 15px 30px;
 }
 
 .menuBlock h1 {
@@ -220,7 +220,7 @@
 
 
 @media screen and (max-width: 480px) {
-    /* Ваши стили для маленьких мобильных устройств */
+    /* Стили для маленьких мобильных устройств */
     .scrolled, .navbar {
         display: none;
     }
@@ -229,8 +229,6 @@
         display: block;
         max-width: 100%;
     }
-
-
 }
 
 @media screen and (min-width: 481px) and (max-width: 768px) {
@@ -261,7 +259,6 @@
     .hamburgerMenuList a {
         font-size: 1.3rem;
     }
-
 }
 
 @media screen and (min-width: 769px) and (max-width: 1023px) {
@@ -282,5 +279,4 @@
         font-size: 1.3rem;
         margin: 12px 30px;
     }
-
 }

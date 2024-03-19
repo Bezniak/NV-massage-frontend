@@ -30,7 +30,7 @@ const Location = () => {
 
     return (
         <div>
-            {error ? <p>Что-то пошло не так</p>
+            {error ? <p className='getDataError'>Произошла ошибка при загрузке данных</p>
                 : loading || !bgLoaded ? <Preloader/>
                     : (
                         <>
@@ -153,7 +153,6 @@ const Location = () => {
                                 </div>
                             </div>
                             <Map/>
-
                         </>
                     )
             }

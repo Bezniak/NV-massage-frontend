@@ -41,7 +41,6 @@
 
 
 @media screen and (max-width: 1200px) {
-
 }
 
 @media screen and (max-width: 768px) {
@@ -63,7 +62,6 @@
 }
 
 @media screen and (max-width: 576px) {
-
     .productBlock {
         width: 100%;
         padding: 1rem;
@@ -83,5 +81,4 @@
         line-height: 1.5;
         font-weight: 300;
     }
-
 }

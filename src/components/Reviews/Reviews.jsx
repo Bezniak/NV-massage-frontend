@@ -12,7 +12,6 @@ const Reviews = () => {
     const [allLoaded, setAllLoaded] = useState(false);
     const reviewsContainerRef = useRef(null);
     const [isFormVisible, setIsFormVisible] = useState(false);
-
     const {data: dataMedia, loading: loadingMedia, error: errorMedia} = useFetch(`/reviews?populate=*`);
     const {data: comments, loading: commentsLoading, error: commentsError} = useFetchAllData(`/comments?populate=*`);
 
@@ -61,7 +60,7 @@ const Reviews = () => {
                     {isFormVisible && <ReviewForm/>}
 
                     {commentsError ? (
-                        <p>Что-то пошло не так</p>
+                        <p className='getDataError' style={{margin: "0 auto"}}>Произошла ошибка при загрузке данных</p>
                     ) : commentsLoading ? (
                             <Preloader/>
                         ) :

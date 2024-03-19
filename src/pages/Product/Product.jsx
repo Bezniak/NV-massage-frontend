@@ -1,4 +1,4 @@
-import React, {Fragment, useState, useEffect} from 'react';
+import React, {Fragment, useEffect, useState} from 'react';
 import s from './Product.module.css';
 import {useParams} from 'react-router-dom';
 import {Preloader} from '../../common/Preloader/Preloader';

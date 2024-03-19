@@ -109,15 +109,12 @@
 /* Медиа-запросы для разных устройств */
 
 @media screen and (max-width: 1200px) {
-
-
 }
 
 @media screen and (max-width: 768px) {
     .footerWrapper {
         width: 90%;
     }
-
 }
 
 @media screen and (max-width: 576px) {
@@ -139,6 +136,5 @@
     .copyRight {
         width: 90%;
     }
-
 }
 

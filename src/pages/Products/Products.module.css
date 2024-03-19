@@ -93,7 +93,6 @@
 /* Медиа-запросы для разных устройств */
 
 @media screen and (max-width: 1200px) {
-
 }
 
 @media screen and (max-width: 768px) {
@@ -114,8 +113,6 @@
         width: 300px;
         border-radius: 20px;
     }
-
-
 }
 
 @media screen and (max-width: 576px) {
@@ -139,6 +136,4 @@
         padding: 10px;
         border-radius: 25px;
     }
-
-
 }

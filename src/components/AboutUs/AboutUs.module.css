@@ -151,7 +151,6 @@
 /* Медиа-запросы для разных устройств */
 
 @media screen and (max-width: 1200px) {
-
     .person {
         width: 90%;
     }
@@ -171,7 +170,6 @@
 }
 
 @media screen and (max-width: 768px) {
-
     .person {
         width: 90%;
     }
@@ -213,7 +211,6 @@
 }
 
 @media screen and (max-width: 576px) {
-
     .personBlock {
         background-position: top, bottom;
         background-size: contain;

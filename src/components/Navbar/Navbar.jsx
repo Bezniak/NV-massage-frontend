@@ -98,16 +98,12 @@ const Navbar = () => {
                             </NavLink></div>
                         <div><BookButton title='Записаться!' color={'white'}/></div>
                     </div>
-
-
                     <div className={s.headerBlock}>
                         <NavLink to="/" onClick={handleClick}>Главная</NavLink>
-
                         <a onClick={handleClick} onMouseEnter={() => onMoseEnter('about')}>
                             Мой кабинет
                             <IoIosArrowDown/>
                         </a>
-
                         {isBlockVisible && contentBlock === 'about' && (
                             <div className={`${s.hoverWrapper} ${isBlockVisible ? 'visible' : ''}`}
                                  onMouseLeave={onMouseLeave} onClick={onContentBlockClick}>
@@ -121,18 +117,13 @@ const Navbar = () => {
                                 />
                             </div>
                         )}
-
-
                         <NavLink to="/products" onClick={handleClick}>
                             Услуги
                         </NavLink>
-
-
                         <a onClick={handleClick} onMouseEnter={() => onMoseEnter('specialties')}>
                             Специальные предложения
                             <IoIosArrowDown/>
                         </a>
-
                         {isBlockVisible && contentBlock === 'specialties' && (
                             <div className={`${s.hoverWrapper} ${isBlockVisible ? 'visible' : ''}`}
                                  onMouseLeave={onMouseLeave} onClick={onContentBlockClick}>
@@ -156,13 +147,10 @@ const Navbar = () => {
                             <img src="/logoBlack.png" alt="logo" className={s.logoScroll}/>
                         </NavLink>
                         <NavLink to="/" onClick={handleClick}>Главная</NavLink>
-
-
                         <a onClick={handleClick} onMouseEnter={() => onMoseEnter('about')}>
                             Наш салон
                             <IoIosArrowDown/>
                         </a>
-
                         {isBlockVisible && contentBlock === 'about' && (
                             <div className={`${s.hoverWrapper} ${isBlockVisible ? 'visible' : ''}`}
                                  onMouseLeave={onMouseLeave} onClick={onContentBlockClick}>
@@ -176,8 +164,6 @@ const Navbar = () => {
                                 />
                             </div>
                         )}
-
-
                         <NavLink to="/products" onClick={handleClick}>
                             Услуги
                         </NavLink>
@@ -185,7 +171,6 @@ const Navbar = () => {
                             Специальные предложения
                             <IoIosArrowDown/>
                         </a>
-
                         {isBlockVisible && contentBlock === 'specialties' && (
                             <div className={`${s.hoverWrapper} ${isBlockVisible ? 'visible' : ''}`}
                                  onMouseLeave={onMouseLeave} onClick={onContentBlockClick}>
@@ -210,7 +195,6 @@ const Navbar = () => {
                     </NavLink>
                     <IoLocationOutline onClick={handleAddressClick}/>
                 </div>
-
                 <div className={`${s.hamburgerMenuList} ${isMenuClicked ? s.open : ""}`} onTouchStart={handleTouchStart}
                      onTouchMove={handleTouchMove}>
                     <div className={s.menuBlock}>
@@ -263,8 +247,7 @@ const Navbar = () => {
                     <NavLink to='/installment' onClick={() => {
                         handleClick();
                         handleMobileMenuClick();
-                    }}
-                    >
+                    }}>
                         Рассрочка
                     </NavLink>
                     <div className={s.centeredContainer}>

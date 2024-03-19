@@ -1,5 +1,5 @@
-import { useEffect, useState, useCallback } from "react";
-import { makeRequest } from "../makeRequest";
+import {useCallback, useEffect, useState} from "react";
+import {makeRequest} from "../makeRequest";
 
 const useFetchAllData = (url) => {
     const [data, setData] = useState([]);
@@ -22,7 +22,7 @@ const useFetchAllData = (url) => {
         fetchData();
     }, [fetchData]);
 
-    return { data, loading, error };
+    return {data, loading, error};
 };
 
 export default useFetchAllData;

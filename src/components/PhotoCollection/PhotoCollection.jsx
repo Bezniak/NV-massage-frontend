@@ -11,7 +11,7 @@ export default function PhotoCollection({data, loading, error, title}) {
     return (
         <>
             {error ? (
-                <p>Что-то пошло не так!</p>
+                <p className='getDataError'>Произошла ошибка при загрузке данных</p>
             ) : loading ? (
                 <Preloader/>
             ) : (

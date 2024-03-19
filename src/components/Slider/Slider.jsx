@@ -1,15 +1,15 @@
-import React, { useState, useEffect } from 'react';
-import { Swiper, SwiperSlide } from 'swiper/react';
+import React, {useEffect, useState} from 'react';
+import {Swiper, SwiperSlide} from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
-import styles from './Slider.module.css'; // Import CSS Module
-import { Autoplay, Navigation, Pagination } from 'swiper/modules';
+import styles from './Slider.module.css';
+import {Autoplay, Navigation, Pagination} from 'swiper/modules';
 import useFetch from '../../hooks/useFetch';
-import { Preloader } from '../../common/Preloader/Preloader';
+import {Preloader} from '../../common/Preloader/Preloader';
 
 export default function Slider() {
-    const { data, loading, error } = useFetch('/sliders?populate=*');
+    const {data, loading, error} = useFetch('/sliders?populate=*');
     const [imagesLoaded, setImagesLoaded] = useState(false);
 
     useEffect(() => {
@@ -32,9 +32,9 @@ export default function Slider() {
 
     return (
         <div className={styles['slider-container']}>
-            {error ? <p>Что-то пошло не так!{error.message}</p> : (
+            {error ? <p className='getDataError'>Произошла ошибка при загрузке данных</p> : (
                 loading || !imagesLoaded ? (
-                    <Preloader />
+                    <Preloader/>
                 ) : (
                     <>
                         <h1 className={styles.sliderTitle}>{data?.attributes?.title}</h1>

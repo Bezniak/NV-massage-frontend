@@ -77,6 +77,8 @@ const Book = () => {
             alert('Возникла ошибка при отправке данных в Telegram: ' + error);
         }
 
+
+        // Send form data to Strapi
         try {
             await axios.post(`${process.env.REACT_APP_API_URL}/client-booked-from-sites`, {
                 data: {...data}
@@ -86,7 +88,7 @@ const Book = () => {
         }
 
 
-        setIsSubmitting(false); // устанавливаем состояние отправки в false после завершения отправки
+        setIsSubmitting(false);
         reset();
         setValue('massageType', '');
     };
@@ -133,7 +135,7 @@ const Book = () => {
     }
 
     function isToday(date) {
-        if (!date) return false; // Проверка на null
+        if (!date) return false;
         const today = new Date();
         return (
             date.getDate() === today.getDate() &&
@@ -209,8 +211,8 @@ const Book = () => {
                                             <Controller
                                                 control={control}
                                                 name="startDate"
-                                                rules={{ required: 'Это поле обязательно для заполнения!' }}
-                                                render={({ field }) => (
+                                                rules={{required: 'Это поле обязательно для заполнения!'}}
+                                                render={({field}) => (
                                                     <>
                                                         <DatePicker
                                                             selected={field.value}
@@ -233,18 +235,23 @@ const Book = () => {
                                             <Controller
                                                 control={control}
                                                 name="startTime"
-                                                rules={{ required: 'Это поле обязательно для заполнения!' }}
-                                                render={({ field }) => (
+                                                rules={{required: 'Это поле обязательно для заполнения!'}}
+                                                render={({field}) => (
                                                     <>
                                                         <Select
                                                             options={[
-                                                                { value: '', label: 'Выберите время', disabled: true, isPlaceholder: true },
+                                                                {
+                                                                    value: '',
+                                                                    label: 'Выберите время',
+                                                                    disabled: true,
+                                                                    isPlaceholder: true
+                                                                },
                                                                 ...(formattedMinTime && formattedMaxTime
                                                                     ? generateTimeOptions(
                                                                         isToday(watch('startDate')),
                                                                         formattedMinTime,
                                                                         formattedMaxTime
-                                                                    ).map((time) => ({ value: time, label: time }))
+                                                                    ).map((time) => ({value: time, label: time}))
                                                                     : [])
                                                             ]}
                                                             value={field.value}

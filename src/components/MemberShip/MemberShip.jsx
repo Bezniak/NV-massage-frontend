@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import s from './MemberShip.module.css';
 import useFetch from "../../hooks/useFetch";
 import {Preloader} from "../../common/Preloader/Preloader";
@@ -20,7 +20,7 @@ const MemberShip = () => {
 
     return (
         <>
-            {error ? <p>Ошибка при получении данных</p>
+            {error ? <p className='getDataError'>Ошибка при получении данных</p>
                 : loading ? <Preloader/>
                     : (
                         <>
@@ -35,7 +35,6 @@ const MemberShip = () => {
                                     <p>{data?.attributes?.desc}</p>
                                 </div>
                             )}
-
                             <div className={s.mainContentWrapper}>
                                 <div className={s.mainContent}>
                                     <div className={s.certificateBlock}>
@@ -60,8 +59,8 @@ const MemberShip = () => {
                                                 alt=""/>
                                         </div>
                                     </div>
-                                        <p>{data?.attributes?.conclusionTitle}</p>
-                                        <BookButton title={'Забронировать'} color={'black'} scrolled={true}/>
+                                    <p>{data?.attributes?.conclusionTitle}</p>
+                                    <BookButton title={'Забронировать'} color={'black'} scrolled={true}/>
                                 </div>
                             </div>
                         </>

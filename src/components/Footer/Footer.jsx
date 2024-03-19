@@ -16,6 +16,8 @@ const Footer = () => {
         error: productsError
     } = useFetchAllData(`/products?populate=*`);
 
+    const currentYear = new Date().getFullYear()
+
     const handleClick = () => {
         // Плавный скролл вверх с использованием react-scroll
         scroll.scrollToTop({
@@ -31,8 +33,6 @@ const Footer = () => {
         window.open(googleMapsUrl, '_blank');
     };
 
-    const currentYear = new Date().getFullYear()
-
 
     return (
         <>
@@ -41,14 +41,11 @@ const Footer = () => {
                     <Preloader/>
                 ) : (
                     <div className={s.footer}>
-
                         <div className={s.footerWrapper}>
-
                             <div className={s.logoBlock}>
                                 <NavLink to='' onClick={handleClick}>
                                     <img src='/logoWhite.svg' alt="logo" className={s.logo}/>
                                 </NavLink>
-
                                 <ul className={s.contactBlock}>
                                     <li onClick={handleAddressClick}>
                                         <a href="">{data?.attributes?.address}</a>
@@ -62,8 +59,6 @@ const Footer = () => {
                                         href={`mailto:${data?.attributes?.email}`}>{data?.attributes?.email}</a>
                                     </li>
                                 </ul>
-
-
                                 <ul className={s.socialNetworkLinks}>
                                     <li>
                                         <a
@@ -116,8 +111,6 @@ const Footer = () => {
                                     </li>
                                 </ul>
                             </div>
-
-
                             <ul className={s.massagesTypeList}>
                                 <li className={s.footerTitle}>Виды массажа</li>
                                 {productsData.map(massage => (
@@ -126,8 +119,6 @@ const Footer = () => {
                                     </NavLink>
                                 ))}
                             </ul>
-
-
                             <ul className={s.massagesTypeList}>
                                 <li className={s.footerTitle}>Салон</li>
                                 <NavLink to='/aboutUs' onClick={handleClick}>
@@ -157,8 +148,6 @@ const Footer = () => {
                                target="_blank"
                             > Ivan Bezniak</a>
                         </p>
-
-
                     </div>
                 )}
         </>

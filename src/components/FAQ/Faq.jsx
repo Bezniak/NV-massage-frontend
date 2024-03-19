@@ -1,4 +1,4 @@
-import React, {useCallback, useState, useEffect} from 'react';
+import React, {useCallback, useEffect, useState} from 'react';
 import s from './Faq.module.css';
 import useFetch from '../../hooks/useFetch';
 import {Preloader} from '../../common/Preloader/Preloader';
@@ -31,7 +31,7 @@ export const Faq = () => {
 
     return (
         <>
-            {error ? <p>Ошибка при загрузке данных</p>
+            {error ? <p className='getDataError'>Ошибка при загрузке данных</p>
                 : loading || !bgImageLoaded ? <Preloader/>
                     : (
                         <div>
@@ -78,7 +78,6 @@ export const Faq = () => {
                                             </div>
                                         ))}
                                     </div>
-
 
 
                                 </div>

@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import s from './AboutUs.module.css';
 import useFetch from "../../hooks/useFetch";
 import {Preloader} from "../../common/Preloader/Preloader";
@@ -40,95 +40,95 @@ export const AboutUs = () => {
                     :
                     <>
                         {!backgroundLoaded && <Preloader/>}
-                            <div
-                                className='welcomeBlock'
-                                style={{
-                                    backgroundImage: `url(${process.env.REACT_APP_UPLOAD_URL + data?.attributes?.imgBG?.data?.attributes?.url})`,
-                                }}
-                            >
-                                <h1>{data?.attributes?.title}</h1>
-                            </div>
+                        <div
+                            className='welcomeBlock'
+                            style={{
+                                backgroundImage: `url(${process.env.REACT_APP_UPLOAD_URL + data?.attributes?.imgBG?.data?.attributes?.url})`,
+                            }}
+                        >
+                            <h1>{data?.attributes?.title}</h1>
+                        </div>
 
-                            <div className={s.personBlock}>
-                                <div className={s.person}>
-                                    <h2>{data?.attributes?.employeeTitle}</h2>
-                                    <div className={s.personWrapper}>
-                                        <div className={s.personInfo}>
-                                            <img
-                                                src={process.env.REACT_APP_UPLOAD_URL + data?.attributes?.employeePhoto?.data?.attributes?.url}
-                                                alt={data?.attributes?.employeeName}/>
-                                            <div className={s.personDesc}>
-                                                <h3>{data?.attributes?.employeeName}</h3>
-                                                <p>{data?.attributes?.employeePosition}</p>
-                                            </div>
-                                        </div>
-                                        <div className={s.textDesc}>
-                                            <p>{data?.attributes?.textDesc}</p>
+                        <div className={s.personBlock}>
+                            <div className={s.person}>
+                                <h2>{data?.attributes?.employeeTitle}</h2>
+                                <div className={s.personWrapper}>
+                                    <div className={s.personInfo}>
+                                        <img
+                                            src={process.env.REACT_APP_UPLOAD_URL + data?.attributes?.employeePhoto?.data?.attributes?.url}
+                                            alt={data?.attributes?.employeeName}/>
+                                        <div className={s.personDesc}>
+                                            <h3>{data?.attributes?.employeeName}</h3>
+                                            <p>{data?.attributes?.employeePosition}</p>
                                         </div>
                                     </div>
-
-                                    <h2>{data?.attributes?.achievementTitle}</h2>
-                                    <p>{data?.attributes?.achievementDesc}</p>
-                                    <PhotoCollection data={data?.attributes?.achievementImages} error={error}
-                                                     loading={loading}
-                                    />
-
-
-                                    <div className={s.aboutFormBlock}>
-                                        <div className={s.contactFormBlock}>
-                                            <h2>{data?.attributes?.contactFormTitle}</h2>
-                                            <p>{data?.attributes?.contactFormDesc}</p>
-                                            <ul className={s.contactAddress}>
-                                                <li onClick={handleAddressClick}>
-                                                    <IoLocation/>
-                                                    <NavLink to="">{contactData?.attributes?.address}</NavLink>
-                                                </li>
-                                                <li>
-                                                    <LuPhone/>
-                                                    <NavLink
-                                                        to={`tel:${contactData?.attributes?.phone}`}>{contactData?.attributes?.phone}</NavLink>
-                                                </li>
-                                                <li>
-                                                    <IoIosMail/>
-                                                    <NavLink
-                                                        to={`mailto:${contactData?.attributes?.email}`}>{contactData?.attributes?.email}</NavLink>
-                                                </li>
-                                            </ul>
-                                            <ul className={s.contactLink}>
-                                                <li>
-                                                    <a href={`${contactData?.attributes?.instagram}`}
-                                                       rel="noreferrer"
-                                                       target="_blank"
-                                                    >
-                                                        <FaSquareInstagram/>
-                                                        Instagram
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a
-                                                        href={`tg://resolve?domain=${contactData?.attributes?.telegram}`}
-                                                        rel="noreferrer"
-                                                        target="_blank"
-                                                    >
-                                                        <FaTelegram/>
-                                                        Telegram
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href={`viber://chat?number=${contactData?.attributes?.viber}`}
-                                                       rel="noreferrer"
-                                                       target="_blank"
-                                                    >
-                                                        <FaViber/>
-                                                        Viber
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <Form/>
+                                    <div className={s.textDesc}>
+                                        <p>{data?.attributes?.textDesc}</p>
                                     </div>
                                 </div>
+
+                                <h2>{data?.attributes?.achievementTitle}</h2>
+                                <p>{data?.attributes?.achievementDesc}</p>
+                                <PhotoCollection data={data?.attributes?.achievementImages} error={error}
+                                                 loading={loading}
+                                />
+
+
+                                <div className={s.aboutFormBlock}>
+                                    <div className={s.contactFormBlock}>
+                                        <h2>{data?.attributes?.contactFormTitle}</h2>
+                                        <p>{data?.attributes?.contactFormDesc}</p>
+                                        <ul className={s.contactAddress}>
+                                            <li onClick={handleAddressClick}>
+                                                <IoLocation/>
+                                                <NavLink to="">{contactData?.attributes?.address}</NavLink>
+                                            </li>
+                                            <li>
+                                                <LuPhone/>
+                                                <NavLink
+                                                    to={`tel:${contactData?.attributes?.phone}`}>{contactData?.attributes?.phone}</NavLink>
+                                            </li>
+                                            <li>
+                                                <IoIosMail/>
+                                                <NavLink
+                                                    to={`mailto:${contactData?.attributes?.email}`}>{contactData?.attributes?.email}</NavLink>
+                                            </li>
+                                        </ul>
+                                        <ul className={s.contactLink}>
+                                            <li>
+                                                <a href={`${contactData?.attributes?.instagram}`}
+                                                   rel="noreferrer"
+                                                   target="_blank"
+                                                >
+                                                    <FaSquareInstagram/>
+                                                    Instagram
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a
+                                                    href={`tg://resolve?domain=${contactData?.attributes?.telegram}`}
+                                                    rel="noreferrer"
+                                                    target="_blank"
+                                                >
+                                                    <FaTelegram/>
+                                                    Telegram
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href={`viber://chat?number=${contactData?.attributes?.viber}`}
+                                                   rel="noreferrer"
+                                                   target="_blank"
+                                                >
+                                                    <FaViber/>
+                                                    Viber
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <Form/>
+                                </div>
                             </div>
+                        </div>
                     </>
             }
         </>

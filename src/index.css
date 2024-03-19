@@ -1,6 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200..1000;1,200..1000&family=Noto+Serif:ital,wght@0,100..900;1,100..900&display=swap');
 
-
 *, *:before, *:after {
     box-sizing: border-box;
 }
@@ -61,7 +60,6 @@ svg {
     cursor: pointer;
 }
 
-
 p {
     margin: 0;
     color: var(--main);
@@ -72,15 +70,14 @@ p {
     line-height: 2.5;
 }
 
-
 .getDataError {
     display: flex;
     align-items: center;
     justify-content: center;
     color: red;
-    font-weight: 300;
+    font-weight: 200;
     font-size: 1.3rem;
-    height: 100vh;
+    height: 80vh;
 }
 
 .welcomeBlock {
