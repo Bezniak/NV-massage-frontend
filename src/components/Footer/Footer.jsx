@@ -133,9 +133,6 @@ const Footer = () => {
                                 <NavLink to='/memberShip' onClick={handleClick}>
                                     Сертификаты и абонементы
                                 </NavLink>
-                                <NavLink to='/installment' onClick={handleClick}>
-                                    Рассрочка
-                                </NavLink>
                                 <NavLink to='/location' onClick={handleClick}>
                                     Местоположение
                                 </NavLink>

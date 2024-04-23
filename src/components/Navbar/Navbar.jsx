@@ -130,7 +130,6 @@ const Navbar = () => {
                                 <HoverNavbar
                                     items={[
                                         {title: 'Сертификаты и абонементы', path: '/memberShip'},
-                                        {title: 'Рассрочка', path: '/installment'},
                                     ]}
                                 />
                             </div>
@@ -177,7 +176,6 @@ const Navbar = () => {
                                 <HoverNavbar
                                     items={[
                                         {title: 'Сертификаты и абонементы', path: '/memberShip'},
-                                        {title: 'Рассрочка', path: '/installment'},
                                     ]}
                                 />
                             </div>
@@ -243,12 +241,6 @@ const Navbar = () => {
                         handleMobileMenuClick();
                     }}>
                         Сертификаты и абонементы
-                    </NavLink>
-                    <NavLink to='/installment' onClick={() => {
-                        handleClick();
-                        handleMobileMenuClick();
-                    }}>
-                        Рассрочка
                     </NavLink>
                     <div className={s.centeredContainer}>
                         <BookButton title='Записаться!' onClick={handleMobileMenuClick} color='black' size='1rem'/>

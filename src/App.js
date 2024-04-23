@@ -13,7 +13,6 @@ import Reviews from "./components/Reviews/Reviews";
 import Book from "./components/Book/Book";
 import Location from "./components/Location/Location";
 import MemberShip from "./components/MemberShip/MemberShip";
-import Installment from "./components/Installment/Installment";
 
 
 const Layout = () => {
@@ -71,10 +70,6 @@ const router = createBrowserRouter([
             {
                 path: "/memberShip",
                 element: <MemberShip/>
-            },
-            {
-                path: "/installment",
-                element: <Installment/>
             },
             {
                 path: "*",
